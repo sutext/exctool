@@ -1,0 +1,75 @@
+#!/bin/bash
+function usage() {
+	echo "unknown command"
+  echo "Usage: exctool [-oc,-sc] <path_to_new_project> <new_project_name> <new_namespace>"
+  echo "	<path_to_new_project>: Path to your new easy iOS project defalut is current path"
+  echo "	<new_project_name>: project name like UIKit"
+  echo "	<new_namespace>: project Prefix like UI"
+  echo "  ------------"
+  echo "Usage: exctool [-rename] <project_dir> <old_class_name> <new_class_name>"
+  echo "	<project_dir>: Path to your easy ios project defalut is current path"
+  echo "	<old_class_name>: the old class name just like UIView"
+  echo "	<new_class_name>: the new class name just like ETView"
+  exit 1
+}
+
+OBJC_CREATE=0
+SWIFT_CREATE=0
+RENAME=0
+TARGET_PATH=`pwd`
+SCRIPT_PATH=$(cd `dirname $0`; pwd)
+cd $TARGET_PATH
+
+if [[ $1 == "-version" ]]; then
+    echo the version of exctool is v1.0.
+    echo created by supertext in icegent.
+    exit 0;
+fi
+
+if [[ $1 == "-oc" ]]; then
+    OBJC_CREATE=1
+    shift;
+fi
+if [[ $1 == "-sc" ]]; then
+    SWIFT_CREATE=1
+    shift;
+fi
+if [[ $1 == "-rename" ]]; then
+    RENAME=1
+    shift;
+fi
+
+# check whether it is a proper create command (at least 3 arguments)
+if [ $OBJC_CREATE -eq 0 ] && [ $SWIFT_CREATE -eq 0 ] && [ $RENAME -eq 0 ]; then
+	usage
+fi
+if [ $# -lt 2 ]; then
+	usage
+fi
+
+PARAM_1=$1
+PARAM_2=$2
+
+if [ $# -eq 3 ]; then
+	if [ ! -d $1 ]; then
+		echo "target path:$1 No such directory"
+		exit 1
+	fi
+	TARGET_PATH=$(cd $1; pwd)
+	PARAM_1=$2
+	PARAM_2=$3
+fi
+
+if [ -d $TARGET_PATH/$PARAM_1 ]; then
+    echo "target project:$TARGET_PATH/$PARAM_1 already exsit"
+    exit 1
+fi
+
+if [ $OBJC_CREATE -eq 1 ];then
+	sh $SCRIPT_PATH/objc_create.sh $TARGET_PATH $PARAM_1 $PARAM_2
+elif [ $SWIFT_CREATE -eq 1 ];then
+        sh $SCRIPT_PATH/swift_create.sh $TARGET_PATH $PARAM_1 $PARAM_2
+elif [ $RENAME -eq 1 ];then
+	sh $SCRIPT_PATH/rename.sh $TARGET_PATH $PARAM_1 $PARAM_2
+fi
+
