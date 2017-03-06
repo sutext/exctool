@@ -10,9 +10,9 @@
 
 import EasyTools
 
-let TMPJDataFormatError = NSError(domain: ETNetworkErrorDomain, code: ETNetworkErrorCode.Business.rawValue, userInfo: ["message":"data format error"]);
+let TMPJDataFormatError = NSError(domain: ETNetworkErrorDomain, code: ETNetworkErrorCode.business.rawValue, userInfo: ["message":"data format error"]);
 
-class TMPJNetworkRequest<EntityType,RequestType:RawRepresentable where RequestType.RawValue == String>: ETDesignedRequest{
+class TMPJNetworkRequest<EntityType,RequestType:RawRepresentable>: ETDesignedRequest where RequestType.RawValue == String{
     var requestType:RequestType!
     init(type:RequestType) {
         super.init();
@@ -24,27 +24,27 @@ class TMPJNetworkRequest<EntityType,RequestType:RawRepresentable where RequestTy
     override func requestMethod() -> ETNetworkRequestMethod {
         return .POST;
     }
-    override func finishedWithResponse(response: ETNetworkResponse, error: NSError?, task operation: NSURLSessionDataTask) {
+    func finished(with response: ETNetworkResponse, error: Error?, task taskOperator: URLSessionUploadTask){
         if error != nil
         {
-            kTMPJAlertManager.showError(error!);
+            kTMPJAlertManager.showError(error! as NSError);
         }
     }
-    override func analysisResponseObject(returnedObject: AnyObject, header: AutoreleasingUnsafeMutablePointer<NSDictionary?>, extends: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws -> AnyObject {
+    override func analysisResponseObject(_ returnedObject: Any, header: AutoreleasingUnsafeMutablePointer<NSDictionary?>?, extends: AutoreleasingUnsafeMutablePointer<AnyObject?>?) throws -> Any {
         let respData:NSDictionary? = returnedObject as? NSDictionary
         guard respData != nil else
         {
             throw  TMPJDataFormatError;
         }
         
-        let code:AnyObject? = respData!.objectForKey("code");
+        let code:AnyObject? = respData!.object(forKey: "code") as AnyObject?;
         guard code != nil else
         {
             throw TMPJDataFormatError;
         }
         
-        var memery = [kETHeaderCodeKey:code!];
-        if let message = respData!.objectForKey("message")
+        var memery:[AnyHashable : Any] = [kETHeaderCodeKey:code!];
+        if let message = respData!.object(forKey: "message")
         {
             memery[kETHeaderMeesageKey] = message;
         }
@@ -55,18 +55,18 @@ class TMPJNetworkRequest<EntityType,RequestType:RawRepresentable where RequestTy
         let errorCode = code!.integerValue;
         guard errorCode == 200 else
         {
-            throw  NSError(domain: ETNetworkErrorDomain, code: ETNetworkErrorCode.Business.rawValue, userInfo:memery);
+            throw  NSError(domain: ETNetworkErrorDomain, code: ETNetworkErrorCode.business.rawValue, userInfo:memery);
         }
-        let data = try self.analyze(respData!.objectForKey("data"));
-        header.memory = memery;
-        return data as! AnyObject;
+        let data = try self.analyze(respData!.object(forKey: "data"));
+        header?.pointee = memery as NSDictionary;
+        return data as AnyObject;
     }
-    func analyze(data:AnyObject?)throws -> EntityType
+    func analyze(_ data:Any?)throws -> EntityType
     {
         if let Type:TMPJNetworkEntity.Type = EntityType.self as? TMPJNetworkEntity.Type
         {
             return Type.init() as! EntityType
         }
-        throw  NSError(domain: ETNetworkErrorDomain, code: ETNetworkErrorCode.Noanalyzer.rawValue, userInfo: ["message":"analyze(data:AnyObject?)throws -> EntityType must be implement"]);
+        throw  NSError(domain: ETNetworkErrorDomain, code: ETNetworkErrorCode.noanalyzer.rawValue, userInfo: ["message":"analyze(data:AnyObject?)throws -> EntityType must be implement"]);
     }
 }

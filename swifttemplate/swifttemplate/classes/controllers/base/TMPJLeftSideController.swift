@@ -11,6 +11,6 @@ import EasyTools
 class TMPJLeftSideController: TMPJBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.view.backgroundColor = UIColor.redColor();
+        self.view.backgroundColor = UIColor.red;
     }
 }

@@ -11,36 +11,36 @@ import CoreData
 import Foundation
 
 final class TMPJSqliteManager: NSObject {
-    private var privateContext:NSManagedObjectContext
-    private var pscoordinator:NSPersistentStoreCoordinator
-    private var model:NSManagedObjectModel
+    fileprivate var privateContext:NSManagedObjectContext
+    fileprivate var pscoordinator:NSPersistentStoreCoordinator
+    fileprivate var model:NSManagedObjectModel
     static let sharedManager : TMPJSqliteManager = TMPJSqliteManager();
     
-    private override init() {
-        self.privateContext = NSManagedObjectContext(concurrencyType:.PrivateQueueConcurrencyType);
-        let modelURL = NSBundle(forClass: TMPJSqliteManager.self).URLForResource("CoreTeahouse", withExtension: "momd")
-        self.model = NSManagedObjectModel(contentsOfURL: modelURL!)!
+    fileprivate override init() {
+        self.privateContext = NSManagedObjectContext(concurrencyType:.privateQueueConcurrencyType);
+        let modelURL = Bundle(for: TMPJSqliteManager.self).url(forResource: "CoreTeahouse", withExtension: "momd")
+        self.model = NSManagedObjectModel(contentsOf: modelURL!)!
         self.pscoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.model)
         super.init()
-        let storeURL = NSURL.fileURLWithPath("\(ETDocumentsDirectory())/CoreTeahouse.sqlte")
+        let storeURL = URL(fileURLWithPath:"\(ETDocumentsDirectory())/CoreTeahouse.sqlte");
         let opions = [
             NSMigratePersistentStoresAutomaticallyOption:true,
             NSInferMappingModelAutomaticallyOption:true
         ];
         do {
-            try self.pscoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: opions)
+            try self.pscoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: opions)
         }
         catch
         {
-            try! NSFileManager.defaultManager().removeItemAtURL(storeURL);
-            try! self.pscoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: opions)
+            try! FileManager.default.removeItem(at: storeURL);
+            try! self.pscoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: opions)
         }
         self.privateContext.persistentStoreCoordinator = self.pscoordinator;
     }
     
     func saveContext()
     {
-        self.privateContext.performBlockAndWait({ () -> Void in
+        self.privateContext.performAndWait({ () -> Void in
             do{
                 try self.privateContext.save();
             }
@@ -51,51 +51,51 @@ final class TMPJSqliteManager: NSObject {
         })
     }
     
-    func removeObject(objects:[NSManagedObject])
+    func removeObject(_ objects:[NSManagedObject])
     {
-        self.privateContext.performBlockAndWait { () -> Void in
+        self.privateContext.performAndWait { () -> Void in
             for object in objects
             {
-                self.privateContext.deleteObject(object);
+                self.privateContext.delete(object);
             }
         }
         self.saveContext();
     }
 
-    func insertOrUpdate(entity:TMPJNetworkEntity?) -> TMPJUserObject?
+    func insertOrUpdate(_ entity:TMPJNetworkEntity?) -> TMPJUserObject?
     {
-        if let userid = entity?.stringForKey("uid")
+        if let userid = entity?.string(forKey: "uid")
         {
             var user:TMPJUserObject?;
-            self.privateContext.performBlockAndWait { () -> Void in
+            self.privateContext.performAndWait { () -> Void in
                 user = self.queryUser(userid)
                 if user == nil
                 {
                     user = self.createUser(userid);
                 }
-                user!.str_age = entity?.stringForKey("age");
-                user!.str_sex = entity?.stringForKey("sex");
-                user!.str_role = entity?.stringForKey("role");
-                user!.name = entity?.stringForKey("name");
-                user!.token = entity?.stringForKey("token");
-                user!.birthday = entity?.stringForKey("birthday");
-                user!.avator = entity?.stringForKey("avator");
+                user!.str_age = entity?.string(forKey: "age");
+                user!.str_sex = entity?.string(forKey: "sex");
+                user!.str_role = entity?.string(forKey: "role");
+                user!.name = entity?.string(forKey: "name");
+                user!.token = entity?.string(forKey: "token");
+                user!.birthday = entity?.string(forKey: "birthday");
+                user!.avator = entity?.string(forKey: "avator");
             }
             return user;
         }
         return nil;
     }
-    func queryUser(userid:String) ->TMPJUserObject?
+    func queryUser(_ userid:String) ->TMPJUserObject?
     {
-        let request = NSFetchRequest(entityName: "TMPJUserObject");
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TMPJUserObject");
         request.predicate = NSPredicate(format: "userid=%@", userid);
-        let objects = try! self.privateContext.executeFetchRequest(request);
+        let objects = try! self.privateContext.fetch(request);
         return objects.first as? TMPJUserObject;
     }
-    func createUser(userid:String) ->TMPJUserObject
+    func createUser(_ userid:String) ->TMPJUserObject
     {
-        let user:TMPJUserObject =  NSEntityDescription.insertNewObjectForEntityForName("TMPJUserObject", inManagedObjectContext: self.privateContext) as! TMPJUserObject;
-        user.add_time = NSDate();
+        let user:TMPJUserObject =  NSEntityDescription.insertNewObject(forEntityName: "TMPJUserObject", into: self.privateContext) as! TMPJUserObject;
+        user.add_time = Date();
         user.userid = userid;
         return user;
     }

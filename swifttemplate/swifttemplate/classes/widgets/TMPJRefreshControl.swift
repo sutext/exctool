@@ -8,13 +8,12 @@
 
 import EasyTools
 class TMPJRefreshControl :UIView,ETRefreshProtocol {
-    
-    var enabled: Bool
+    var isEnabled: Bool
     {
-        @objc(isEnabled) get {
+        get {
             return false;
         }
-        set(enable)
+        @objc(setEnabled:) set(enable)
         {
         
         }
@@ -37,15 +36,13 @@ class TMPJRefreshControl :UIView,ETRefreshProtocol {
     {
         
     }
-    func addTarget(target: AnyObject?, action: Selector, forControlEvents controlEvents: UIControlEvents)
-    {
-    
+    func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
+        
     }
-    func removeTarget(target: AnyObject?, action: Selector, forControlEvents controlEvents: UIControlEvents)
-    {
-    
+    func removeTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
+        
     }
-    override func willMoveToSuperview(newSuperview: UIView?)
+    override func willMove(toSuperview newSuperview: UIView?)
     {
     
     }

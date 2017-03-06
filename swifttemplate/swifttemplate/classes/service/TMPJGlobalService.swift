@@ -10,5 +10,5 @@ import EasyTools
 
 let kTMPJGlobalService = TMPJGlobalService();
 class TMPJGlobalService{
-    private init() {}
+    fileprivate init() {}
 }

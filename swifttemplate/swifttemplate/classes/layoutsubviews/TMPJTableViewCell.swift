@@ -11,9 +11,9 @@ import EasyTools
 class TMPJTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
-        self.backgroundColor = UIColor.clearColor();
-        self.separatorInset = UIEdgeInsetsZero;
-        self.layoutMargins = UIEdgeInsetsZero;
+        self.backgroundColor = UIColor.clear;
+        self.separatorInset = UIEdgeInsets.zero;
+        self.layoutMargins = UIEdgeInsets.zero;
         self.preservesSuperviewLayoutMargins = false;
     }
     convenience required init?(coder aDecoder: NSCoder) {

@@ -15,7 +15,7 @@ protocol TMPJNameConvertibale
 
 protocol TMPJCategoryConvertibale : TMPJNameConvertibale
 {
-    typealias Element;
+    associatedtype Element;
     var id:String!{get set}
     var items:[Element]?{get}
     var itemCount:Int{get}
@@ -24,7 +24,7 @@ protocol TMPJCategoryConvertibale : TMPJNameConvertibale
 }
 
 class TMPJNetworkEntity: ETNetworkEntity {
-    override init(dictionary dic: [NSObject : AnyObject]?)
+    override init(dictionary dic: [AnyHashable: Any]?)
     {
         super.init(dictionary: dic);
     }
@@ -34,24 +34,24 @@ class TMPJNetworkEntity: ETNetworkEntity {
     convenience required init?(coder aDecoder: NSCoder) {
         self.init(dictionary: nil);
     }
-    override func stringForKey(key: String) -> String {
-        if let str = super.stringForKey(key)
+    override func string(forKey key: String) -> String {
+        if let str = super.string(forKey: key)
         {
             return str;
         }
         return "";
     }
-    func countForKey(key:String) -> String
+    func countForKey(_ key:String) -> String
     {
-        if let str = super.stringForKey(key)
+        if let str = super.string(forKey: key)
         {
             return str;
         }
         return "0";
     }
-    func floatForKey(key:String) -> String
+    func floatForKey(_ key:String) -> String
     {
-        if let value = Double(self.stringForKey(key))
+        if let value = Double(self.string(forKey:key))
         {
             return String(format: "%.1f", value);
         }

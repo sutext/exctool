@@ -9,8 +9,8 @@
 import EasyTools
 let kTMPJAlertManager = TMPJAlertManager();
 class TMPJAlertManager {
-    private let alert = ETAlertManager();
-    func showError(error:NSError){
+    fileprivate let alert = ETAlertManager();
+    func showError(_ error:NSError){
         if error.domain == ETNetworkErrorDomain
         {
             self.showAlert(message: error.userInfo[kETHeaderMeesageKey] as? String);
@@ -20,19 +20,19 @@ class TMPJAlertManager {
             self.showAlert(message: "网络错误");
         }
     }
-    func showAlert(title:String? = "提示" , message:String? = nil , cancelTitle:String? = "确定" , otherTitle:String? = nil , hiddenAction:((alert:UIAlertController,idx:Int)->Void)? = nil)
+    func showAlert(_ title:String? = "提示" , message:String? = nil , cancelTitle:String? = "确定" , otherTitle:String? = nil , hiddenAction:((_ alert:UIAlertController,_ idx:Int)->Void)? = nil)
     {
         self.alert.showAlertWihtTitle(title, message: message, cancelButtonTitle: cancelTitle, otherButtonTitle: otherTitle, onHiddenAtIndex: hiddenAction);
     }
-    func showWaiting(message:String,appeared:((sender:UIView)->Void)? = nil,cancel:((sender:UIView)->Void)? = nil)
+    func showWaiting(_ message:String,appeared:((_ sender:UIView)->Void)? = nil,cancel:((_ sender:UIView)->Void)? = nil)
     {
         self.alert.showWaitingMessage(message, appearComplete: appeared, canceled: cancel);
     }
-    func showSuccess(message:String,completed:((sender:UIView)->Void)? = nil)
+    func showSuccess(_ message:String,completed:((_ sender:UIView)->Void)? = nil)
     {
         self.alert.showIconMessage(message, iconStyle: .OK , hideComplete: completed);
     }
-    func hideWaiting(completed:((sender:UIView)->Void)? = nil)
+    func hideWaiting(_ completed:((_ sender:UIView)->Void)? = nil)
     {
         self.alert.hideWaiting(completed);
     }

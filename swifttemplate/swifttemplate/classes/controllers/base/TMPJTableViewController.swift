@@ -9,16 +9,17 @@
 import EasyTools
 
 class TMPJTableViewController: TMPJBaseViewController,ETTableViewDelegate,UITableViewDataSource{
+
     var tableView : TMPJTableView
     override convenience init() {
-        self.init(style:.Plain);
+        self.init(style:.plain);
     }
     init(style:UITableViewStyle) {
-        self.tableView=TMPJTableView(frame: CGRectZero,style: style)
-        self.tableView.separatorStyle = .SingleLine;
-        self.tableView.autoresizingMask = [.FlexibleWidth,.FlexibleHeight];
+        self.tableView=TMPJTableView(frame: CGRect.zero,style: style)
+        self.tableView.separatorStyle = .singleLine;
+        self.tableView.autoresizingMask = [.flexibleWidth,.flexibleHeight];
         self.tableView.showsVerticalScrollIndicator = true;
-        self.tableView.keyboardDismissMode = .OnDrag;
+        self.tableView.keyboardDismissMode = .onDrag;
         super.init();
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -30,13 +31,13 @@ class TMPJTableViewController: TMPJBaseViewController,ETTableViewDelegate,UITabl
         self.view.addSubview(self.tableView)
         
     }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return TMPJTableViewCell();
     }
 }

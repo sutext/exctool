@@ -12,18 +12,19 @@ final class TMPJLayoutViewController: ETLayoutViewController {
     
     static let sharedController = TMPJLayoutViewController();
     
-    private convenience init()
+    fileprivate convenience init()
     {
         self.init(rootViewController:TMPJNavigationController(rootViewController: TMPJMainViewController()));
-        self.modalTransitionStyle = .FlipHorizontal;
+        self.modalTransitionStyle = .flipHorizontal;
         self.leftViewController = TMPJLeftSideController();
         self.leftDisplayVector = CGVector(dx: ETScaledFloat(245), dy: 64);
     }
-    
-    override func childViewControllerForStatusBarHidden() -> UIViewController? {
-        return self.rootViewController;
+    override var childViewControllerForStatusBarStyle: UIViewController?
+        {
+            return self.rootViewController;
     }
-    override func childViewControllerForStatusBarStyle() -> UIViewController? {
-        return self.rootViewController;
+    override var childViewControllerForStatusBarHidden: UIViewController?
+        {
+            return self.rootViewController;
     }
 }

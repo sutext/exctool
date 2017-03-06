@@ -17,11 +17,11 @@ extension OPOpenShareType
             {
             case .QQ:
                 return ("share_qq","QQ","QQ");
-            case .QQZone:
+            case .qqZone:
                 return ("share_qqzone","QQ空间","QQ");
-            case .Weixin:
+            case .weixin:
                 return ("share_wechat","微信","微信");
-            case .Moments:
+            case .moments:
                 return ("share_moments","朋友圈","微信");
             default:
                 return ("","","");
@@ -31,7 +31,7 @@ extension OPOpenShareType
 }
 let kTMPJOpenPlatform = TMPJOpenPlatform();
 final class TMPJOpenPlatform: OPOpenPlatform {
-    private override init()
+    fileprivate override init()
     {
         super.init();
         self.configTencent(OPPlatformConfig(appid: "1105177744", appkey: "J9dgbdu4A4N8BitS", schema: ""));

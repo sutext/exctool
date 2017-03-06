@@ -13,78 +13,78 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
     var webLink :String?
     var showToolBar:Bool = false;
     var progressView:UIProgressView!
-    private var webURL:NSURL?
+    fileprivate var webURL:URL?
     
     lazy var webView:WKWebView = {
         let wbview = WKWebView(frame: self.view.bounds);
-        wbview.scrollView.panGestureRecognizer.addTarget(self, action: Selector("panAction:"))
-        wbview.scrollView.keyboardDismissMode = .OnDrag;
+        wbview.scrollView.panGestureRecognizer.addTarget(self, action: #selector(TMPJWebViewController.panAction(_:)))
+        wbview.scrollView.keyboardDismissMode = .onDrag;
         wbview.navigationDelegate = self;
-        wbview.UIDelegate = self;
+        wbview.uiDelegate = self;
         return wbview;
     }()
-    private lazy var backBarButtonItem:UIBarButtonItem = {
-        let image = UIImage.arrowWithDirection(.Left);
-        let item = UIBarButtonItem(image: image, style: .Plain, target: self.webView, action: Selector("goBack"));
+    fileprivate lazy var backBarButtonItem:UIBarButtonItem = {
+        let image = UIImage.arrow(with: .left);
+        let item = UIBarButtonItem(image: image, style: .plain, target: self.webView, action: #selector(WKWebView.goBack));
         item.width = 18.0;
         return item;
     }();
-    private lazy var forwardBarButtonItem:UIBarButtonItem = {
-        let image = UIImage.arrowWithDirection(.Right);
-        let item = UIBarButtonItem(image: image, style: .Plain, target: self.webView, action: Selector("goForward"));
+    fileprivate lazy var forwardBarButtonItem:UIBarButtonItem = {
+        let image = UIImage.arrow(with: .right);
+        let item = UIBarButtonItem(image: image, style: .plain, target: self.webView, action: #selector(WKWebView.goForward));
         item.width = 18.0;
         return item;
     }();
-    private lazy var refreshBarButtonItem:UIBarButtonItem = {
-        return UIBarButtonItem(barButtonSystemItem: .Refresh, target: self.webView, action: Selector("reload"))
+    fileprivate lazy var refreshBarButtonItem:UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .refresh, target: self.webView, action: #selector(WKWebView.reload))
     }();
     convenience init(link:String?,showToolBar:Bool) {
         self.init();
     }
     deinit
     {
-        self.webView.UIDelegate=nil;
+        self.webView.uiDelegate=nil;
         self.webView.navigationDelegate=nil;
         self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
     }
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.view.backgroundColor = UIColor.whiteColor();
+        self.view.backgroundColor = UIColor.white;
         self.view.addSubview(self.webView);
         self.setLeftReturnIcon();
-        self.progressView = UIProgressView(progressViewStyle: .Bar);
+        self.progressView = UIProgressView(progressViewStyle: .bar);
         self.view.addSubview(self.progressView);
-        self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil);
+        self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil);
         
         if let link = self.webLink{
-            self.webURL = NSURL(string:link);
+            self.webURL = URL(string:link);
         }
         if let url = self.webURL {
-            self.webView.loadRequest(NSURLRequest(URL: url));
+            self.webView.load(URLRequest(url: url));
         }
         else
         {
             self.showAlertMessage("网络地址错误", clickedAction: nil);
         }
     }
-    override func leftItemAction(sender: AnyObject!) {
-        self.navigationController?.popViewControllerAnimated(true);
+    override func leftItemAction(_ sender: AnyObject!) {
+        let _ = self.navigationController?.popViewController(animated: true);
         self.webView.stopLoading();
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
         if (self.showToolBar == true) {
             self.navigationController?.toolbarItems = nil;
-            self.navigationController?.toolbarHidden = true;
+            self.navigationController?.isToolbarHidden = true;
         }
     }
-    func panAction(pan:UIPanGestureRecognizer)
+    func panAction(_ pan:UIPanGestureRecognizer)
     {
         switch pan.state
         {
-        case .Began:break;
-        case .Ended:
-            let velocity  = pan.velocityInView(self.view)
+        case .began:break;
+        case .ended:
+            let velocity  = pan.velocity(in: self.view)
             if velocity.y<0
             {
                 self.navigationController?.setNavigationBarHidden(true, animated: true);
@@ -105,7 +105,7 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
             }
             break;
         default:
-            let offsetPoint = pan.translationInView(self.view);
+            let offsetPoint = pan.translation(in: self.view);
             if (offsetPoint.y<0)
             {
                 let offsety = offsetPoint.y*0.1;
@@ -120,19 +120,19 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
         }
 
     }
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.hideWaiting();
         self.navigationItem.title=webView.title;
         self.updateToolbarItems();
     }
-    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.hideWaiting();
-        if (error.code==NSURLErrorTimedOut||error.code==NSURLErrorNotConnectedToInternet) {
+        if (error._code==NSURLErrorTimedOut||error._code==NSURLErrorNotConnectedToInternet) {
             self.showAlertMessage("无法打开网页请检查网络设置\n然后点击屏幕重试",clickedAction:nil);
         }
         self.updateToolbarItems();
     }
-    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.showWaitingActivity();
         self.updateToolbarItems();
     }
@@ -140,25 +140,25 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
     {
         if self.showToolBar
         {
-            self.backBarButtonItem.enabled=self.webView.canGoBack;
-            self.forwardBarButtonItem.enabled=self.webView.canGoForward;
-            let fixedSide = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil);
+            self.backBarButtonItem.isEnabled=self.webView.canGoBack;
+            self.forwardBarButtonItem.isEnabled=self.webView.canGoForward;
+            let fixedSide = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil);
             fixedSide.width = 5;
-            let fixedMiddle = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil);
+            let fixedMiddle = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil);
             
             self.toolbarItems = [fixedSide,self.backBarButtonItem,fixedMiddle,self.refreshBarButtonItem,fixedMiddle,self.forwardBarButtonItem,fixedSide];
         }
     }
     //#mark kvo
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress"
         {
             let newprogress = self.webView.estimatedProgress;
             if (newprogress == 1) {
-                self.progressView.hidden = true;
+                self.progressView.isHidden = true;
                 self.progressView.setProgress(0, animated: false);
             }else {
-                self.progressView.hidden = false;
+                self.progressView.isHidden = false;
                 self.progressView.setProgress(Float(newprogress), animated: true)
             }
         }

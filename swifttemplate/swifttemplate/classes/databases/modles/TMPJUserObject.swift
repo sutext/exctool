@@ -31,12 +31,12 @@ class TMPJUserObject: NSManagedObject {
     @NSManaged var userid: String?
     @NSManaged var shopid: String?
     @NSManaged var mobile: String?
-    @NSManaged var regist_time: NSDate?
+    @NSManaged var regist_time: Date?
     @NSManaged var num_login: NSNumber?
     @NSManaged var str_role: String?
     @NSManaged var str_age: String?
     @NSManaged var str_sex: String?
-    @NSManaged var add_time: NSDate?
+    @NSManaged var add_time: Date?
     @NSManaged var token: String?
     
     var role:TMPJUserObjectRole{
@@ -62,7 +62,7 @@ class TMPJUserObject: NSManagedObject {
             return (self.num_login?.boolValue)!;
         }
         set (newval){
-            self.num_login = NSNumber(bool: newval);
+            self.num_login = NSNumber(value: newval as Bool);
         }
     }
 }

@@ -9,9 +9,9 @@
 import EasyTools
 
 class TMPJButton: ETButton {
-    class func createButton(title:String,titleColor:UIColor?,titleFont:UIFont?,width:CGFloat,height:CGFloat,backgoundColor:UIColor?,cornerRadius:CGFloat) ->TMPJButton
+    class func createButton(_ title:String,titleColor:UIColor?,titleFont:UIFont?,width:CGFloat,height:CGFloat,backgoundColor:UIColor?,cornerRadius:CGFloat) ->TMPJButton
     {
-        let button = TMPJButton(style:.Cover);
+        let button = TMPJButton(style:.cover);
         let item = ETButtonItem();
         item.title = title;
         item.titleFont = titleFont;
@@ -19,17 +19,17 @@ class TMPJButton: ETButton {
         item.imageSize = CGSize(width: width, height: height);
         item.imageColor = backgoundColor;
         item.cornerRadius = cornerRadius;
-        button.applyButtonItem(item, forState: .Normal);
+        button.apply(item, for: .normal);
         button.sizeToFit();
         return button;
     }
-    class func actionButton(title:String,titleColor:UIColor) ->TMPJButton
+    class func actionButton(_ title:String,titleColor:UIColor) ->TMPJButton
     {
-        return self.createButton(title, titleColor: titleColor, titleFont: UIFont.systemFontOfSize(17), width: ETScreenWidth(), height: 50, backgoundColor: UIColor.whiteColor(), cornerRadius: 0);
+        return self.createButton(title, titleColor: titleColor, titleFont: UIFont.systemFont(ofSize: 17), width: ETScreenWidth(), height: 50, backgoundColor: UIColor.white, cornerRadius: 0);
     }
-    class func actionButton(title:String,width:CGFloat) ->TMPJButton
+    class func actionButton(_ title:String,width:CGFloat) ->TMPJButton
     {
-        return self.createButton(title, titleColor: UIColor.blackColor(), titleFont: UIFont.systemFontOfSize(17), width: width, height: 50, backgoundColor: UIColor.whiteColor(), cornerRadius: 0);
+        return self.createButton(title, titleColor: UIColor.black, titleFont: UIFont.systemFont(ofSize: 17), width: width, height: 50, backgoundColor: UIColor.white, cornerRadius: 0);
     }
 
 }

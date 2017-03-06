@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CTImagePickerController: UIImagePickerController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class TMPJImagePickerController: UIImagePickerController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     class ActionItem: TMPJNameConvertibale {
         var name:String!
         init(name:String)
@@ -16,27 +16,28 @@ class CTImagePickerController: UIImagePickerController,UIImagePickerControllerDe
             self.name = name;
         }
     }
-    var completed:((image:UIImage?)->Void)!
-    convenience init (completed:(image:UIImage?)->Void)
+    var completed:((_ image:UIImage?)->Void)?
+    convenience init (completed:@escaping (_ image:UIImage?)->Void)
     {
         self.init();
         self.completed = completed;
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.navigationBar.tintColor = UIColor.whiteColor();
+        self.navigationBar.tintColor = UIColor.white;
         self.allowsEditing = true;
         self.delegate = self;
     }
-    func showIn(controller:TMPJBaseViewController)
+    func showIn(_ controller:TMPJBaseViewController)
     {
         let action = CTActionController(items: [ActionItem(name:"拍照"),ActionItem(name: "相册")]) { (sender, item, index) -> Void in
             if index == 0
             {
-                if UIImagePickerController.isSourceTypeAvailable(.Camera)
+                if UIImagePickerController.isSourceTypeAvailable(.camera)
                 {
-                    self.sourceType = .Camera;
-                    controller.presentViewController(self, animated: true, completion: nil);
+                    self.sourceType = .camera;
+                    controller.present(self, animated: true, completion: nil);
                 }
                 else
                 {
@@ -45,10 +46,10 @@ class CTImagePickerController: UIImagePickerController,UIImagePickerControllerDe
             }
             else
             {
-                if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
+                if UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
                 {
-                    self.sourceType = .PhotoLibrary;
-                    controller.presentViewController(self, animated: true, completion: nil);
+                    self.sourceType = .photoLibrary;
+                    controller.present(self, animated: true, completion: nil);
                 }
                 else
                 {
@@ -59,15 +60,11 @@ class CTImagePickerController: UIImagePickerController,UIImagePickerControllerDe
         action.addAction("取消")
         action.show();
     }
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent;
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent;
     }
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        picker.dismissViewControllerAnimated(true, completion: nil);
-        self.completed(image: image);
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        picker.dismiss(animated: true, completion: nil);
+        self.completed!(image);
     }
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        let img = info[UIImagePickerControllerEditedImage] as? UIImage;
-//        self.completed(image: img);
-//    }
 }

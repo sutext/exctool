@@ -11,9 +11,9 @@ import EasyTools
 class TMPJMainViewController: TMPJTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.view.backgroundColor=UIColor.whiteColor()
+        self.view.backgroundColor=UIColor.white
     }
-    override func leftItemAction(sender: AnyObject!) {
+    override func leftItemAction(_ sender: AnyObject!) {
         TMPJLayoutViewController.sharedController.showLeftViewController(true);
     }
 }

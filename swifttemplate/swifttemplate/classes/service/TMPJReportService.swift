@@ -8,7 +8,7 @@
 
 import EasyTools
 
-struct TMPJReportPlatformOptions : OptionSetType {
+struct TMPJReportPlatformOptions : OptionSet {
     var rawValue:UInt = 0
     init(rawValue:UInt){self.rawValue = rawValue}
     init(nilLiteral:()){rawValue = 0}
@@ -17,35 +17,35 @@ struct TMPJReportPlatformOptions : OptionSetType {
         return self.init(rawValue:1<<1)
     }
     static var Google:TMPJReportPlatformOptions{
-        return self.init(rawValue:1<<1)
+        return self.init(rawValue:1<<2)
     }
     static var All:TMPJReportPlatformOptions = [Flury,Google];
 }
 
-func TMPJReportAction(actionName:String)
+func TMPJReportAction(_ actionName:String)
 {
     TMPJReportService.sharedService.reportAction(actionName);
 }
-func TMPJReportActionParams(actionName:String,actionParams:[String:String]?)
+func TMPJReportActionParams(_ actionName:String,actionParams:[String:String]?)
 {
     TMPJReportService.sharedService.reportAction(actionName, actionParams: actionParams);
 }
 final class TMPJReportService: NSObject {
-    private var platforms:TMPJReportPlatformOptions;
+    fileprivate var platforms:TMPJReportPlatformOptions;
     static let sharedService = TMPJReportService();
-    private override init() {
+    fileprivate override init() {
         self.platforms = .All;
         super.init();
     }
-    func reportModel(model:TMPJReportModel)
+    func reportModel(_ model:TMPJReportModel)
     {
         reportAction(model.actionName, actionParams: model.actionParams);
     }
-    func reportAction(actionName:String)
+    func reportAction(_ actionName:String)
     {
         reportAction(actionName, actionParams: nil);
     }
-    func reportAction(actionName:String,actionParams:[String:String]?)
+    func reportAction(_ actionName:String,actionParams:[String:String]?)
     {
         
     }

@@ -9,6 +9,8 @@
 import EasyTools
 
 class TMPJCollectionViewController: TMPJBaseViewController,ETCollectionViewDelegate,UICollectionViewDataSource{
+    
+
     var collectionView:TMPJCollectionView
     convenience override init()
     {
@@ -16,13 +18,13 @@ class TMPJCollectionViewController: TMPJBaseViewController,ETCollectionViewDeleg
     }
     init(collectionViewLayout:UICollectionViewLayout)
     {
-        self.collectionView = TMPJCollectionView(frame: CGRectZero,collectionViewLayout:collectionViewLayout);
+        self.collectionView = TMPJCollectionView(frame: CGRect.zero,collectionViewLayout:collectionViewLayout);
         super.init();
         self.collectionView.showsHorizontalScrollIndicator=false;
         self.collectionView.delegate=self;
         self.collectionView.dataSource=self;
-        self.collectionView.keyboardDismissMode = .OnDrag;
-        self.collectionView.autoresizingMask=[.FlexibleWidth,.FlexibleHeight];
+        self.collectionView.keyboardDismissMode = .onDrag;
+        self.collectionView.autoresizingMask=[.flexibleWidth,.flexibleHeight];
     }
     deinit
     {
@@ -34,13 +36,13 @@ class TMPJCollectionViewController: TMPJBaseViewController,ETCollectionViewDeleg
         self.collectionView.frame = self.view.bounds;
         self.view.addSubview(self.collectionView);
     }
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
     }
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0;
     }
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell();
     }
 }

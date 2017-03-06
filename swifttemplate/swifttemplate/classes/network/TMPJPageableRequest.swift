@@ -8,10 +8,10 @@
 
 import EasyTools
 
-class TMPJPageableRequest<EntityType,RequestType:RawRepresentable where RequestType.RawValue == String> : TMPJNetworkRequest<EntityType,RequestType> {
+class TMPJPageableRequest<EntityType,RequestType:RawRepresentable> : TMPJNetworkRequest<EntityType,RequestType> where RequestType.RawValue == String {
     var pageIndex:Int{
         get {
-            if let str = self.paramForKey("pageNo")
+            if let str = self.param(forKey: "pageNo")
             {
                 if let idx = Int(str)
                 {

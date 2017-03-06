@@ -16,7 +16,7 @@ class TMPJPickerController: TMPJBaseViewController,UIPickerViewDataSource,UIPick
         super.viewDidLoad();
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.4);
         self.view.alpha = 0;
-        self.actionView.frame = CGRectMake(0, self.view.height, self.view.width, 260)
+        self.actionView.frame = CGRect(x:0,y: self.view.height,width: self.view.width,height: 260)
         self.view.addSubview(self.actionView);
         self.actionView.backgroundColor = kTMPJSeparatorColor;
         let cancelButton = self.buttonWithTitle("取消");
@@ -28,35 +28,35 @@ class TMPJPickerController: TMPJBaseViewController,UIPickerViewDataSource,UIPick
         completed.clickedAction = {[unowned self] bnt in
             self.hide(true);
         }
-        self.pickerView.frame = CGRectMake(0, 44, self.actionView.width, self.actionView.height - 44);
+        self.pickerView.frame = CGRect(x:0,y: 44,width: self.actionView.width,height: self.actionView.height - 44);
         self.pickerView.dataSource=self;
         self.pickerView.delegate=self;
-        self.pickerView.backgroundColor = UIColor.whiteColor();
+        self.pickerView.backgroundColor = UIColor.white;
         self.actionView.addSubview(self.pickerView);
         self.pickerView(self.pickerView, didSelectRow: 0, inComponent: 0);
-        UIView.animateWithDuration(0.5) { () -> Void in
+        UIView.animate(withDuration: 0.5) { () -> Void in
             self.actionView.top = self.view.height - 260;
             self.view.alpha = 1;
         }
     }
-    func buttonWithTitle(title:String) ->TMPJButton
+    func buttonWithTitle(_ title:String) ->TMPJButton
     {
-        let button = TMPJButton(frame:CGRectMake(0, 0, 44, 44));
-        button.setTitleColor(kTMPJFirstTextColor, forState: .Normal);
-        button.setTitle(title, forState: .Normal);
+        let button = TMPJButton(frame:CGRect(x: 0, y: 0, width: 44, height: 44));
+        button.setTitleColor(kTMPJFirstTextColor, for: .normal);
+        button.setTitle(title, for: .normal);
         button.titleLabel?.font = kTMPJStandardFont;
         self.actionView.addSubview(button);
         return button;
     }
-    func hide(completed:Bool){}
+    func hide(_ completed:Bool){}
     func show(){}
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 0;
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 0;
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
     }
 }

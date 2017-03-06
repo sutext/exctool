@@ -10,10 +10,10 @@ import UIKit
 
 class TMPJNavigationController: UINavigationController {
 
-    override func childViewControllerForStatusBarHidden() -> UIViewController? {
+    override var childViewControllerForStatusBarHidden : UIViewController? {
         return self.topViewController;
     }
-    override func childViewControllerForStatusBarStyle() -> UIViewController? {
+    override var childViewControllerForStatusBarStyle : UIViewController? {
         return self.topViewController;
     }
 
