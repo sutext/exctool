@@ -41,7 +41,7 @@ class TMPJImagePickerController: UIImagePickerController,UIImagePickerController
                 }
                 else
                 {
-                    kTMPJAlertManager.showAlert(message:"请用户在[系统设置-隐私-相机]里面允许美加美云商访您的相机");
+                    TMPJAlertManager.shared.showAlert(message:"请用户在[系统设置-隐私-相机]里面允许美加美云商访您的相机");
                 }
             }
             else
@@ -53,7 +53,7 @@ class TMPJImagePickerController: UIImagePickerController,UIImagePickerController
                 }
                 else
                 {
-                    kTMPJAlertManager.showAlert(message:"请用户在[系统设置-隐私-相机]里面允许美加美云商访您的相册");
+                    TMPJAlertManager.shared.showAlert(message:"请用户在[系统设置-隐私-相机]里面允许美加美云商访您的相册");
                 }
             }
         }

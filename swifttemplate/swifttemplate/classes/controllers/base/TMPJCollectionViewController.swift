@@ -9,8 +9,6 @@
 import EasyTools
 
 class TMPJCollectionViewController: TMPJBaseViewController,ETCollectionViewDelegate,UICollectionViewDataSource{
-    
-
     var collectionView:TMPJCollectionView
     convenience override init()
     {

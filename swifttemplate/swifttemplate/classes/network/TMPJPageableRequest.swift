@@ -13,7 +13,7 @@ class TMPJPageableRequest<EntityType,RequestType:RawRepresentable> : TMPJNetwork
         get {
             if let str = self.param(forKey: "pageNo")
             {
-                if let idx = Int(str)
+                if let idx = Int(str as! String)
                 {
                     return idx;
                 }

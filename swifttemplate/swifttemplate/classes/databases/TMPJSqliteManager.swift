@@ -10,6 +10,11 @@ import EasyTools
 import CoreData
 import Foundation
 
+protocol TMPJObjectProtocol {
+    static var primaryKey:String{get}
+    func setup(for entity:TMPJNetworkEntity?)
+}
+
 final class TMPJSqliteManager: NSObject {
     fileprivate var privateContext:NSManagedObjectContext
     fileprivate var pscoordinator:NSPersistentStoreCoordinator
@@ -41,63 +46,98 @@ final class TMPJSqliteManager: NSObject {
     func saveContext()
     {
         self.privateContext.performAndWait({ () -> Void in
-            do{
-                try self.privateContext.save();
-            }
-            catch
-            {
-                
-            }
+            try? self.privateContext.save();
         })
     }
     
-    func removeObject(_ objects:[NSManagedObject])
+    func remove(objects:[NSManagedObject]?)
     {
-        self.privateContext.performAndWait { () -> Void in
-            for object in objects
-            {
-                self.privateContext.delete(object);
+        if let objs = objects {
+            self.privateContext.performAndWait { () -> Void in
+                for object in objs
+                {
+                    self.privateContext.delete(object);
+                }
+                try? self.privateContext.save();
             }
         }
-        self.saveContext();
     }
-
-    func insertOrUpdate(_ entity:TMPJNetworkEntity?) -> TMPJUserObject?
+    func insertUpdate<Object:NSManagedObject>(_ type:Object.Type,entity:TMPJNetworkEntity?)->Object? where Object:TMPJObjectProtocol
     {
-        if let userid = entity?.string(forKey: "uid")
+        if let value = entity?.string(forKey: Object.primaryKey)
         {
-            var user:TMPJUserObject?;
-            self.privateContext.performAndWait { () -> Void in
-                user = self.queryUser(userid)
-                if user == nil
+            var obj:Object?
+            self.privateContext.performAndWait {
+                //search
+                let className = NSStringFromClass(type)
+                let request = NSFetchRequest<Object>(entityName: className);
+                request.predicate = NSPredicate(format: "\(Object.primaryKey)=%@",value);
+                obj = (try? self.privateContext.fetch(request))?.first;
+                
+                if obj == nil
                 {
-                    user = self.createUser(userid);
+                    //create
+                    obj = NSEntityDescription.insertNewObject(forEntityName: className, into: self.privateContext) as? Object
+                    obj?.setValue(value, forKey: Object.primaryKey);
                 }
-                user!.str_age = entity?.string(forKey: "age");
-                user!.str_sex = entity?.string(forKey: "sex");
-                user!.str_role = entity?.string(forKey: "role");
-                user!.name = entity?.string(forKey: "name");
-                user!.token = entity?.string(forKey: "token");
-                user!.birthday = entity?.string(forKey: "birthday");
-                user!.avator = entity?.string(forKey: "avator");
+                obj?.setup(for: entity);
+                try? self.privateContext.save();
             }
-            return user;
+            return obj
         }
         return nil;
     }
-    func queryUser(_ userid:String) ->TMPJUserObject?
+    func insertUpdate<Object:NSManagedObject>(_ type:Object.Type,entitys:[TMPJNetworkEntity]?)->[Object] where Object:TMPJObjectProtocol
     {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TMPJUserObject");
-        request.predicate = NSPredicate(format: "userid=%@", userid);
-        let objects = try! self.privateContext.fetch(request);
-        return objects.first as? TMPJUserObject;
+        var objects:[Object] = [];
+        if let ents = entitys {
+            self.privateContext.performAndWait {
+                for entity in ents {
+                    let value = entity.string(forKey: Object.primaryKey)
+                    var obj:Object?
+                    
+                    //search
+                    let className = NSStringFromClass(type)
+                    let request = NSFetchRequest<Object>(entityName: className);
+                    request.predicate = NSPredicate(format: "\(Object.primaryKey)=%@",value);
+                    obj = (try? self.privateContext.fetch(request))?.first;
+                    
+                    if obj == nil
+                    {
+                        //create
+                        obj = NSEntityDescription.insertNewObject(forEntityName: className, into: self.privateContext) as? Object
+                        obj?.setValue(value, forKey: Object.primaryKey);
+                    }
+                    obj?.setup(for: entity);
+                    if let o = obj
+                    {
+                        objects.append(o);
+                    }
+                }
+                try? self.privateContext.save();
+            }
+        }
+        return objects;
     }
-    func createUser(_ userid:String) ->TMPJUserObject
+    func query<Object:NSManagedObject>(one type:Object.Type,for key:String)->Object? where Object:TMPJObjectProtocol
     {
-        let user:TMPJUserObject =  NSEntityDescription.insertNewObject(forEntityName: "TMPJUserObject", into: self.privateContext) as! TMPJUserObject;
-        user.add_time = Date();
-        user.userid = userid;
-        return user;
+        return self.query(list: type, predicate: NSPredicate(format: "\(Object.primaryKey)=%@",key)).first
+    }
+    func query<Object:NSManagedObject>(list type:Object.Type,predicate:NSPredicate,sorts:[NSSortDescriptor]? = nil)->[Object] where Object:TMPJObjectProtocol
+    {
+        let className = NSStringFromClass(type)
+        let request = NSFetchRequest<Object>(entityName: className);
+        request.predicate = predicate;
+        request.sortDescriptors = sorts;
+        let objs = try? self.privateContext.fetch(request);
+        return objs ?? []
+    }
+    func query<Object:NSManagedObject>(all type:Object.Type)->[Object] where Object:TMPJObjectProtocol
+    {
+        let className = NSStringFromClass(type)
+        let request = NSFetchRequest<Object>(entityName: className);
+        let objs = try? self.privateContext.fetch(request)
+        return objs ?? []
     }
 
 }

@@ -28,21 +28,22 @@ class TMPJNetworkManager: ETNetworkManager {
         self.setValue(device.systemName, forHTTPHeaderField: "appsys");
         self.setValue(device.systemVersion, forHTTPHeaderField: "sysver");
     }
-    func datatask<C,T:RawRepresentable,R:TMPJNetworkRequest<C,T>>(_ request: R, completedBlock: ((_ reqest:R?,_ data:C?, _ error:Error?) -> Void)?) -> URLSessionDataTask? where T.RawValue == String {
+    func datatask<Resp,Type:RawRepresentable,Req:TMPJNetworkRequest<Resp,Type>>(_ request: Req, completedBlock: ((_ reqest:Req?,_ data:Resp?, _ error:Error?) -> Void)?) -> URLSessionDataTask? where Type.RawValue == String {
         return self.datatask(with:request, completedBlock: { (req : ETNetworkRequest?,resp: ETNetworkResponse?, error:Error?) -> Void in
             if let compl = completedBlock
             {
-                compl(req as? R,resp?.entiyObject as? C,error);
+                compl(req as? Req,resp?.entiyObject as? Resp,error);
             }
         });
     }
-    func upload<C,T:RawRepresentable,R:TMPJNetworkRequest<C,T>>(_ request: R, completedBlock: ((_ reqest:R?,_ data:C?, _ error:Error?) -> Void)?) -> URLSessionDataTask? where T.RawValue == String,R:ETUploadProtocol {
+    func upload<Resp,Type:RawRepresentable,Req:TMPJNetworkRequest<Resp,Type>>(_ request: Req, completedBlock: ((_ reqest:Req?,_ data:Resp?, _ error:Error?) -> Void)?) -> URLSessionDataTask? where Type.RawValue == String,Req:ETUploadProtocol {
         return self.upload(withRequest:request, progress: nil, completedBlock: { (req : ETNetworkRequest?,resp: ETNetworkResponse?, error:Error?) -> Void in
             if let compl = completedBlock
             {
-                compl(req as? R,resp?.entiyObject as? C,error);
+                compl(req as? Req,resp?.entiyObject as? Resp,error);
             }
         })
     }
+
 
 }

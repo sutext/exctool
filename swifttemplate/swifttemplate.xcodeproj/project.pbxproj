@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33406CFA1C7AFC5B002330E9 /* OPOpenPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33406CF91C7AFC5B002330E9 /* OPOpenPlatform.swift */; };
+		33406CFA1C7AFC5B002330E9 /* TMPJOpenPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33406CF91C7AFC5B002330E9 /* TMPJOpenPlatform.swift */; };
 		336D301E1C4E551900EA7CFF /* swifttemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336D301D1C4E551900EA7CFF /* swifttemplate.swift */; };
 		3375726F1C565FBD0017EDD5 /* TMPJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3375726E1C565FBD0017EDD5 /* TMPJNavigationController.swift */; };
 		3388BCCD1C4FE60600F52938 /* TMPJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388BCC41C4FE60600F52938 /* TMPJBaseViewController.swift */; };
@@ -48,12 +48,13 @@
 		33D5A95C1E66832C00C4A692 /* OpenPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33406CF71C7AFB0C002330E9 /* OpenPlatform.framework */; };
 		33D5A95F1E66832C00C4A692 /* EasyTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D5A95E1E66832C00C4A692 /* EasyTools.framework */; };
 		33E2C1AE1C5245AB00583D81 /* TMPJView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E2C1AD1C5245AB00583D81 /* TMPJView.swift */; };
+		33E83F8C1ECFD8C000A9557D /* TMPJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E83F8B1ECFD8C000A9557D /* TMPJTextField.swift */; };
 		33E947701C59EDA400B1F084 /* TMPJAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E9476F1C59EDA400B1F084 /* TMPJAlertManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		33406CF71C7AFB0C002330E9 /* OpenPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenPlatform.framework; path = ../../../shared/OpenPlatform.framework; sourceTree = "<group>"; };
-		33406CF91C7AFC5B002330E9 /* OPOpenPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPOpenPlatform.swift; sourceTree = "<group>"; };
+		33406CF91C7AFC5B002330E9 /* TMPJOpenPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJOpenPlatform.swift; sourceTree = "<group>"; };
 		336D2FE71C4E487C00EA7CFF /* swifttemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swifttemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		336D2FEC1C4E487C00EA7CFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		336D30011C4E4F6C00EA7CFF /* EasyTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EasyTools.framework; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		33D4C0771C50D524005114A0 /* TMPJCommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCommonUtils.swift; sourceTree = "<group>"; };
 		33D5A95E1E66832C00C4A692 /* EasyTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyTools.framework; path = ../shared/EasyTools.framework; sourceTree = "<group>"; };
 		33E2C1AD1C5245AB00583D81 /* TMPJView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJView.swift; sourceTree = "<group>"; };
+		33E83F8B1ECFD8C000A9557D /* TMPJTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextField.swift; sourceTree = "<group>"; };
 		33E9476F1C59EDA400B1F084 /* TMPJAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJAlertManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,7 +256,7 @@
 				33D4C0651C5010AF005114A0 /* TMPJReportModel.swift */,
 				33D4C0671C5010C9005114A0 /* TMPJReportService.swift */,
 				33D4C0691C5010EB005114A0 /* TMPJGlobalService.swift */,
-				33406CF91C7AFC5B002330E9 /* OPOpenPlatform.swift */,
+				33406CF91C7AFC5B002330E9 /* TMPJOpenPlatform.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -268,6 +270,7 @@
 				33D4C03F1C4FECC1005114A0 /* TMPJTableView.swift */,
 				33D4C04B1C4FF1BB005114A0 /* TMPJImageView.swift */,
 				33D4C04D1C4FF1DA005114A0 /* TMPJCollectionView.swift */,
+				33E83F8B1ECFD8C000A9557D /* TMPJTextField.swift */,
 			);
 			path = subuviews;
 			sourceTree = "<group>";
@@ -403,7 +406,7 @@
 				33D4C0641C500861005114A0 /* TMPJSqliteManager.swift in Sources */,
 				33D4C0761C5012FA005114A0 /* TMPJImageViewCell.swift in Sources */,
 				339FE0191C988411003FE6BE /* TMPJActionController.swift in Sources */,
-				33406CFA1C7AFC5B002330E9 /* OPOpenPlatform.swift in Sources */,
+				33406CFA1C7AFC5B002330E9 /* TMPJOpenPlatform.swift in Sources */,
 				3388BCCD1C4FE60600F52938 /* TMPJBaseViewController.swift in Sources */,
 				339FE01A1C988411003FE6BE /* TMPJImagePickerController.swift in Sources */,
 				33D4C0401C4FECC1005114A0 /* TMPJTableView.swift in Sources */,
@@ -423,6 +426,7 @@
 				33D4C06C1C501150005114A0 /* TMPJTableViewCell.swift in Sources */,
 				33D4C05F1C5003CB005114A0 /* TMPJNetworkRequest.swift in Sources */,
 				33D4C0701C50119B005114A0 /* TMPJCollectionViewFlowLayout.swift in Sources */,
+				33E83F8C1ECFD8C000A9557D /* TMPJTextField.swift in Sources */,
 				33E2C1AE1C5245AB00583D81 /* TMPJView.swift in Sources */,
 				33D4C0441C4FED14005114A0 /* TMPJWebViewController.swift in Sources */,
 				33E947701C59EDA400B1F084 /* TMPJAlertManager.swift in Sources */,

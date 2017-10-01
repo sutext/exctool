@@ -7,8 +7,8 @@
 //
 
 import EasyTools
-let kTMPJAlertManager = TMPJAlertManager();
 class TMPJAlertManager {
+    static let shared = TMPJAlertManager();
     fileprivate let alert = ETAlertManager();
     func showError(_ error:NSError){
         if error.domain == ETNetworkErrorDomain

@@ -16,9 +16,9 @@ let kTMPJBackgroundColor              =   ETColorFromRGB(0xf3f4f5);
 let kTMPJStandardFont                 =   UIFont.systemFont(ofSize: ETScaledFloat(15));
 let kTMPJSectionHeaderHeight:CGFloat  =   15;
 
-let kTMPJGlobalConfig = TMPJGlobalConfig();
 class TMPJGlobalConfig
 {
+    static let global = TMPJGlobalConfig();
     fileprivate init() {}
     
     func globalConfig()

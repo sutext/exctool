@@ -12,7 +12,7 @@ class CTActionController<ActionItem:TMPJNameConvertibale>: TMPJTableViewControll
     var maxLineCont = 4;
     fileprivate var actionView:UIView = UIView();
     fileprivate var completed:((_ sender:CTActionController,_ item:ActionItem?,_ index:Int?)->Void);
-    fileprivate var items:[ActionItem]!;
+    fileprivate var items:[ActionItem] = [];
     fileprivate var actions:[TMPJButton] = [];
     init(items:[ActionItem],completed:@escaping ((_ sender:CTActionController,_ item:ActionItem?,_ index:Int?)->Void)) {
         self.completed = completed;
@@ -79,7 +79,7 @@ class CTActionController<ActionItem:TMPJNameConvertibale>: TMPJTableViewControll
     
     func show()
     {
-        ETGlobalContainer.single().present(self);
+        ETGlobalContainer.single.present(self);
     }
     func hide(_ index:Int? = nil,action:(()->Void)? = nil)
     {
@@ -95,7 +95,7 @@ class CTActionController<ActionItem:TMPJNameConvertibale>: TMPJTableViewControll
                 {
                     block();
                 }
-                ETGlobalContainer.single().dismissController();
+                ETGlobalContainer.single.dismissController();
         })
     }
     //MARK:  --UITableView methods

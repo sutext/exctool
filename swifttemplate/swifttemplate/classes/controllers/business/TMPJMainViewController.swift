@@ -14,6 +14,6 @@ class TMPJMainViewController: TMPJTableViewController {
         self.view.backgroundColor=UIColor.white
     }
     override func leftItemAction(_ sender: AnyObject!) {
-        TMPJLayoutViewController.sharedController.showLeftViewController(true);
+        TMPJLayoutViewController.shared.showLeftViewController(true);
     }
 }

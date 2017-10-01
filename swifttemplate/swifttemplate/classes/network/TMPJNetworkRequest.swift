@@ -27,7 +27,7 @@ class TMPJNetworkRequest<EntityType,RequestType:RawRepresentable>: ETDesignedReq
     func finished(with response: ETNetworkResponse, error: Error?, task taskOperator: URLSessionUploadTask){
         if error != nil
         {
-            kTMPJAlertManager.showError(error! as NSError);
+            TMPJAlertManager.shared.showError(error! as NSError);
         }
     }
     override func analysisResponseObject(_ returnedObject: Any, header: AutoreleasingUnsafeMutablePointer<NSDictionary?>?, extends: AutoreleasingUnsafeMutablePointer<AnyObject?>?) throws -> Any {
@@ -61,12 +61,8 @@ class TMPJNetworkRequest<EntityType,RequestType:RawRepresentable>: ETDesignedReq
         header?.pointee = memery as NSDictionary;
         return data as AnyObject;
     }
-    func analyze(_ data:Any?)throws -> EntityType
+    func analyze(_ data:Any?)throws -> Any
     {
-        if let Type:TMPJNetworkEntity.Type = EntityType.self as? TMPJNetworkEntity.Type
-        {
-            return Type.init() as! EntityType
-        }
-        throw  NSError(domain: ETNetworkErrorDomain, code: ETNetworkErrorCode.noanalyzer.rawValue, userInfo: ["message":"analyze(data:AnyObject?)throws -> EntityType must be implement"]);
+        return NSNull();
     }
 }

@@ -1,5 +1,5 @@
 //
-//  OPOpenPlatform.swift
+//  TMPJOpenPlatform.swift
 //  swifttemplate
 //
 //  Created by supertext on 16/2/22.

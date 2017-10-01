@@ -10,7 +10,7 @@ import EasyTools
 
 final class TMPJLayoutViewController: ETLayoutViewController {
     
-    static let sharedController = TMPJLayoutViewController();
+    static let shared = TMPJLayoutViewController();
     
     fileprivate convenience init()
     {
@@ -26,5 +26,10 @@ final class TMPJLayoutViewController: ETLayoutViewController {
     override var childViewControllerForStatusBarHidden: UIViewController?
         {
             return self.rootViewController;
+    }
+    func pushViewController(controller:UIViewController,animated:Bool)
+    {
+        self.dismissCurrentController(true);
+        (self.rootViewController as! TMPJNavigationController).pushViewController(controller, animated: animated);
     }
 }

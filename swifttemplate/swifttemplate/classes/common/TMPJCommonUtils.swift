@@ -25,12 +25,16 @@ extension String
     }
     func isPasswd() ->Bool
     {
-        let regx = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+        let regx = "[A-Z0-9a-z]{6,16}";
         return NSPredicate(format: "SELF MATCHES %@", regx).evaluate(with: self);
     }
     func formatedMoney() ->String
     {
         return self;
+    }
+    var length:Int{
+        //        return self.lengthOfBytes(using: .utf8);
+        return self.characters.count;
     }
     var MD5String : String
         {
@@ -51,6 +55,49 @@ extension String
         }
     }
     
+}
+class CTCommonUtils: NSObject {
+    static func test(name:String?) -> String?
+    {
+        guard name != nil && name!.trimmingCharacters(in: .whitespacesAndNewlines).length>0 else
+        {
+            TMPJAlertManager.shared.showAlert(message: "名字不能为空")
+            return nil;
+        }
+        guard name!.length<20 else
+        {
+            TMPJAlertManager.shared.showAlert(message: "名字不能太长")
+            return nil;
+        }
+        return name!;
+    }
+    static func test(phone:String?) -> String?
+    {
+        guard (phone != nil)&&(phone!.isPhone()) else
+        {
+            TMPJAlertManager.shared.showAlert(message: "请输入正确手机号")
+            return nil;
+        }
+        return phone!;
+    }
+    static func test(passwd:String?) -> String?
+    {
+        guard (passwd != nil)&&(passwd!.isPasswd()) else
+        {
+            TMPJAlertManager.shared.showAlert(message: "密码必须是6-16位的字母或数字的组合")
+            return nil;
+        }
+        return passwd!;
+    }
+    static func test(code:String?) -> String?
+    {
+        guard (code != nil)&&(code!.length > 0) else
+        {
+            TMPJAlertManager.shared.showAlert(message: "验证码格式错误")
+            return nil;
+        }
+        return code!;
+    }
 }
 
 extension NSDictionary

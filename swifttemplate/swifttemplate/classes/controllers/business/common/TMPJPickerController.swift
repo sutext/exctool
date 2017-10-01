@@ -9,9 +9,8 @@
 import EasyTools
 
 
-class TMPJPickerController: TMPJBaseViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+class TMPJPickerController: TMPJBaseViewController {
     var actionView:UIView = UIView();
-    var pickerView:UIPickerView = UIPickerView();
     override func viewDidLoad() {
         super.viewDidLoad();
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.4);
@@ -28,17 +27,13 @@ class TMPJPickerController: TMPJBaseViewController,UIPickerViewDataSource,UIPick
         completed.clickedAction = {[unowned self] bnt in
             self.hide(true);
         }
-        self.pickerView.frame = CGRect(x:0,y: 44,width: self.actionView.width,height: self.actionView.height - 44);
-        self.pickerView.dataSource=self;
-        self.pickerView.delegate=self;
-        self.pickerView.backgroundColor = UIColor.white;
-        self.actionView.addSubview(self.pickerView);
-        self.pickerView(self.pickerView, didSelectRow: 0, inComponent: 0);
+        self.pickerDidLoad();
         UIView.animate(withDuration: 0.5) { () -> Void in
             self.actionView.top = self.view.height - 260;
             self.view.alpha = 1;
         }
     }
+    
     func buttonWithTitle(_ title:String) ->TMPJButton
     {
         let button = TMPJButton(frame:CGRect(x: 0, y: 0, width: 44, height: 44));
@@ -48,15 +43,26 @@ class TMPJPickerController: TMPJBaseViewController,UIPickerViewDataSource,UIPick
         self.actionView.addSubview(button);
         return button;
     }
-    func hide(_ completed:Bool){}
-    func show(){}
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 0;
+    private func hide(_ completed:Bool){
+        UIView.animate(withDuration: 0.5, animations: {
+            self.actionView.top = self.view.height;
+            self.view.alpha = 0;
+        }) { (finish) in
+            self.pickerDidHide();
+            ETGlobalContainer.single.dismissController();
+        }
     }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 0;
+    func show(){
+        ETGlobalContainer.single.present(self);
     }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    
+    //MARK: overwrite point
+    func pickerDidLoad()
+    {
+        
+    }
+    func pickerDidHide()
+    {
         
     }
 }

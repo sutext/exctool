@@ -23,17 +23,7 @@ protocol TMPJCategoryConvertibale : TMPJNameConvertibale
     init();
 }
 
-class TMPJNetworkEntity: ETNetworkEntity {
-    override init(dictionary dic: [AnyHashable: Any]?)
-    {
-        super.init(dictionary: dic);
-    }
-    override convenience required init() {
-        self.init(dictionary: nil);
-    }
-    convenience required init?(coder aDecoder: NSCoder) {
-        self.init(dictionary: nil);
-    }
+class TMPJNetworkEntity: ETDesignedEntity {
     override func string(forKey key: String) -> String {
         if let str = super.string(forKey: key)
         {
@@ -56,5 +46,15 @@ class TMPJNetworkEntity: ETNetworkEntity {
             return String(format: "%.1f", value);
         }
         return "0.0";
+    }
+    class func translate<T:TMPJNetworkEntity>(ary:Any?,to type:T.Type) -> [T] {
+        var objects:[T] = []
+        if let dicary = ary as? [[AnyHashable:Any]]{
+            for dic in dicary {
+                objects.append(type.init(dictionary: dic))
+            }
+            return objects;
+        }
+        return objects;
     }
 }
