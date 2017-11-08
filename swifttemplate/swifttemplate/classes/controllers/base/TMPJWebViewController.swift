@@ -5,15 +5,14 @@
 //  Created by supertext on 15/3/11.
 //  Copyright © 2016年 icegent. All rights reserved.
 //
-
 import WebKit
-import EasyTools
+import Airmey
 
 class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDelegate {
     var webLink :String?
     var showToolBar:Bool = false;
     var progressView:UIProgressView!
-    fileprivate var webURL:URL?
+    private var webURL:URL?
     
     lazy var webView:WKWebView = {
         let wbview = WKWebView(frame: self.view.bounds);
@@ -23,23 +22,25 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
         wbview.uiDelegate = self;
         return wbview;
     }()
-    fileprivate lazy var backBarButtonItem:UIBarButtonItem = {
-        let image = UIImage.arrow(with: .left);
+    private lazy var backBarButtonItem:UIBarButtonItem = {
+        let image = UIImage(named: "icon_return_black")
         let item = UIBarButtonItem(image: image, style: .plain, target: self.webView, action: #selector(WKWebView.goBack));
         item.width = 18.0;
         return item;
     }();
-    fileprivate lazy var forwardBarButtonItem:UIBarButtonItem = {
-        let image = UIImage.arrow(with: .right);
+    private lazy var forwardBarButtonItem:UIBarButtonItem = {
+        let image = UIImage(named: "icon_return_black")
         let item = UIBarButtonItem(image: image, style: .plain, target: self.webView, action: #selector(WKWebView.goForward));
         item.width = 18.0;
         return item;
     }();
-    fileprivate lazy var refreshBarButtonItem:UIBarButtonItem = {
+    private lazy var refreshBarButtonItem:UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .refresh, target: self.webView, action: #selector(WKWebView.reload))
     }();
     convenience init(link:String?,showToolBar:Bool) {
-        self.init();
+        self.init()
+        self.webLink = link
+        self.showToolBar = showToolBar
     }
     deinit
     {
@@ -51,7 +52,6 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
         super.viewDidLoad();
         self.view.backgroundColor = UIColor.white;
         self.view.addSubview(self.webView);
-        self.setLeftReturnIcon();
         self.progressView = UIProgressView(progressViewStyle: .bar);
         self.view.addSubview(self.progressView);
         self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil);
@@ -68,7 +68,7 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
         }
     }
     override func leftItemAction(_ sender: AnyObject!) {
-        let _ = self.navigationController?.popViewController(animated: true);
+        _ = self.navigationController?.popViewController(animated: true);
         self.webView.stopLoading();
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,7 +78,7 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
             self.navigationController?.isToolbarHidden = true;
         }
     }
-    func panAction(_ pan:UIPanGestureRecognizer)
+    @objc func panAction(_ pan:UIPanGestureRecognizer)
     {
         switch pan.state
         {
@@ -118,7 +118,7 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
             }
             break;
         }
-
+        
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.hideWaiting();
@@ -164,3 +164,4 @@ class TMPJWebViewController: TMPJBaseViewController,WKNavigationDelegate,WKUIDel
         }
     }
 }
+

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 icegent. All rights reserved.
 //
 
-import EasyTools
+import Airmey
 
 class TMPJLeftSideController: TMPJBaseViewController {
     override func viewDidLoad() {

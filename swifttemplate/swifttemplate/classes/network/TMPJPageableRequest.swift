@@ -1,32 +1,30 @@
 //
-//  CTPageableRequest.swift
-//  CoreTeahouse
+//  TMPJPageableRequest.swfit
+//  swifttemplate
 //
-//  Created by supertext on 15/3/11.
-//  Copyright © 2016年 mding. All rights reserved.
+//  Created by supertext on 17/5/18.
+//  Copyright © 2016年 icegent. All rights reserved.
 //
 
-import EasyTools
+import Airmey
+import Alamofire
 
-class TMPJPageableRequest<EntityType,RequestType:RawRepresentable> : TMPJNetworkRequest<EntityType,RequestType> where RequestType.RawValue == String {
-    var pageIndex:Int{
-        get {
-            if let str = self.param(forKey: "pageNo")
-            {
-                if let idx = Int(str as! String)
-                {
-                    return idx;
-                }
-            }
-            return 0
-        }
-        set (newval){
-            self.setParam(String(newval), forKey: "pageNo");
+class TMPJPageableRequest<DataModel>:TMPJRequest<DataModel> {
+    var index:Int=0
+    {
+        didSet{
+            self.set(param: self.index, forKey: "page")
         }
     }
-    override init(type:RequestType) {
-        super.init(type: type);
-        self.pageIndex = 1;
-        self.setParam("10", forKey: "pageSize")
+    var size:Int=10
+    {
+        didSet{
+            self.set(param: self.size, forKey: "size")
+        }
+    }
+    init(_ path: TMPJRequestPath) {
+        super.init(path, method: .get)
+        self.set(param: 10, forKey: "size")
+        self.set(param: 0, forKey: "page")
     }
 }

@@ -3,66 +3,48 @@
 //  CoreTeahouse
 //
 //  Created by supertext on 15/3/11.
-//  Copyright © 2016年 mding. All rights reserved.
+//  Copyright © 2016年 icegent. All rights reserved.
 //
 
-import EasyTools
+import Airmey
 
 
 class TMPJPickerController: TMPJBaseViewController {
-    var actionView:UIView = UIView();
+    let contentView:UIView = UIView()
+    let cancelButton:TMPJButton = TMPJButton()
+    let completeButton:TMPJButton = TMPJButton()
+    let animator:AMPresentFrameAssistor = AMPresentFrameAssistor(264)
+    override init() {
+        super.init()
+        self.transitioningDelegate = self.animator
+        self.modalPresentationStyle = .custom
+    }
     override func viewDidLoad() {
-        super.viewDidLoad();
-        self.view.backgroundColor = UIColor(white: 0, alpha: 0.4);
-        self.view.alpha = 0;
-        self.actionView.frame = CGRect(x:0,y: self.view.height,width: self.view.width,height: 260)
-        self.view.addSubview(self.actionView);
-        self.actionView.backgroundColor = kTMPJSeparatorColor;
-        let cancelButton = self.buttonWithTitle("取消");
-        cancelButton.clickedAction = {[unowned self] bnt in
-            self.hide(false);
-        }
-        let completed = self.buttonWithTitle("完成");
-        completed.right = self.actionView.width;
-        completed.clickedAction = {[unowned self] bnt in
-            self.hide(true);
-        }
-        self.pickerDidLoad();
-        UIView.animate(withDuration: 0.5) { () -> Void in
-            self.actionView.top = self.view.height - 260;
-            self.view.alpha = 1;
-        }
-    }
-    
-    func buttonWithTitle(_ title:String) ->TMPJButton
-    {
-        let button = TMPJButton(frame:CGRect(x: 0, y: 0, width: 44, height: 44));
-        button.setTitleColor(kTMPJFirstTextColor, for: .normal);
-        button.setTitle(title, for: .normal);
-        button.titleLabel?.font = kTMPJStandardFont;
-        self.actionView.addSubview(button);
-        return button;
-    }
-    private func hide(_ completed:Bool){
-        UIView.animate(withDuration: 0.5, animations: {
-            self.actionView.top = self.view.height;
-            self.view.alpha = 0;
-        }) { (finish) in
-            self.pickerDidHide();
-            ETGlobalContainer.single.dismissController();
-        }
-    }
-    func show(){
-        ETGlobalContainer.single.present(self);
-    }
-    
-    //MARK: overwrite point
-    func pickerDidLoad()
-    {
+        super.viewDidLoad()
+        self.setup(for: self.cancelButton,with:"取消")
+        self.setup(for: self.completeButton,with: "完成")
+        self.view.addSubview(self.contentView)
+        self.view.backgroundColor = .white
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.cancelButton.adhere(top: 10)
+        self.cancelButton.adhere(left: 10)
+        self.completeButton.adhere(top: 10)
+        self.completeButton.adhere(right: 10)
+        self.contentView.adhere(top: 44)
+        self.contentView.adhere(left: nil)
+        self.contentView.adhere(right: nil)
+        self.contentView.heightAnchor.equal(to: 240)
         
+        self.cancelButton.clickedAction = {[weak self] sender in
+            self?.dismiss(animated: true, completion: nil)
+        }
     }
-    func pickerDidHide()
+    func setup(for button:TMPJButton,with title:String)
     {
-        
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.theme, for: .normal)
+        button.setTitle(title, for: .normal)
+        button.titleLabel?.font = .size14
+        self.view.addSubview(button)
     }
 }

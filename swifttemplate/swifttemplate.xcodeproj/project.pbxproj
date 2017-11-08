@@ -7,118 +7,168 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33406CFA1C7AFC5B002330E9 /* TMPJOpenPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33406CF91C7AFC5B002330E9 /* TMPJOpenPlatform.swift */; };
-		336D301E1C4E551900EA7CFF /* swifttemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336D301D1C4E551900EA7CFF /* swifttemplate.swift */; };
-		3375726F1C565FBD0017EDD5 /* TMPJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3375726E1C565FBD0017EDD5 /* TMPJNavigationController.swift */; };
-		3388BCCD1C4FE60600F52938 /* TMPJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388BCC41C4FE60600F52938 /* TMPJBaseViewController.swift */; };
-		3388BCCE1C4FE60600F52938 /* TMPJCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388BCC51C4FE60600F52938 /* TMPJCollectionViewController.swift */; };
-		3388BCD01C4FE65000F52938 /* TMPJAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388BCCF1C4FE65000F52938 /* TMPJAppDelegate.swift */; };
-		3388BCD41C4FE83D00F52938 /* TMPJLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388BCD31C4FE83D00F52938 /* TMPJLayoutViewController.swift */; };
-		3398D7481C5A7AED00F8FDA8 /* TMPJUserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398D7471C5A7AED00F8FDA8 /* TMPJUserObject.swift */; };
-		339FE0131C98810D003FE6BE /* TMPJCommonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339FE0111C98810D003FE6BE /* TMPJCommonRequest.swift */; };
-		339FE0141C98810D003FE6BE /* TMPJPageableRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339FE0121C98810D003FE6BE /* TMPJPageableRequest.swift */; };
-		339FE0191C988411003FE6BE /* TMPJActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339FE0161C988411003FE6BE /* TMPJActionController.swift */; };
-		339FE01A1C988411003FE6BE /* TMPJImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339FE0171C988411003FE6BE /* TMPJImagePickerController.swift */; };
-		339FE01B1C988411003FE6BE /* TMPJPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339FE0181C988411003FE6BE /* TMPJPickerController.swift */; };
-		33D4C03E1C4FEC91005114A0 /* TMPJTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C03D1C4FEC91005114A0 /* TMPJTableViewController.swift */; };
-		33D4C0401C4FECC1005114A0 /* TMPJTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C03F1C4FECC1005114A0 /* TMPJTableView.swift */; };
-		33D4C0421C4FECEF005114A0 /* TMPJLeftSideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0411C4FECEF005114A0 /* TMPJLeftSideController.swift */; };
-		33D4C0441C4FED14005114A0 /* TMPJWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0431C4FED14005114A0 /* TMPJWebViewController.swift */; };
-		33D4C0461C4FED44005114A0 /* TMPJMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0451C4FED44005114A0 /* TMPJMainViewController.swift */; };
-		33D4C0481C4FF16A005114A0 /* TMPJLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0471C4FF16A005114A0 /* TMPJLabel.swift */; };
-		33D4C04A1C4FF1A4005114A0 /* TMPJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0491C4FF1A4005114A0 /* TMPJButton.swift */; };
-		33D4C04C1C4FF1BB005114A0 /* TMPJImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C04B1C4FF1BB005114A0 /* TMPJImageView.swift */; };
-		33D4C04E1C4FF1DA005114A0 /* TMPJCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C04D1C4FF1DA005114A0 /* TMPJCollectionView.swift */; };
-		33D4C0501C4FF217005114A0 /* TMPJRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C04F1C4FF217005114A0 /* TMPJRefreshControl.swift */; };
-		33D4C05B1C500396005114A0 /* TMPJNetworkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C05A1C500396005114A0 /* TMPJNetworkEntity.swift */; };
-		33D4C05D1C5003AC005114A0 /* TMPJNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C05C1C5003AC005114A0 /* TMPJNetworkManager.swift */; };
-		33D4C05F1C5003CB005114A0 /* TMPJNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C05E1C5003CB005114A0 /* TMPJNetworkRequest.swift */; };
-		33D4C0611C5006CD005114A0 /* TMPJGlobalConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0601C5006CD005114A0 /* TMPJGlobalConfig.swift */; };
-		33D4C0641C500861005114A0 /* TMPJSqliteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0631C500861005114A0 /* TMPJSqliteManager.swift */; };
-		33D4C0661C5010AF005114A0 /* TMPJReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0651C5010AF005114A0 /* TMPJReportModel.swift */; };
-		33D4C0681C5010C9005114A0 /* TMPJReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0671C5010C9005114A0 /* TMPJReportService.swift */; };
-		33D4C06A1C5010EB005114A0 /* TMPJGlobalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0691C5010EB005114A0 /* TMPJGlobalService.swift */; };
-		33D4C06C1C501150005114A0 /* TMPJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C06B1C501150005114A0 /* TMPJTableViewCell.swift */; };
-		33D4C06E1C501172005114A0 /* TMPJCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C06D1C501172005114A0 /* TMPJCollectionViewCell.swift */; };
-		33D4C0701C50119B005114A0 /* TMPJCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C06F1C50119B005114A0 /* TMPJCollectionViewFlowLayout.swift */; };
-		33D4C0721C501270005114A0 /* TMPJCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0711C501270005114A0 /* TMPJCollectionViewSectionHeader.swift */; };
-		33D4C0741C501284005114A0 /* TMPJCollectionViewSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0731C501284005114A0 /* TMPJCollectionViewSectionFooter.swift */; };
-		33D4C0761C5012FA005114A0 /* TMPJImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0751C5012FA005114A0 /* TMPJImageViewCell.swift */; };
-		33D4C0781C50D524005114A0 /* TMPJCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4C0771C50D524005114A0 /* TMPJCommonUtils.swift */; };
-		33D5A95C1E66832C00C4A692 /* OpenPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33406CF71C7AFB0C002330E9 /* OpenPlatform.framework */; };
-		33D5A95F1E66832C00C4A692 /* EasyTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D5A95E1E66832C00C4A692 /* EasyTools.framework */; };
-		33E2C1AE1C5245AB00583D81 /* TMPJView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E2C1AD1C5245AB00583D81 /* TMPJView.swift */; };
-		33E83F8C1ECFD8C000A9557D /* TMPJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E83F8B1ECFD8C000A9557D /* TMPJTextField.swift */; };
-		33E947701C59EDA400B1F084 /* TMPJAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E9476F1C59EDA400B1F084 /* TMPJAlertManager.swift */; };
+		3351A0971FB32C3D005C534E /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 3351A0951FB32C3D005C534E /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3351A09C1FB32C68005C534E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3351A09B1FB32C68005C534E /* SwiftyJSON.swift */; };
+		33EC6EDA1FB3700000AB74F2 /* swifttemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 33EC6ED81FB3700000AB74F2 /* swifttemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		33EC6F271FB3706100AB74F2 /* TMPJCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EE51FB3706100AB74F2 /* TMPJCommonUtils.swift */; };
+		33EC6F281FB3706100AB74F2 /* TMPJConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EE61FB3706100AB74F2 /* TMPJConstants.swift */; };
+		33EC6F291FB3706100AB74F2 /* TMPJExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EE71FB3706100AB74F2 /* TMPJExtensions.swift */; };
+		33EC6F2A1FB3706100AB74F2 /* TMPJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EEA1FB3706100AB74F2 /* TMPJBaseViewController.swift */; };
+		33EC6F2B1FB3706100AB74F2 /* TMPJCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EEB1FB3706100AB74F2 /* TMPJCollectionViewController.swift */; };
+		33EC6F2C1FB3706100AB74F2 /* TMPJLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EEC1FB3706100AB74F2 /* TMPJLayoutViewController.swift */; };
+		33EC6F2D1FB3706100AB74F2 /* TMPJLeftSideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EED1FB3706100AB74F2 /* TMPJLeftSideController.swift */; };
+		33EC6F2E1FB3706100AB74F2 /* TMPJTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EEE1FB3706100AB74F2 /* TMPJTableViewController.swift */; };
+		33EC6F2F1FB3706100AB74F2 /* TMPJWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EEF1FB3706100AB74F2 /* TMPJWebViewController.swift */; };
+		33EC6F301FB3706100AB74F2 /* TMPJActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EF21FB3706100AB74F2 /* TMPJActionController.swift */; };
+		33EC6F311FB3706100AB74F2 /* TMPJCityPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EF31FB3706100AB74F2 /* TMPJCityPickerController.swift */; };
+		33EC6F321FB3706100AB74F2 /* TMPJDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EF41FB3706100AB74F2 /* TMPJDatePickerController.swift */; };
+		33EC6F331FB3706100AB74F2 /* TMPJImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EF51FB3706100AB74F2 /* TMPJImagePickerController.swift */; };
+		33EC6F341FB3706100AB74F2 /* TMPJPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EF61FB3706100AB74F2 /* TMPJPickerController.swift */; };
+		33EC6F351FB3706100AB74F2 /* TMPJShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EF71FB3706100AB74F2 /* TMPJShareController.swift */; };
+		33EC6F361FB3706100AB74F2 /* TMPJTextEditerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EF81FB3706100AB74F2 /* TMPJTextEditerController.swift */; };
+		33EC6F371FB3706100AB74F2 /* TMPJMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EF91FB3706100AB74F2 /* TMPJMainViewController.swift */; };
+		33EC6F381FB3706100AB74F2 /* TMPJAreaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EFC1FB3706100AB74F2 /* TMPJAreaObject.swift */; };
+		33EC6F391FB3706100AB74F2 /* TMPJAssetObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EFD1FB3706100AB74F2 /* TMPJAssetObject.swift */; };
+		33EC6F3A1FB3706100AB74F2 /* TMPJTokenObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EFE1FB3706100AB74F2 /* TMPJTokenObject.swift */; };
+		33EC6F3B1FB3706100AB74F2 /* TMPJUserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EFF1FB3706100AB74F2 /* TMPJUserObject.swift */; };
+		33EC6F3C1FB3706100AB74F2 /* swifttemplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F001FB3706100AB74F2 /* swifttemplate.xcdatamodeld */; };
+		33EC6F3D1FB3706100AB74F2 /* TMPJSqliteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F021FB3706100AB74F2 /* TMPJSqliteManager.swift */; };
+		33EC6F3E1FB3706100AB74F2 /* TMPJCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F041FB3706100AB74F2 /* TMPJCollectionViewCell.swift */; };
+		33EC6F3F1FB3706100AB74F2 /* TMPJCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F051FB3706100AB74F2 /* TMPJCollectionViewSectionHeader.swift */; };
+		33EC6F401FB3706100AB74F2 /* TMPJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F061FB3706100AB74F2 /* TMPJTableViewCell.swift */; };
+		33EC6F411FB3706100AB74F2 /* TMPJError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F081FB3706100AB74F2 /* TMPJError.swift */; };
+		33EC6F421FB3706100AB74F2 /* TMPJModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F091FB3706100AB74F2 /* TMPJModel.swift */; };
+		33EC6F431FB3706100AB74F2 /* TMPJAuthRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F0C1FB3706100AB74F2 /* TMPJAuthRequests.swift */; };
+		33EC6F441FB3706100AB74F2 /* TMPJNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F0D1FB3706100AB74F2 /* TMPJNetwork.swift */; };
+		33EC6F451FB3706100AB74F2 /* TMPJPageableRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F0E1FB3706100AB74F2 /* TMPJPageableRequest.swift */; };
+		33EC6F461FB3706100AB74F2 /* TMPJRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F0F1FB3706100AB74F2 /* TMPJRequest.swift */; };
+		33EC6F471FB3706100AB74F2 /* TMPJRequestPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F101FB3706100AB74F2 /* TMPJRequestPath.swift */; };
+		33EC6F481FB3706100AB74F2 /* TMPJAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F121FB3706100AB74F2 /* TMPJAppDelegate.swift */; };
+		33EC6F491FB3706100AB74F2 /* TMPJGlobalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F131FB3706100AB74F2 /* TMPJGlobalService.swift */; };
+		33EC6F4A1FB3706100AB74F2 /* TMPJModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F141FB3706100AB74F2 /* TMPJModelService.swift */; };
+		33EC6F4B1FB3706100AB74F2 /* TMPJOpenPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F151FB3706100AB74F2 /* TMPJOpenPlatform.swift */; };
+		33EC6F4C1FB3706100AB74F2 /* TMPJPopupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F161FB3706100AB74F2 /* TMPJPopupService.swift */; };
+		33EC6F4D1FB3706100AB74F2 /* TMPJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F181FB3706100AB74F2 /* TMPJButton.swift */; };
+		33EC6F4E1FB3706100AB74F2 /* TMPJCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F191FB3706100AB74F2 /* TMPJCollectionView.swift */; };
+		33EC6F4F1FB3706100AB74F2 /* TMPJImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F1A1FB3706100AB74F2 /* TMPJImageView.swift */; };
+		33EC6F501FB3706100AB74F2 /* TMPJLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F1B1FB3706100AB74F2 /* TMPJLabel.swift */; };
+		33EC6F511FB3706100AB74F2 /* TMPJScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F1C1FB3706100AB74F2 /* TMPJScrollView.swift */; };
+		33EC6F521FB3706100AB74F2 /* TMPJStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F1D1FB3706100AB74F2 /* TMPJStackView.swift */; };
+		33EC6F531FB3706100AB74F2 /* TMPJTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F1E1FB3706100AB74F2 /* TMPJTableView.swift */; };
+		33EC6F541FB3706100AB74F2 /* TMPJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F1F1FB3706100AB74F2 /* TMPJTextField.swift */; };
+		33EC6F551FB3706100AB74F2 /* TMPJTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F201FB3706100AB74F2 /* TMPJTextView.swift */; };
+		33EC6F561FB3706100AB74F2 /* TMPJView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F211FB3706100AB74F2 /* TMPJView.swift */; };
+		33EC6F571FB3706100AB74F2 /* TMPJEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F231FB3706100AB74F2 /* TMPJEffectView.swift */; };
+		33EC6F581FB3706100AB74F2 /* TMPJImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F241FB3706100AB74F2 /* TMPJImageLabel.swift */; };
+		33EC6F591FB3706100AB74F2 /* TMPJInputToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F251FB3706100AB74F2 /* TMPJInputToolbar.swift */; };
+		33EC6F5A1FB3706100AB74F2 /* TMPJLayoutAssist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F261FB3706100AB74F2 /* TMPJLayoutAssist.swift */; };
+		33EC6F5E1FB3708C00AB74F2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EC6F5B1FB3708C00AB74F2 /* Alamofire.framework */; };
+		33EC6F5F1FB3708C00AB74F2 /* OpenPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EC6F5C1FB3708C00AB74F2 /* OpenPlatform.framework */; };
+		33EC6F601FB3708C00AB74F2 /* Airmey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EC6F5D1FB3708C00AB74F2 /* Airmey.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		33406CF71C7AFB0C002330E9 /* OpenPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenPlatform.framework; path = ../../../shared/OpenPlatform.framework; sourceTree = "<group>"; };
-		33406CF91C7AFC5B002330E9 /* TMPJOpenPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJOpenPlatform.swift; sourceTree = "<group>"; };
-		336D2FE71C4E487C00EA7CFF /* swifttemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swifttemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		336D2FEC1C4E487C00EA7CFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		336D30011C4E4F6C00EA7CFF /* EasyTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EasyTools.framework; sourceTree = "<group>"; };
-		336D301D1C4E551900EA7CFF /* swifttemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swifttemplate.swift; sourceTree = "<group>"; };
-		3375726E1C565FBD0017EDD5 /* TMPJNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJNavigationController.swift; sourceTree = "<group>"; };
-		3388BCC41C4FE60600F52938 /* TMPJBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJBaseViewController.swift; sourceTree = "<group>"; };
-		3388BCC51C4FE60600F52938 /* TMPJCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionViewController.swift; sourceTree = "<group>"; };
-		3388BCCF1C4FE65000F52938 /* TMPJAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJAppDelegate.swift; sourceTree = "<group>"; };
-		3388BCD31C4FE83D00F52938 /* TMPJLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMPJLayoutViewController.swift; path = swifttemplate/classes/controllers/base/TMPJLayoutViewController.swift; sourceTree = SOURCE_ROOT; };
-		3398D7471C5A7AED00F8FDA8 /* TMPJUserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJUserObject.swift; sourceTree = "<group>"; };
-		339FE0111C98810D003FE6BE /* TMPJCommonRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCommonRequest.swift; sourceTree = "<group>"; };
-		339FE0121C98810D003FE6BE /* TMPJPageableRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJPageableRequest.swift; sourceTree = "<group>"; };
-		339FE0161C988411003FE6BE /* TMPJActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJActionController.swift; sourceTree = "<group>"; };
-		339FE0171C988411003FE6BE /* TMPJImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJImagePickerController.swift; sourceTree = "<group>"; };
-		339FE0181C988411003FE6BE /* TMPJPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJPickerController.swift; sourceTree = "<group>"; };
-		33D4C03D1C4FEC91005114A0 /* TMPJTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTableViewController.swift; sourceTree = "<group>"; };
-		33D4C03F1C4FECC1005114A0 /* TMPJTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTableView.swift; sourceTree = "<group>"; };
-		33D4C0411C4FECEF005114A0 /* TMPJLeftSideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJLeftSideController.swift; sourceTree = "<group>"; };
-		33D4C0431C4FED14005114A0 /* TMPJWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJWebViewController.swift; sourceTree = "<group>"; };
-		33D4C0451C4FED44005114A0 /* TMPJMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJMainViewController.swift; sourceTree = "<group>"; };
-		33D4C0471C4FF16A005114A0 /* TMPJLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJLabel.swift; sourceTree = "<group>"; };
-		33D4C0491C4FF1A4005114A0 /* TMPJButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJButton.swift; sourceTree = "<group>"; };
-		33D4C04B1C4FF1BB005114A0 /* TMPJImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJImageView.swift; sourceTree = "<group>"; };
-		33D4C04D1C4FF1DA005114A0 /* TMPJCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionView.swift; sourceTree = "<group>"; };
-		33D4C04F1C4FF217005114A0 /* TMPJRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJRefreshControl.swift; sourceTree = "<group>"; };
-		33D4C05A1C500396005114A0 /* TMPJNetworkEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJNetworkEntity.swift; sourceTree = "<group>"; };
-		33D4C05C1C5003AC005114A0 /* TMPJNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJNetworkManager.swift; sourceTree = "<group>"; };
-		33D4C05E1C5003CB005114A0 /* TMPJNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJNetworkRequest.swift; sourceTree = "<group>"; };
-		33D4C0601C5006CD005114A0 /* TMPJGlobalConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJGlobalConfig.swift; sourceTree = "<group>"; };
-		33D4C0631C500861005114A0 /* TMPJSqliteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJSqliteManager.swift; sourceTree = "<group>"; };
-		33D4C0651C5010AF005114A0 /* TMPJReportModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJReportModel.swift; sourceTree = "<group>"; };
-		33D4C0671C5010C9005114A0 /* TMPJReportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJReportService.swift; sourceTree = "<group>"; };
-		33D4C0691C5010EB005114A0 /* TMPJGlobalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJGlobalService.swift; sourceTree = "<group>"; };
-		33D4C06B1C501150005114A0 /* TMPJTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTableViewCell.swift; sourceTree = "<group>"; };
-		33D4C06D1C501172005114A0 /* TMPJCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionViewCell.swift; sourceTree = "<group>"; };
-		33D4C06F1C50119B005114A0 /* TMPJCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		33D4C0711C501270005114A0 /* TMPJCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
-		33D4C0731C501284005114A0 /* TMPJCollectionViewSectionFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionViewSectionFooter.swift; sourceTree = "<group>"; };
-		33D4C0751C5012FA005114A0 /* TMPJImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJImageViewCell.swift; sourceTree = "<group>"; };
-		33D4C0771C50D524005114A0 /* TMPJCommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCommonUtils.swift; sourceTree = "<group>"; };
-		33D5A95E1E66832C00C4A692 /* EasyTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyTools.framework; path = ../shared/EasyTools.framework; sourceTree = "<group>"; };
-		33E2C1AD1C5245AB00583D81 /* TMPJView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJView.swift; sourceTree = "<group>"; };
-		33E83F8B1ECFD8C000A9557D /* TMPJTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextField.swift; sourceTree = "<group>"; };
-		33E9476F1C59EDA400B1F084 /* TMPJAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJAlertManager.swift; sourceTree = "<group>"; };
+		3351A0931FB32C3D005C534E /* JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3351A0951FB32C3D005C534E /* JSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		3351A0961FB32C3D005C534E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3351A09B1FB32C68005C534E /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		33EC6ED61FB3700000AB74F2 /* swifttemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swifttemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33EC6ED81FB3700000AB74F2 /* swifttemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swifttemplate.h; sourceTree = "<group>"; };
+		33EC6ED91FB3700000AB74F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33EC6EE51FB3706100AB74F2 /* TMPJCommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCommonUtils.swift; sourceTree = "<group>"; };
+		33EC6EE61FB3706100AB74F2 /* TMPJConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJConstants.swift; sourceTree = "<group>"; };
+		33EC6EE71FB3706100AB74F2 /* TMPJExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJExtensions.swift; sourceTree = "<group>"; };
+		33EC6EEA1FB3706100AB74F2 /* TMPJBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJBaseViewController.swift; sourceTree = "<group>"; };
+		33EC6EEB1FB3706100AB74F2 /* TMPJCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionViewController.swift; sourceTree = "<group>"; };
+		33EC6EEC1FB3706100AB74F2 /* TMPJLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJLayoutViewController.swift; sourceTree = "<group>"; };
+		33EC6EED1FB3706100AB74F2 /* TMPJLeftSideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJLeftSideController.swift; sourceTree = "<group>"; };
+		33EC6EEE1FB3706100AB74F2 /* TMPJTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTableViewController.swift; sourceTree = "<group>"; };
+		33EC6EEF1FB3706100AB74F2 /* TMPJWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJWebViewController.swift; sourceTree = "<group>"; };
+		33EC6EF21FB3706100AB74F2 /* TMPJActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJActionController.swift; sourceTree = "<group>"; };
+		33EC6EF31FB3706100AB74F2 /* TMPJCityPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCityPickerController.swift; sourceTree = "<group>"; };
+		33EC6EF41FB3706100AB74F2 /* TMPJDatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJDatePickerController.swift; sourceTree = "<group>"; };
+		33EC6EF51FB3706100AB74F2 /* TMPJImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJImagePickerController.swift; sourceTree = "<group>"; };
+		33EC6EF61FB3706100AB74F2 /* TMPJPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJPickerController.swift; sourceTree = "<group>"; };
+		33EC6EF71FB3706100AB74F2 /* TMPJShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJShareController.swift; sourceTree = "<group>"; };
+		33EC6EF81FB3706100AB74F2 /* TMPJTextEditerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextEditerController.swift; sourceTree = "<group>"; };
+		33EC6EF91FB3706100AB74F2 /* TMPJMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJMainViewController.swift; sourceTree = "<group>"; };
+		33EC6EFC1FB3706100AB74F2 /* TMPJAreaObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJAreaObject.swift; sourceTree = "<group>"; };
+		33EC6EFD1FB3706100AB74F2 /* TMPJAssetObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJAssetObject.swift; sourceTree = "<group>"; };
+		33EC6EFE1FB3706100AB74F2 /* TMPJTokenObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTokenObject.swift; sourceTree = "<group>"; };
+		33EC6EFF1FB3706100AB74F2 /* TMPJUserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJUserObject.swift; sourceTree = "<group>"; };
+		33EC6F011FB3706100AB74F2 /* swifttemplate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = swifttemplate.xcdatamodel; sourceTree = "<group>"; };
+		33EC6F021FB3706100AB74F2 /* TMPJSqliteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJSqliteManager.swift; sourceTree = "<group>"; };
+		33EC6F041FB3706100AB74F2 /* TMPJCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionViewCell.swift; sourceTree = "<group>"; };
+		33EC6F051FB3706100AB74F2 /* TMPJCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
+		33EC6F061FB3706100AB74F2 /* TMPJTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTableViewCell.swift; sourceTree = "<group>"; };
+		33EC6F081FB3706100AB74F2 /* TMPJError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJError.swift; sourceTree = "<group>"; };
+		33EC6F091FB3706100AB74F2 /* TMPJModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJModel.swift; sourceTree = "<group>"; };
+		33EC6F0C1FB3706100AB74F2 /* TMPJAuthRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJAuthRequests.swift; sourceTree = "<group>"; };
+		33EC6F0D1FB3706100AB74F2 /* TMPJNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJNetwork.swift; sourceTree = "<group>"; };
+		33EC6F0E1FB3706100AB74F2 /* TMPJPageableRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJPageableRequest.swift; sourceTree = "<group>"; };
+		33EC6F0F1FB3706100AB74F2 /* TMPJRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJRequest.swift; sourceTree = "<group>"; };
+		33EC6F101FB3706100AB74F2 /* TMPJRequestPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJRequestPath.swift; sourceTree = "<group>"; };
+		33EC6F121FB3706100AB74F2 /* TMPJAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJAppDelegate.swift; sourceTree = "<group>"; };
+		33EC6F131FB3706100AB74F2 /* TMPJGlobalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJGlobalService.swift; sourceTree = "<group>"; };
+		33EC6F141FB3706100AB74F2 /* TMPJModelService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJModelService.swift; sourceTree = "<group>"; };
+		33EC6F151FB3706100AB74F2 /* TMPJOpenPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJOpenPlatform.swift; sourceTree = "<group>"; };
+		33EC6F161FB3706100AB74F2 /* TMPJPopupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJPopupService.swift; sourceTree = "<group>"; };
+		33EC6F181FB3706100AB74F2 /* TMPJButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJButton.swift; sourceTree = "<group>"; };
+		33EC6F191FB3706100AB74F2 /* TMPJCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJCollectionView.swift; sourceTree = "<group>"; };
+		33EC6F1A1FB3706100AB74F2 /* TMPJImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJImageView.swift; sourceTree = "<group>"; };
+		33EC6F1B1FB3706100AB74F2 /* TMPJLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJLabel.swift; sourceTree = "<group>"; };
+		33EC6F1C1FB3706100AB74F2 /* TMPJScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJScrollView.swift; sourceTree = "<group>"; };
+		33EC6F1D1FB3706100AB74F2 /* TMPJStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJStackView.swift; sourceTree = "<group>"; };
+		33EC6F1E1FB3706100AB74F2 /* TMPJTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTableView.swift; sourceTree = "<group>"; };
+		33EC6F1F1FB3706100AB74F2 /* TMPJTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextField.swift; sourceTree = "<group>"; };
+		33EC6F201FB3706100AB74F2 /* TMPJTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextView.swift; sourceTree = "<group>"; };
+		33EC6F211FB3706100AB74F2 /* TMPJView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJView.swift; sourceTree = "<group>"; };
+		33EC6F231FB3706100AB74F2 /* TMPJEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJEffectView.swift; sourceTree = "<group>"; };
+		33EC6F241FB3706100AB74F2 /* TMPJImageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJImageLabel.swift; sourceTree = "<group>"; };
+		33EC6F251FB3706100AB74F2 /* TMPJInputToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJInputToolbar.swift; sourceTree = "<group>"; };
+		33EC6F261FB3706100AB74F2 /* TMPJLayoutAssist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJLayoutAssist.swift; sourceTree = "<group>"; };
+		33EC6F5B1FB3708C00AB74F2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../../shared/Alamofire.framework; sourceTree = "<group>"; };
+		33EC6F5C1FB3708C00AB74F2 /* OpenPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenPlatform.framework; path = ../../../shared/OpenPlatform.framework; sourceTree = "<group>"; };
+		33EC6F5D1FB3708C00AB74F2 /* Airmey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Airmey.framework; path = ../../../shared/Airmey.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		336D2FE31C4E487C00EA7CFF /* Frameworks */ = {
+		3351A08F1FB32C3D005C534E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33D5A95F1E66832C00C4A692 /* EasyTools.framework in Frameworks */,
-				33D5A95C1E66832C00C4A692 /* OpenPlatform.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EC6ED21FB3700000AB74F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EC6F5E1FB3708C00AB74F2 /* Alamofire.framework in Frameworks */,
+				33EC6F5F1FB3708C00AB74F2 /* OpenPlatform.framework in Frameworks */,
+				33EC6F601FB3708C00AB74F2 /* Airmey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3351A0941FB32C3D005C534E /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				3351A09B1FB32C68005C534E /* SwiftyJSON.swift */,
+				3351A0951FB32C3D005C534E /* JSON.h */,
+				3351A0961FB32C3D005C534E /* Info.plist */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		336D2FDD1C4E487C00EA7CFF = {
 			isa = PBXGroup;
 			children = (
-				336D2FE91C4E487C00EA7CFF /* swifttemplate */,
+				33EC6ED71FB3700000AB74F2 /* swifttemplate */,
 				336D2FFF1C4E4F6C00EA7CFF /* Library */,
+				3351A0941FB32C3D005C534E /* JSON */,
 				336D2FE81C4E487C00EA7CFF /* Products */,
 				33D5A95D1E66832C00C4A692 /* Frameworks */,
 			);
@@ -127,19 +177,10 @@
 		336D2FE81C4E487C00EA7CFF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				336D2FE71C4E487C00EA7CFF /* swifttemplate.framework */,
+				3351A0931FB32C3D005C534E /* JSON.framework */,
+				33EC6ED61FB3700000AB74F2 /* swifttemplate.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		336D2FE91C4E487C00EA7CFF /* swifttemplate */ = {
-			isa = PBXGroup;
-			children = (
-				3388BCC01C4FE60600F52938 /* classes */,
-				336D2FEC1C4E487C00EA7CFF /* Info.plist */,
-				336D301D1C4E551900EA7CFF /* swifttemplate.swift */,
-			);
-			path = swifttemplate;
 			sourceTree = "<group>";
 		};
 		336D2FFF1C4E4F6C00EA7CFF /* Library */ = {
@@ -153,192 +194,249 @@
 		336D30001C4E4F6C00EA7CFF /* shared */ = {
 			isa = PBXGroup;
 			children = (
-				33406CF71C7AFB0C002330E9 /* OpenPlatform.framework */,
-				336D30011C4E4F6C00EA7CFF /* EasyTools.framework */,
+				33EC6F5D1FB3708C00AB74F2 /* Airmey.framework */,
+				33EC6F5B1FB3708C00AB74F2 /* Alamofire.framework */,
+				33EC6F5C1FB3708C00AB74F2 /* OpenPlatform.framework */,
 			);
 			path = shared;
-			sourceTree = "<group>";
-		};
-		3388BCC01C4FE60600F52938 /* classes */ = {
-			isa = PBXGroup;
-			children = (
-				3388BCC21C4FE60600F52938 /* controllers */,
-				3388BCC71C4FE60600F52938 /* layoutsubviews */,
-				3388BCC81C4FE60600F52938 /* managers */,
-				3388BCC91C4FE60600F52938 /* network */,
-				3388BCCA1C4FE60600F52938 /* service */,
-				33D4C0621C500826005114A0 /* databases */,
-				3388BCCB1C4FE60600F52938 /* subuviews */,
-				3388BCCC1C4FE60600F52938 /* widgets */,
-				3388BCC11C4FE60600F52938 /* common */,
-			);
-			path = classes;
-			sourceTree = "<group>";
-		};
-		3388BCC11C4FE60600F52938 /* common */ = {
-			isa = PBXGroup;
-			children = (
-				33D4C0771C50D524005114A0 /* TMPJCommonUtils.swift */,
-			);
-			path = common;
-			sourceTree = "<group>";
-		};
-		3388BCC21C4FE60600F52938 /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				3388BCC31C4FE60600F52938 /* base */,
-				3388BCC61C4FE60600F52938 /* business */,
-			);
-			path = controllers;
-			sourceTree = "<group>";
-		};
-		3388BCC31C4FE60600F52938 /* base */ = {
-			isa = PBXGroup;
-			children = (
-				3388BCC41C4FE60600F52938 /* TMPJBaseViewController.swift */,
-				3388BCC51C4FE60600F52938 /* TMPJCollectionViewController.swift */,
-				3388BCD31C4FE83D00F52938 /* TMPJLayoutViewController.swift */,
-				33D4C03D1C4FEC91005114A0 /* TMPJTableViewController.swift */,
-				33D4C0411C4FECEF005114A0 /* TMPJLeftSideController.swift */,
-				33D4C0431C4FED14005114A0 /* TMPJWebViewController.swift */,
-				3375726E1C565FBD0017EDD5 /* TMPJNavigationController.swift */,
-			);
-			path = base;
-			sourceTree = "<group>";
-		};
-		3388BCC61C4FE60600F52938 /* business */ = {
-			isa = PBXGroup;
-			children = (
-				339FE0151C988411003FE6BE /* common */,
-				33D4C0451C4FED44005114A0 /* TMPJMainViewController.swift */,
-			);
-			path = business;
-			sourceTree = "<group>";
-		};
-		3388BCC71C4FE60600F52938 /* layoutsubviews */ = {
-			isa = PBXGroup;
-			children = (
-				33D4C0751C5012FA005114A0 /* TMPJImageViewCell.swift */,
-				33D4C06B1C501150005114A0 /* TMPJTableViewCell.swift */,
-				33D4C06D1C501172005114A0 /* TMPJCollectionViewCell.swift */,
-				33D4C06F1C50119B005114A0 /* TMPJCollectionViewFlowLayout.swift */,
-				33D4C0711C501270005114A0 /* TMPJCollectionViewSectionHeader.swift */,
-				33D4C0731C501284005114A0 /* TMPJCollectionViewSectionFooter.swift */,
-			);
-			path = layoutsubviews;
-			sourceTree = "<group>";
-		};
-		3388BCC81C4FE60600F52938 /* managers */ = {
-			isa = PBXGroup;
-			children = (
-				33D4C0601C5006CD005114A0 /* TMPJGlobalConfig.swift */,
-				33E9476F1C59EDA400B1F084 /* TMPJAlertManager.swift */,
-			);
-			path = managers;
-			sourceTree = "<group>";
-		};
-		3388BCC91C4FE60600F52938 /* network */ = {
-			isa = PBXGroup;
-			children = (
-				339FE0111C98810D003FE6BE /* TMPJCommonRequest.swift */,
-				339FE0121C98810D003FE6BE /* TMPJPageableRequest.swift */,
-				33D4C05A1C500396005114A0 /* TMPJNetworkEntity.swift */,
-				33D4C05C1C5003AC005114A0 /* TMPJNetworkManager.swift */,
-				33D4C05E1C5003CB005114A0 /* TMPJNetworkRequest.swift */,
-			);
-			path = network;
-			sourceTree = "<group>";
-		};
-		3388BCCA1C4FE60600F52938 /* service */ = {
-			isa = PBXGroup;
-			children = (
-				3388BCCF1C4FE65000F52938 /* TMPJAppDelegate.swift */,
-				33D4C0651C5010AF005114A0 /* TMPJReportModel.swift */,
-				33D4C0671C5010C9005114A0 /* TMPJReportService.swift */,
-				33D4C0691C5010EB005114A0 /* TMPJGlobalService.swift */,
-				33406CF91C7AFC5B002330E9 /* TMPJOpenPlatform.swift */,
-			);
-			path = service;
-			sourceTree = "<group>";
-		};
-		3388BCCB1C4FE60600F52938 /* subuviews */ = {
-			isa = PBXGroup;
-			children = (
-				33E2C1AD1C5245AB00583D81 /* TMPJView.swift */,
-				33D4C0471C4FF16A005114A0 /* TMPJLabel.swift */,
-				33D4C0491C4FF1A4005114A0 /* TMPJButton.swift */,
-				33D4C03F1C4FECC1005114A0 /* TMPJTableView.swift */,
-				33D4C04B1C4FF1BB005114A0 /* TMPJImageView.swift */,
-				33D4C04D1C4FF1DA005114A0 /* TMPJCollectionView.swift */,
-				33E83F8B1ECFD8C000A9557D /* TMPJTextField.swift */,
-			);
-			path = subuviews;
-			sourceTree = "<group>";
-		};
-		3388BCCC1C4FE60600F52938 /* widgets */ = {
-			isa = PBXGroup;
-			children = (
-				33D4C04F1C4FF217005114A0 /* TMPJRefreshControl.swift */,
-			);
-			path = widgets;
-			sourceTree = "<group>";
-		};
-		3398D7461C5A7ACA00F8FDA8 /* modles */ = {
-			isa = PBXGroup;
-			children = (
-				3398D7471C5A7AED00F8FDA8 /* TMPJUserObject.swift */,
-			);
-			path = modles;
-			sourceTree = "<group>";
-		};
-		339FE0151C988411003FE6BE /* common */ = {
-			isa = PBXGroup;
-			children = (
-				339FE0161C988411003FE6BE /* TMPJActionController.swift */,
-				339FE0171C988411003FE6BE /* TMPJImagePickerController.swift */,
-				339FE0181C988411003FE6BE /* TMPJPickerController.swift */,
-			);
-			path = common;
-			sourceTree = "<group>";
-		};
-		33D4C0621C500826005114A0 /* databases */ = {
-			isa = PBXGroup;
-			children = (
-				3398D7461C5A7ACA00F8FDA8 /* modles */,
-				33D4C0631C500861005114A0 /* TMPJSqliteManager.swift */,
-			);
-			path = databases;
 			sourceTree = "<group>";
 		};
 		33D5A95D1E66832C00C4A692 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				33D5A95E1E66832C00C4A692 /* EasyTools.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		33EC6ED71FB3700000AB74F2 /* swifttemplate */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6EE31FB3706100AB74F2 /* classes */,
+				33EC6ED81FB3700000AB74F2 /* swifttemplate.h */,
+				33EC6ED91FB3700000AB74F2 /* Info.plist */,
+			);
+			path = swifttemplate;
+			sourceTree = "<group>";
+		};
+		33EC6EE31FB3706100AB74F2 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6EE81FB3706100AB74F2 /* controllers */,
+				33EC6F0A1FB3706100AB74F2 /* network */,
+				33EC6EFA1FB3706100AB74F2 /* databases */,
+				33EC6F111FB3706100AB74F2 /* service */,
+				33EC6F171FB3706100AB74F2 /* subuviews */,
+				33EC6F221FB3706100AB74F2 /* widgets */,
+				33EC6EE41FB3706100AB74F2 /* common */,
+				33EC6F071FB3706100AB74F2 /* models */,
+				33EC6F031FB3706100AB74F2 /* layoutsubviews */,
+			);
+			path = classes;
+			sourceTree = "<group>";
+		};
+		33EC6EE41FB3706100AB74F2 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6EE51FB3706100AB74F2 /* TMPJCommonUtils.swift */,
+				33EC6EE61FB3706100AB74F2 /* TMPJConstants.swift */,
+				33EC6EE71FB3706100AB74F2 /* TMPJExtensions.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		33EC6EE81FB3706100AB74F2 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6EE91FB3706100AB74F2 /* base */,
+				33EC6EF01FB3706100AB74F2 /* business */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		33EC6EE91FB3706100AB74F2 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6EEA1FB3706100AB74F2 /* TMPJBaseViewController.swift */,
+				33EC6EEB1FB3706100AB74F2 /* TMPJCollectionViewController.swift */,
+				33EC6EEC1FB3706100AB74F2 /* TMPJLayoutViewController.swift */,
+				33EC6EED1FB3706100AB74F2 /* TMPJLeftSideController.swift */,
+				33EC6EEE1FB3706100AB74F2 /* TMPJTableViewController.swift */,
+				33EC6EEF1FB3706100AB74F2 /* TMPJWebViewController.swift */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		33EC6EF01FB3706100AB74F2 /* business */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6EF11FB3706100AB74F2 /* common */,
+				33EC6EF91FB3706100AB74F2 /* TMPJMainViewController.swift */,
+			);
+			path = business;
+			sourceTree = "<group>";
+		};
+		33EC6EF11FB3706100AB74F2 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6EF21FB3706100AB74F2 /* TMPJActionController.swift */,
+				33EC6EF31FB3706100AB74F2 /* TMPJCityPickerController.swift */,
+				33EC6EF41FB3706100AB74F2 /* TMPJDatePickerController.swift */,
+				33EC6EF51FB3706100AB74F2 /* TMPJImagePickerController.swift */,
+				33EC6EF61FB3706100AB74F2 /* TMPJPickerController.swift */,
+				33EC6EF71FB3706100AB74F2 /* TMPJShareController.swift */,
+				33EC6EF81FB3706100AB74F2 /* TMPJTextEditerController.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		33EC6EFA1FB3706100AB74F2 /* databases */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6EFB1FB3706100AB74F2 /* modles */,
+				33EC6F001FB3706100AB74F2 /* swifttemplate.xcdatamodeld */,
+				33EC6F021FB3706100AB74F2 /* TMPJSqliteManager.swift */,
+			);
+			path = databases;
+			sourceTree = "<group>";
+		};
+		33EC6EFB1FB3706100AB74F2 /* modles */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6EFC1FB3706100AB74F2 /* TMPJAreaObject.swift */,
+				33EC6EFD1FB3706100AB74F2 /* TMPJAssetObject.swift */,
+				33EC6EFE1FB3706100AB74F2 /* TMPJTokenObject.swift */,
+				33EC6EFF1FB3706100AB74F2 /* TMPJUserObject.swift */,
+			);
+			path = modles;
+			sourceTree = "<group>";
+		};
+		33EC6F031FB3706100AB74F2 /* layoutsubviews */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6F041FB3706100AB74F2 /* TMPJCollectionViewCell.swift */,
+				33EC6F051FB3706100AB74F2 /* TMPJCollectionViewSectionHeader.swift */,
+				33EC6F061FB3706100AB74F2 /* TMPJTableViewCell.swift */,
+			);
+			path = layoutsubviews;
+			sourceTree = "<group>";
+		};
+		33EC6F071FB3706100AB74F2 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6F081FB3706100AB74F2 /* TMPJError.swift */,
+				33EC6F091FB3706100AB74F2 /* TMPJModel.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		33EC6F0A1FB3706100AB74F2 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6F0B1FB3706100AB74F2 /* auth */,
+				33EC6F0D1FB3706100AB74F2 /* TMPJNetwork.swift */,
+				33EC6F0E1FB3706100AB74F2 /* TMPJPageableRequest.swift */,
+				33EC6F0F1FB3706100AB74F2 /* TMPJRequest.swift */,
+				33EC6F101FB3706100AB74F2 /* TMPJRequestPath.swift */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		33EC6F0B1FB3706100AB74F2 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6F0C1FB3706100AB74F2 /* TMPJAuthRequests.swift */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		33EC6F111FB3706100AB74F2 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6F121FB3706100AB74F2 /* TMPJAppDelegate.swift */,
+				33EC6F131FB3706100AB74F2 /* TMPJGlobalService.swift */,
+				33EC6F141FB3706100AB74F2 /* TMPJModelService.swift */,
+				33EC6F151FB3706100AB74F2 /* TMPJOpenPlatform.swift */,
+				33EC6F161FB3706100AB74F2 /* TMPJPopupService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		33EC6F171FB3706100AB74F2 /* subuviews */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6F181FB3706100AB74F2 /* TMPJButton.swift */,
+				33EC6F191FB3706100AB74F2 /* TMPJCollectionView.swift */,
+				33EC6F1A1FB3706100AB74F2 /* TMPJImageView.swift */,
+				33EC6F1B1FB3706100AB74F2 /* TMPJLabel.swift */,
+				33EC6F1C1FB3706100AB74F2 /* TMPJScrollView.swift */,
+				33EC6F1D1FB3706100AB74F2 /* TMPJStackView.swift */,
+				33EC6F1E1FB3706100AB74F2 /* TMPJTableView.swift */,
+				33EC6F1F1FB3706100AB74F2 /* TMPJTextField.swift */,
+				33EC6F201FB3706100AB74F2 /* TMPJTextView.swift */,
+				33EC6F211FB3706100AB74F2 /* TMPJView.swift */,
+			);
+			path = subuviews;
+			sourceTree = "<group>";
+		};
+		33EC6F221FB3706100AB74F2 /* widgets */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6F231FB3706100AB74F2 /* TMPJEffectView.swift */,
+				33EC6F241FB3706100AB74F2 /* TMPJImageLabel.swift */,
+				33EC6F251FB3706100AB74F2 /* TMPJInputToolbar.swift */,
+				33EC6F261FB3706100AB74F2 /* TMPJLayoutAssist.swift */,
+			);
+			path = widgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		336D2FE41C4E487C00EA7CFF /* Headers */ = {
+		3351A0901FB32C3D005C534E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3351A0971FB32C3D005C534E /* JSON.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EC6ED31FB3700000AB74F2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EC6EDA1FB3700000AB74F2 /* swifttemplate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		336D2FE61C4E487C00EA7CFF /* swifttemplate */ = {
+		3351A0921FB32C3D005C534E /* JSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 336D2FEF1C4E487C00EA7CFF /* Build configuration list for PBXNativeTarget "swifttemplate" */;
+			buildConfigurationList = 3351A0981FB32C3D005C534E /* Build configuration list for PBXNativeTarget "JSON" */;
 			buildPhases = (
-				336D2FE21C4E487C00EA7CFF /* Sources */,
-				336D2FE31C4E487C00EA7CFF /* Frameworks */,
-				336D2FE41C4E487C00EA7CFF /* Headers */,
-				336D2FE51C4E487C00EA7CFF /* Resources */,
+				3351A08E1FB32C3D005C534E /* Sources */,
+				3351A08F1FB32C3D005C534E /* Frameworks */,
+				3351A0901FB32C3D005C534E /* Headers */,
+				3351A0911FB32C3D005C534E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JSON;
+			productName = JSON;
+			productReference = 3351A0931FB32C3D005C534E /* JSON.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		33EC6ED51FB3700000AB74F2 /* swifttemplate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33EC6EDB1FB3700000AB74F2 /* Build configuration list for PBXNativeTarget "swifttemplate" */;
+			buildPhases = (
+				33EC6ED11FB3700000AB74F2 /* Sources */,
+				33EC6ED21FB3700000AB74F2 /* Frameworks */,
+				33EC6ED31FB3700000AB74F2 /* Headers */,
+				33EC6ED41FB3700000AB74F2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -346,7 +444,7 @@
 			);
 			name = swifttemplate;
 			productName = swifttemplate;
-			productReference = 336D2FE71C4E487C00EA7CFF /* swifttemplate.framework */;
+			productReference = 33EC6ED61FB3700000AB74F2 /* swifttemplate.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -356,13 +454,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = icegent;
 				TargetAttributes = {
-					336D2FE61C4E487C00EA7CFF = {
-						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 24L372QN9V;
-						LastSwiftMigration = 0820;
+					3351A0921FB32C3D005C534E = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = MMCHLPPBPU;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+					33EC6ED51FB3700000AB74F2 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = MMCHLPPBPU;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -379,13 +484,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				336D2FE61C4E487C00EA7CFF /* swifttemplate */,
+				33EC6ED51FB3700000AB74F2 /* swifttemplate */,
+				3351A0921FB32C3D005C534E /* JSON */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		336D2FE51C4E487C00EA7CFF /* Resources */ = {
+		3351A0911FB32C3D005C534E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EC6ED41FB3700000AB74F2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -395,57 +508,150 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		336D2FE21C4E487C00EA7CFF /* Sources */ = {
+		3351A08E1FB32C3D005C534E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33D4C05D1C5003AC005114A0 /* TMPJNetworkManager.swift in Sources */,
-				33D4C06E1C501172005114A0 /* TMPJCollectionViewCell.swift in Sources */,
-				33D4C0661C5010AF005114A0 /* TMPJReportModel.swift in Sources */,
-				33D4C0481C4FF16A005114A0 /* TMPJLabel.swift in Sources */,
-				33D4C0641C500861005114A0 /* TMPJSqliteManager.swift in Sources */,
-				33D4C0761C5012FA005114A0 /* TMPJImageViewCell.swift in Sources */,
-				339FE0191C988411003FE6BE /* TMPJActionController.swift in Sources */,
-				33406CFA1C7AFC5B002330E9 /* TMPJOpenPlatform.swift in Sources */,
-				3388BCCD1C4FE60600F52938 /* TMPJBaseViewController.swift in Sources */,
-				339FE01A1C988411003FE6BE /* TMPJImagePickerController.swift in Sources */,
-				33D4C0401C4FECC1005114A0 /* TMPJTableView.swift in Sources */,
-				3375726F1C565FBD0017EDD5 /* TMPJNavigationController.swift in Sources */,
-				33D4C0461C4FED44005114A0 /* TMPJMainViewController.swift in Sources */,
-				339FE0141C98810D003FE6BE /* TMPJPageableRequest.swift in Sources */,
-				33D4C05B1C500396005114A0 /* TMPJNetworkEntity.swift in Sources */,
-				33D4C0611C5006CD005114A0 /* TMPJGlobalConfig.swift in Sources */,
-				3388BCCE1C4FE60600F52938 /* TMPJCollectionViewController.swift in Sources */,
-				33D4C04C1C4FF1BB005114A0 /* TMPJImageView.swift in Sources */,
-				33D4C03E1C4FEC91005114A0 /* TMPJTableViewController.swift in Sources */,
-				33D4C0501C4FF217005114A0 /* TMPJRefreshControl.swift in Sources */,
-				3388BCD41C4FE83D00F52938 /* TMPJLayoutViewController.swift in Sources */,
-				336D301E1C4E551900EA7CFF /* swifttemplate.swift in Sources */,
-				339FE0131C98810D003FE6BE /* TMPJCommonRequest.swift in Sources */,
-				33D4C0421C4FECEF005114A0 /* TMPJLeftSideController.swift in Sources */,
-				33D4C06C1C501150005114A0 /* TMPJTableViewCell.swift in Sources */,
-				33D4C05F1C5003CB005114A0 /* TMPJNetworkRequest.swift in Sources */,
-				33D4C0701C50119B005114A0 /* TMPJCollectionViewFlowLayout.swift in Sources */,
-				33E83F8C1ECFD8C000A9557D /* TMPJTextField.swift in Sources */,
-				33E2C1AE1C5245AB00583D81 /* TMPJView.swift in Sources */,
-				33D4C0441C4FED14005114A0 /* TMPJWebViewController.swift in Sources */,
-				33E947701C59EDA400B1F084 /* TMPJAlertManager.swift in Sources */,
-				33D4C0681C5010C9005114A0 /* TMPJReportService.swift in Sources */,
-				33D4C0741C501284005114A0 /* TMPJCollectionViewSectionFooter.swift in Sources */,
-				33D4C04A1C4FF1A4005114A0 /* TMPJButton.swift in Sources */,
-				33D4C0781C50D524005114A0 /* TMPJCommonUtils.swift in Sources */,
-				339FE01B1C988411003FE6BE /* TMPJPickerController.swift in Sources */,
-				3388BCD01C4FE65000F52938 /* TMPJAppDelegate.swift in Sources */,
-				33D4C04E1C4FF1DA005114A0 /* TMPJCollectionView.swift in Sources */,
-				33D4C0721C501270005114A0 /* TMPJCollectionViewSectionHeader.swift in Sources */,
-				3398D7481C5A7AED00F8FDA8 /* TMPJUserObject.swift in Sources */,
-				33D4C06A1C5010EB005114A0 /* TMPJGlobalService.swift in Sources */,
+				3351A09C1FB32C68005C534E /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33EC6ED11FB3700000AB74F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EC6F371FB3706100AB74F2 /* TMPJMainViewController.swift in Sources */,
+				33EC6F3E1FB3706100AB74F2 /* TMPJCollectionViewCell.swift in Sources */,
+				33EC6F3C1FB3706100AB74F2 /* swifttemplate.xcdatamodeld in Sources */,
+				33EC6F521FB3706100AB74F2 /* TMPJStackView.swift in Sources */,
+				33EC6F2A1FB3706100AB74F2 /* TMPJBaseViewController.swift in Sources */,
+				33EC6F461FB3706100AB74F2 /* TMPJRequest.swift in Sources */,
+				33EC6F2C1FB3706100AB74F2 /* TMPJLayoutViewController.swift in Sources */,
+				33EC6F421FB3706100AB74F2 /* TMPJModel.swift in Sources */,
+				33EC6F301FB3706100AB74F2 /* TMPJActionController.swift in Sources */,
+				33EC6F581FB3706100AB74F2 /* TMPJImageLabel.swift in Sources */,
+				33EC6F3B1FB3706100AB74F2 /* TMPJUserObject.swift in Sources */,
+				33EC6F2B1FB3706100AB74F2 /* TMPJCollectionViewController.swift in Sources */,
+				33EC6F451FB3706100AB74F2 /* TMPJPageableRequest.swift in Sources */,
+				33EC6F4B1FB3706100AB74F2 /* TMPJOpenPlatform.swift in Sources */,
+				33EC6F511FB3706100AB74F2 /* TMPJScrollView.swift in Sources */,
+				33EC6F491FB3706100AB74F2 /* TMPJGlobalService.swift in Sources */,
+				33EC6F4F1FB3706100AB74F2 /* TMPJImageView.swift in Sources */,
+				33EC6F321FB3706100AB74F2 /* TMPJDatePickerController.swift in Sources */,
+				33EC6F441FB3706100AB74F2 /* TMPJNetwork.swift in Sources */,
+				33EC6F351FB3706100AB74F2 /* TMPJShareController.swift in Sources */,
+				33EC6F411FB3706100AB74F2 /* TMPJError.swift in Sources */,
+				33EC6F4D1FB3706100AB74F2 /* TMPJButton.swift in Sources */,
+				33EC6F361FB3706100AB74F2 /* TMPJTextEditerController.swift in Sources */,
+				33EC6F471FB3706100AB74F2 /* TMPJRequestPath.swift in Sources */,
+				33EC6F551FB3706100AB74F2 /* TMPJTextView.swift in Sources */,
+				33EC6F4C1FB3706100AB74F2 /* TMPJPopupService.swift in Sources */,
+				33EC6F281FB3706100AB74F2 /* TMPJConstants.swift in Sources */,
+				33EC6F2E1FB3706100AB74F2 /* TMPJTableViewController.swift in Sources */,
+				33EC6F571FB3706100AB74F2 /* TMPJEffectView.swift in Sources */,
+				33EC6F541FB3706100AB74F2 /* TMPJTextField.swift in Sources */,
+				33EC6F431FB3706100AB74F2 /* TMPJAuthRequests.swift in Sources */,
+				33EC6F3A1FB3706100AB74F2 /* TMPJTokenObject.swift in Sources */,
+				33EC6F331FB3706100AB74F2 /* TMPJImagePickerController.swift in Sources */,
+				33EC6F401FB3706100AB74F2 /* TMPJTableViewCell.swift in Sources */,
+				33EC6F341FB3706100AB74F2 /* TMPJPickerController.swift in Sources */,
+				33EC6F311FB3706100AB74F2 /* TMPJCityPickerController.swift in Sources */,
+				33EC6F391FB3706100AB74F2 /* TMPJAssetObject.swift in Sources */,
+				33EC6F3D1FB3706100AB74F2 /* TMPJSqliteManager.swift in Sources */,
+				33EC6F291FB3706100AB74F2 /* TMPJExtensions.swift in Sources */,
+				33EC6F561FB3706100AB74F2 /* TMPJView.swift in Sources */,
+				33EC6F4A1FB3706100AB74F2 /* TMPJModelService.swift in Sources */,
+				33EC6F2D1FB3706100AB74F2 /* TMPJLeftSideController.swift in Sources */,
+				33EC6F591FB3706100AB74F2 /* TMPJInputToolbar.swift in Sources */,
+				33EC6F2F1FB3706100AB74F2 /* TMPJWebViewController.swift in Sources */,
+				33EC6F501FB3706100AB74F2 /* TMPJLabel.swift in Sources */,
+				33EC6F531FB3706100AB74F2 /* TMPJTableView.swift in Sources */,
+				33EC6F4E1FB3706100AB74F2 /* TMPJCollectionView.swift in Sources */,
+				33EC6F381FB3706100AB74F2 /* TMPJAreaObject.swift in Sources */,
+				33EC6F3F1FB3706100AB74F2 /* TMPJCollectionViewSectionHeader.swift in Sources */,
+				33EC6F271FB3706100AB74F2 /* TMPJCommonUtils.swift in Sources */,
+				33EC6F5A1FB3706100AB74F2 /* TMPJLayoutAssist.swift in Sources */,
+				33EC6F481FB3706100AB74F2 /* TMPJAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		3351A0991FB32C3D005C534E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MMCHLPPBPU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = JSON/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.icegent.JSON;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3351A09A1FB32C3D005C534E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MMCHLPPBPU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = JSON/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.icegent.JSON;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		336D2FED1C4E487C00EA7CFF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -471,6 +677,11 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)/shared",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -485,12 +696,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -521,6 +733,11 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)/shared",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -529,73 +746,102 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = arm64;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		336D2FF01C4E487C00EA7CFF /* Debug */ = {
+		33EC6EDC1FB3700000AB74F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MMCHLPPBPU;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)/shared",
-				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = swifttemplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.icegent.swifttemplate;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME).h";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 3.0;
-				VERSIONING_SYSTEM = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		336D2FF11C4E487C00EA7CFF /* Release */ = {
+		33EC6EDD1FB3700000AB74F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MMCHLPPBPU;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)/shared",
-				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = swifttemplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.icegent.swifttemplate;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME).h";
-				SWIFT_VERSION = 3.0;
-				VERSIONING_SYSTEM = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3351A0981FB32C3D005C534E /* Build configuration list for PBXNativeTarget "JSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3351A0991FB32C3D005C534E /* Debug */,
+				3351A09A1FB32C3D005C534E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		336D2FE11C4E487C00EA7CFF /* Build configuration list for PBXProject "swifttemplate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -605,16 +851,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		336D2FEF1C4E487C00EA7CFF /* Build configuration list for PBXNativeTarget "swifttemplate" */ = {
+		33EC6EDB1FB3700000AB74F2 /* Build configuration list for PBXNativeTarget "swifttemplate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				336D2FF01C4E487C00EA7CFF /* Debug */,
-				336D2FF11C4E487C00EA7CFF /* Release */,
+				33EC6EDC1FB3700000AB74F2 /* Debug */,
+				33EC6EDD1FB3700000AB74F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		33EC6F001FB3706100AB74F2 /* swifttemplate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				33EC6F011FB3706100AB74F2 /* swifttemplate.xcdatamodel */,
+			);
+			currentVersion = 33EC6F011FB3706100AB74F2 /* swifttemplate.xcdatamodel */;
+			path = swifttemplate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 336D2FDE1C4E487C00EA7CFF /* Project object */;
 }

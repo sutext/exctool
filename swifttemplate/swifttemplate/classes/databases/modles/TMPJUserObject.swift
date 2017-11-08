@@ -6,63 +6,41 @@
 //  Copyright © 2016年 icegent. All rights reserved.
 //
 
-import UIKit
-import CoreData
+import Airmey
 
-enum TMPJUserObjectRole : String
-{
-    case Waiter;
-    case Cashier;
-    case Manager;
-    case Boos;
+extension TMPJUserObject:TMPJDynamicObjectConvertible{
+    static var primaryKey: String{
+        return "account"
+    }
+    func setup(_ model: TMPJDynamicObject) {
+        
+    }
 }
-
-enum TMPJUserObjectGender : String
-{
-    case Unkown;
-    case Boy;
-    case Girl;
+extension TMPJUserObject{
+    enum Gender :String{
+        case boy = "MALE"
+        case girl = "FAMALE"
+    }
 }
-
-class TMPJUserObject: NSManagedObject {
-    @NSManaged var name: String?
-    @NSManaged var birthday: String?
-    @NSManaged var avator: String?
-    @NSManaged var userid: String?
-    @NSManaged var shopid: String?
-    @NSManaged var mobile: String?
-    @NSManaged var regist_time: Date?
-    @NSManaged var num_login: NSNumber?
-    @NSManaged var str_role: String?
-    @NSManaged var str_age: String?
-    @NSManaged var str_sex: String?
-    @NSManaged var add_time: Date?
-    @NSManaged var token: String?
-    
-    var role:TMPJUserObjectRole{
+extension TMPJUserObject.Gender:AMNameConvertible,AMImageConvertible
+{
+    var name:String {
         get {
-            return TMPJUserObjectRole(rawValue: self.str_role!)!;
-        }
-        set(newval){
-            self.str_role = newval.rawValue;
+            switch self {
+            case .boy:
+                return "男"
+            case .girl:
+                return "女"
+            }
         }
     }
-    
-    var gender:TMPJUserObjectGender{
-        get {
-            return TMPJUserObjectGender(rawValue: self.str_sex!)!;
-        }
-        set(newval){
-            self.str_sex = newval.rawValue;
-        }
-    }
-    
-    var islogin:Bool{
-        get {
-            return (self.num_login?.boolValue)!;
-        }
-        set (newval){
-            self.num_login = NSNumber(value: newval as Bool);
+    var image:UIImage?{
+        switch self {
+        case .boy:
+            return UIImage(named:"icon_gender_boy")
+        case .girl:
+            return UIImage(named:"icon_gender_girl")
         }
     }
+    static let all:[TMPJUserObject.Gender] = [.boy,.girl]
 }

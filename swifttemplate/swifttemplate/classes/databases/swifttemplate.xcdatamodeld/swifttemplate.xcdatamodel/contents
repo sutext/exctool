@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TMPJAreaObject" representedClassName="TMPJAreaObject" syncable="YES" codeGenerationType="class">
+        <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="initial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TMPJAreaObject" inverseName="parent" inverseEntity="TMPJAreaObject" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TMPJAreaObject" inverseName="children" inverseEntity="TMPJAreaObject" syncable="YES"/>
+    </entity>
+    <entity name="TMPJAssetObject" representedClassName="TMPJAssetObject" syncable="YES" codeGenerationType="class">
+        <attribute name="account" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="balance" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rawType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TMPJTokenObject" representedClassName="TMPJTokenObject" syncable="YES" codeGenerationType="class">
+        <attribute name="pkey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TMPJUserObject" inverseName="token" inverseEntity="TMPJUserObject" syncable="YES"/>
+    </entity>
+    <entity name="TMPJUserObject" representedClassName="TMPJUserObject" syncable="YES" codeGenerationType="class">
+        <attribute name="account" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="age" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="areaid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cover" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawGender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawLoveStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signature" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagstr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="token" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TMPJTokenObject" inverseName="user" inverseEntity="TMPJTokenObject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TMPJAreaObject" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="TMPJAssetObject" positionX="-18" positionY="162" width="128" height="90"/>
+        <element name="TMPJTokenObject" positionX="-45" positionY="90" width="128" height="30"/>
+        <element name="TMPJUserObject" positionX="-36" positionY="99" width="128" height="30"/>
+    </elements>
+</model>

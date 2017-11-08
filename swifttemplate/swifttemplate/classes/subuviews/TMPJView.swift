@@ -6,8 +6,8 @@
 //  Copyright © 2016年 icegent. All rights reserved.
 //
 
-import EasyTools
+import Airmey
 
-class TMPJView: ETTapView {
+class TMPJView: AMView {
 
 }

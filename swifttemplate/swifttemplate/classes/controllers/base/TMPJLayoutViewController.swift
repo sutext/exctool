@@ -6,30 +6,28 @@
 //  Copyright © 2016年 icegent. All rights reserved.
 //
 
-import EasyTools
+import Airmey
 
-final class TMPJLayoutViewController: ETLayoutViewController {
+final class TMPJLayoutViewController: AMSideViewContrller {
     
     static let shared = TMPJLayoutViewController();
     
-    fileprivate convenience init()
+    private convenience init()
     {
-        self.init(rootViewController:TMPJNavigationController(rootViewController: TMPJMainViewController()));
+        self.init(rootViewController: TMPJMainViewController())
         self.modalTransitionStyle = .flipHorizontal;
-        self.leftViewController = TMPJLeftSideController();
-        self.leftDisplayVector = CGVector(dx: ETScaledFloat(245), dy: 64);
     }
     override var childViewControllerForStatusBarStyle: UIViewController?
-        {
-            return self.rootViewController;
+    {
+        return self.rootViewController;
     }
     override var childViewControllerForStatusBarHidden: UIViewController?
-        {
-            return self.rootViewController;
+    {
+        return self.rootViewController;
     }
     func pushViewController(controller:UIViewController,animated:Bool)
     {
-        self.dismissCurrentController(true);
-        (self.rootViewController as! TMPJNavigationController).pushViewController(controller, animated: animated);
+        self.dismissCurrentController(animated: true)
+        (self.rootViewController as! UINavigationController).pushViewController(controller, animated: animated);
     }
 }

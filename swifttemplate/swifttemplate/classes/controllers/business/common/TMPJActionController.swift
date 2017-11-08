@@ -3,21 +3,25 @@
 //  CoreTeahouse
 //
 //  Created by supertext on 15/3/11.
-//  Copyright © 2016年 mding. All rights reserved.
+//  Copyright © 2016年 icegent. All rights reserved.
 //
 
-import EasyTools
-
-class CTActionController<ActionItem:TMPJNameConvertibale>: TMPJTableViewController {
-    var maxLineCont = 4;
-    fileprivate var actionView:UIView = UIView();
-    fileprivate var completed:((_ sender:CTActionController,_ item:ActionItem?,_ index:Int?)->Void);
-    fileprivate var items:[ActionItem] = [];
-    fileprivate var actions:[TMPJButton] = [];
-    init(items:[ActionItem],completed:@escaping ((_ sender:CTActionController,_ item:ActionItem?,_ index:Int?)->Void)) {
-        self.completed = completed;
-        super.init(style:.grouped);
-        self.items = items;
+import Airmey
+class TMPJActionController<ActionItem:AMNameConvertible>: TMPJTableViewController {
+    private var completed:((_ sender:TMPJActionController,_ item:ActionItem?,_ index:Int?)->Void);
+    private var items:[ActionItem] = [];
+    private var actions:[TMPJButton] = [];
+    private var animator:AMPresentFrameAssistor!
+    private let cancelButton = TMPJButton.cover(title: "取消", size: CGSize(width:.screenWidth,height:50),titleColor:.black,titleFont:.size17)
+    init(items:[ActionItem],completed:@escaping ((_ sender:TMPJActionController,_ item:ActionItem?,_ index:Int?)->Void)) {
+        self.completed = completed
+        let count = (items.count + 1).clamp(in: 1...6)
+        super.init(style:.plain)
+        self.tableView.isScrollEnabled = (items.count+1 > 6)
+        self.items = items
+        self.animator = AMPresentFrameAssistor(CGFloat(count*50)+2)
+        self.transitioningDelegate = self.animator
+        self.modalPresentationStyle = .custom
     }
     
     convenience required init?(coder aDecoder: NSCoder) {
@@ -25,82 +29,27 @@ class CTActionController<ActionItem:TMPJNameConvertibale>: TMPJTableViewControll
     }
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.view.backgroundColor = UIColor(white: 0, alpha: 0.4);
-        self.view.alpha = 0;
-        let blurView = TMPJView(frame:self.view.bounds)
-        blurView.backgroundColor = UIColor.clear;
-        blurView.tapAction = {[unowned self] blv in
-            self.hide();
+        self.tableView.delaysContentTouches = false
+        self.tableView.rowHeight = 50
+        self.view.addSubview(self.cancelButton)
+        self.cancelButton.adhere(bottom: nil)
+        self.cancelButton.align(centerX: nil)
+        self.cancelButton.clickedAction = {[weak self]sender in
+            self?.hide()
         }
-        self.view.addSubview(blurView);
-        let showCount = (self.items.count > self.maxLineCont ? self.maxLineCont : self.items.count)
-        let tableHeight = CGFloat(showCount * 50);
-        let actionHeight = CGFloat( self.actions.count * 51);
-        var totalHeight  = tableHeight + actionHeight + 3;
-        if showCount == 0
-        {
-            totalHeight = actionHeight;
-        }
-        self.actionView.frame = CGRect(x:0,y: self.view.height,width: self.view.width,height: totalHeight)
-        self.view.addSubview(self.actionView);
-        self.actionView.backgroundColor = kTMPJSeparatorColor;
-        
-        self.tableView.frame = CGRect(x:0,y: 0,width: self.actionView.width,height: tableHeight);
-        self.tableView.backgroundColor = UIColor.clear;
-        self.tableView.showsVerticalScrollIndicator = false;
-        self.tableView.isScrollEnabled = (self.items.count > self.maxLineCont);
-        self.actionView.addSubview(self.tableView);
-        
-        var top = tableHeight + 4;
-        if showCount == 0
-        {
-            top = 0;
-        }
-        for action in actions
-        {
-            action.top = top;
-            top = action.bottom+1;
-            self.actionView.addSubview(action);
-        }
-        UIView.animate(withDuration: 0.3) { () -> Void in
-            self.actionView.top = self.view.height - totalHeight;
-            self.view.alpha = 1;
-        }
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 52, right: 0)
     }
-    
-    func addAction(_ title:String,color:UIColor = UIColor.black,action:(()->Void)? = nil)
+    private func hide(_ index:Int? = nil)
     {
-        let actionButton = TMPJButton.actionButton(title, titleColor: color);
-        actionButton.clickedAction = {[unowned self] bnt in
-            self.hide(action: action);
-        };
-        self.actions.append(actionButton);
+        self.dismiss(animated: true) {
+            if let idx = index
+            {
+                self.completed(self, self.items[idx],idx);
+            }
+        }
     }
-    
-    func show()
-    {
-        ETGlobalContainer.single.present(self);
-    }
-    func hide(_ index:Int? = nil,action:(()->Void)? = nil)
-    {
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            self.actionView.top = self.view.height;
-            self.view.alpha = 0;
-            }, completion: { (comp) -> Void in
-                if let idx = index
-                {
-                    self.completed(self, self.items[idx],idx);
-                }
-                if let  block = action
-                {
-                    block();
-                }
-                ETGlobalContainer.single.dismissController();
-        })
-    }
-    //MARK:  --UITableView methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count;
+        return self.items.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "actionCell") as? TMPJTableViewCell;
@@ -109,12 +58,13 @@ class CTActionController<ActionItem:TMPJNameConvertibale>: TMPJTableViewControll
             cell = TMPJTableViewCell(style: .default, reuseIdentifier: "actionCell");
             cell?.accessoryType = .none;
             cell?.textLabel?.textAlignment = .center;
+            cell?.separatorInset = UIEdgeInsets.zero
         }
         cell!.textLabel?.text = self.items[indexPath.row].name;
         return cell!;
     }
-    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true);
-        self.hide(indexPath.row);
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.hide(indexPath.row)
     }
 }

@@ -13,8 +13,6 @@ open class TMPJAppDelegate: UIResponder,UIApplicationDelegate{
     open var window: UIWindow?
     
     open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        TMPJGlobalConfig.global.globalConfig();
-        kTMPJNetworkManager.startMonitoring();
         self.window = UIWindow(frame:UIScreen.main.bounds);
         self.window?.backgroundColor=UIColor.white;
         self.window?.rootViewController=TMPJLayoutViewController.shared;

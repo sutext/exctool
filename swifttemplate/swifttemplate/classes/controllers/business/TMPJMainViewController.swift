@@ -6,7 +6,7 @@
 //  Copyright © 2016年 icegent. All rights reserved.
 //
 
-import EasyTools
+import Airmey
 
 class TMPJMainViewController: TMPJTableViewController {
     override func viewDidLoad() {
@@ -14,6 +14,6 @@ class TMPJMainViewController: TMPJTableViewController {
         self.view.backgroundColor=UIColor.white
     }
     override func leftItemAction(_ sender: AnyObject!) {
-        TMPJLayoutViewController.shared.showLeftViewController(true);
+        TMPJLayoutViewController.shared.showLeftController(animated: true)
     }
 }
