@@ -8,15 +8,35 @@
 
 import Airmey
 
-class TMPJTextView: AMTextView {
+class TMPJTextView: UITextView {
+    @objc dynamic var placeholder:String?{
+        get{
+            return self.holderLabel.text
+        }
+        set{
+            self.holderLabel.text = newValue
+        }
+    }
+    private var holderLabel:UILabel{
+        if let label = self.value(forKey: "_placeholderLabel") as? UILabel{
+            return label
+        }
+        let label = UILabel()
+        label.font = .size14
+        label.backgroundColor = .clear
+        label.textColor = UIColor(0xaaaaaa)
+        self.setValue(label, forKey: "_placeholderLabel")
+        self.addSubview(label)
+        return label
+    }
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.font = .size14
     }
     convenience init(){
         self.init(frame: .zero, textContainer: nil)
     }
-    
     required init?(coder aDecoder: NSCoder) {
         return nil
     }

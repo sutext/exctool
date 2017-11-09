@@ -6,8 +6,7 @@
 //  Copyright © 2016年 icegent. All rights reserved.
 //
 
-import Airmey
-import Alamofire
+import UIKit
 
 class TMPJPageableRequest<DataModel>:TMPJRequest<DataModel> {
     var index:Int=0

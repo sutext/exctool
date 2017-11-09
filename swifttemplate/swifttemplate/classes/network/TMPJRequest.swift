@@ -85,7 +85,4 @@ extension TMPJRequest where DataModel:RandomAccessCollection, DataModel:MutableC
         return ary as! DataModel;
     }
 }
-class TMPJCommonRequest: TMPJRequest<TMPJNetworkObject>,AMDataRequest{
-    
-}
 

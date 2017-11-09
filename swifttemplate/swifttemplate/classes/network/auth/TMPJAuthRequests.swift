@@ -7,7 +7,6 @@
 //
 
 import Airmey
-import Alamofire
 
 struct TMPJAuth {private init(){}}
 extension TMPJAuth{
