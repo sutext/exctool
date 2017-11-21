@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331F16A71FBD939600341744 /* TMPJTextPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331F16A61FBD939600341744 /* TMPJTextPickerController.swift */; };
 		334A3AD71FB42CEE00F65813 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3351A0931FB32C3D005C534E /* JSON.framework */; };
 		3350C4031FB4634C004C83D4 /* Airmey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3350C4001FB4634B004C83D4 /* Airmey.framework */; };
 		3350C4041FB4634C004C83D4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3350C4011FB4634C004C83D4 /* Alamofire.framework */; };
@@ -62,13 +63,14 @@
 		33EC6F541FB3706100AB74F2 /* TMPJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F1F1FB3706100AB74F2 /* TMPJTextField.swift */; };
 		33EC6F551FB3706100AB74F2 /* TMPJTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F201FB3706100AB74F2 /* TMPJTextView.swift */; };
 		33EC6F561FB3706100AB74F2 /* TMPJView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F211FB3706100AB74F2 /* TMPJView.swift */; };
-		33EC6F571FB3706100AB74F2 /* TMPJEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F231FB3706100AB74F2 /* TMPJEffectView.swift */; };
+		33EC6F571FB3706100AB74F2 /* TMPJImageEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F231FB3706100AB74F2 /* TMPJImageEffect.swift */; };
 		33EC6F581FB3706100AB74F2 /* TMPJImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F241FB3706100AB74F2 /* TMPJImageLabel.swift */; };
 		33EC6F591FB3706100AB74F2 /* TMPJInputToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F251FB3706100AB74F2 /* TMPJInputToolbar.swift */; };
 		33EC6F5A1FB3706100AB74F2 /* TMPJLayoutAssist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6F261FB3706100AB74F2 /* TMPJLayoutAssist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		331F16A61FBD939600341744 /* TMPJTextPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPJTextPickerController.swift; sourceTree = "<group>"; };
 		3350C4001FB4634B004C83D4 /* Airmey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Airmey.framework; path = ../shared/Airmey.framework; sourceTree = "<group>"; };
 		3350C4011FB4634C004C83D4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../shared/Alamofire.framework; sourceTree = "<group>"; };
 		3350C4021FB4634C004C83D4 /* OpenPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenPlatform.framework; path = ../shared/OpenPlatform.framework; sourceTree = "<group>"; };
@@ -127,7 +129,7 @@
 		33EC6F1F1FB3706100AB74F2 /* TMPJTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextField.swift; sourceTree = "<group>"; };
 		33EC6F201FB3706100AB74F2 /* TMPJTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextView.swift; sourceTree = "<group>"; };
 		33EC6F211FB3706100AB74F2 /* TMPJView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJView.swift; sourceTree = "<group>"; };
-		33EC6F231FB3706100AB74F2 /* TMPJEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJEffectView.swift; sourceTree = "<group>"; };
+		33EC6F231FB3706100AB74F2 /* TMPJImageEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJImageEffect.swift; sourceTree = "<group>"; };
 		33EC6F241FB3706100AB74F2 /* TMPJImageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJImageLabel.swift; sourceTree = "<group>"; };
 		33EC6F251FB3706100AB74F2 /* TMPJInputToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJInputToolbar.swift; sourceTree = "<group>"; };
 		33EC6F261FB3706100AB74F2 /* TMPJLayoutAssist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJLayoutAssist.swift; sourceTree = "<group>"; };
@@ -265,10 +267,11 @@
 			isa = PBXGroup;
 			children = (
 				33EC6EF21FB3706100AB74F2 /* TMPJActionController.swift */,
+				33EC6EF61FB3706100AB74F2 /* TMPJPickerController.swift */,
 				33EC6EF31FB3706100AB74F2 /* TMPJCityPickerController.swift */,
 				33EC6EF41FB3706100AB74F2 /* TMPJDatePickerController.swift */,
+				331F16A61FBD939600341744 /* TMPJTextPickerController.swift */,
 				33EC6EF51FB3706100AB74F2 /* TMPJImagePickerController.swift */,
-				33EC6EF61FB3706100AB74F2 /* TMPJPickerController.swift */,
 				33EC6EF71FB3706100AB74F2 /* TMPJShareController.swift */,
 				33EC6EF81FB3706100AB74F2 /* TMPJTextEditerController.swift */,
 			);
@@ -367,7 +370,7 @@
 		33EC6F221FB3706100AB74F2 /* widgets */ = {
 			isa = PBXGroup;
 			children = (
-				33EC6F231FB3706100AB74F2 /* TMPJEffectView.swift */,
+				33EC6F231FB3706100AB74F2 /* TMPJImageEffect.swift */,
 				33EC6F241FB3706100AB74F2 /* TMPJImageLabel.swift */,
 				33EC6F251FB3706100AB74F2 /* TMPJInputToolbar.swift */,
 				33EC6F261FB3706100AB74F2 /* TMPJLayoutAssist.swift */,
@@ -524,6 +527,7 @@
 				33EC6F491FB3706100AB74F2 /* TMPJGlobalService.swift in Sources */,
 				33EC6F4F1FB3706100AB74F2 /* TMPJImageView.swift in Sources */,
 				33EC6F321FB3706100AB74F2 /* TMPJDatePickerController.swift in Sources */,
+				331F16A71FBD939600341744 /* TMPJTextPickerController.swift in Sources */,
 				33EC6F441FB3706100AB74F2 /* TMPJNetwork.swift in Sources */,
 				33EC6F351FB3706100AB74F2 /* TMPJShareController.swift in Sources */,
 				33EC6F411FB3706100AB74F2 /* TMPJError.swift in Sources */,
@@ -534,7 +538,7 @@
 				33EC6F4C1FB3706100AB74F2 /* TMPJPopupService.swift in Sources */,
 				33EC6F281FB3706100AB74F2 /* TMPJConstants.swift in Sources */,
 				33EC6F2E1FB3706100AB74F2 /* TMPJTableViewController.swift in Sources */,
-				33EC6F571FB3706100AB74F2 /* TMPJEffectView.swift in Sources */,
+				33EC6F571FB3706100AB74F2 /* TMPJImageEffect.swift in Sources */,
 				33EC6F541FB3706100AB74F2 /* TMPJTextField.swift in Sources */,
 				33EC6F431FB3706100AB74F2 /* TMPJAuthRequests.swift in Sources */,
 				33EC6F3A1FB3706100AB74F2 /* TMPJTokenObject.swift in Sources */,

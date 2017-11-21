@@ -9,7 +9,6 @@ import Airmey
 
 class TMPJCollectionViewController: TMPJBaseViewController{
     let collectionView:TMPJCollectionView
-    var contentInsets:AMConstraintInsets!
     convenience override init()
     {
         self.init(collectionViewLayout:UICollectionViewFlowLayout());
@@ -30,11 +29,14 @@ class TMPJCollectionViewController: TMPJBaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad();
         self.view.addSubview(self.collectionView)
-        let left = self.collectionView.adhere(left: nil)
-        let right = self.collectionView.adhere(right: nil)
-        let top = self.collectionView.topAnchor.equal(to: self.topLayoutGuide.bottomAnchor)
-        let bottom = self.collectionView.bottomAnchor.equal(to: self.bottomLayoutGuide.topAnchor)
-        self.contentInsets = AMConstraintInsets(top: top, left: left, bottom: bottom, right: right)
+        self.collectionView.adhere(insets: nil)
+        self.collectionView.contentInset = UIEdgeInsets(top: self.topbarInset, left: 0, bottom: self.bottomInset, right: 0)
+    }
+    var bottomInset:CGFloat{
+        return 0
+    }
+    var topbarInset:CGFloat{
+        return .navbarHeight
     }
     func loadMore()  {
         

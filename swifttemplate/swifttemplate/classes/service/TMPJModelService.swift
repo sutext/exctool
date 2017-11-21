@@ -13,18 +13,27 @@ final class TMPJModelService {
     private init(){}
 }
 extension TMPJModelService{
+    func area(for user:TMPJUserObject,update:Bool = false,block:((TMPJAreaObject?,Error?) -> Void)? = nil){
+        guard let id = user.areaid else {
+            DispatchQueue.main.async {
+                block?(nil,TMPJError.logic(info: "areaid 不存在"))
+            }
+            return
+        }
+        self.area(for: id, update: update, block: block)
+    }
     func area(for id:String,update:Bool = false,block:((TMPJAreaObject?,Error?) -> Void)? = nil) {
         func request(){
-//            TMPJNetwork.shared.datatask(CKAreaRequest(info:id)) { (req, resp) in
-//                switch resp.result{
-//                case .failure(let err):
-//                    block?(nil,err)
-//                case .success(let value):
-//                    CKSqliteService.shared.insertUpdate(CKAreaObject.self, object: value){ (obj) in
-//                        block?(obj,nil)
-//                    }
-//                }
-//            }
+            TMPJNetwork.shared.datatask(TMPJAreaRequest(info:id)) { (req, resp) in
+                switch resp.result{
+                case .failure(let err):
+                    block?(nil,err)
+                case .success(let value):
+                    TMPJSqliteService.shared.insertUpdate(TMPJAreaObject.self, object: value){ (obj) in
+                        block?(obj,nil)
+                    }
+                }
+            }
         }
         if update {
             request()
@@ -38,48 +47,32 @@ extension TMPJModelService{
             request()
         }
     }
-
-    func areas(for parent:TMPJAreaObject?,update:Bool = false,block:(([TMPJAreaObject]?,Error?) -> Void)? = nil){
-        var pid = parent?.id
-        if pid == nil {
-            pid = "0"
+    func areas(for parent:TMPJAreaObject,update:Bool = false,block:((NSOrderedSet?,Error?) -> Void)? = nil){
+        guard let pid = parent.id else {
+            block?(nil,TMPJError.logic(info: "数据错误"))
+            return
         }
         func request(){
-//            CKNetwork.karaok.datatask(CKAreaRequest(list:pid!)) { (req, resp) in
-//                switch resp.result{
-//                case .failure(let err):
-//                    block?(nil,err)
-//                case .success(let value):
-//                    CKSqliteService.shared.insertUpdate(CKAreaObject.self, objects: value.array()){ (objs) in
-//                        if let pobj = parent{
-//                            pobj.addToChildren(NSOrderedSet(array: objs))
-//                            CKSqliteManager.shared.saveContext()
-//                        }
-//                        block?(objs,nil)
-//                    }
-//                }
-//            }
+            TMPJNetwork.shared.datatask(TMPJAreaRequest(list:pid)) { (req, resp) in
+                switch resp.result{
+                case .failure(let err):
+                    block?(nil,err)
+                case .success(let value):
+                    TMPJSqliteService.shared.insertUpdate(TMPJAreaObject.self, objects: value.array()){ (objs) in
+                        let children = NSOrderedSet(array: objs)
+                        parent.addToChildren(children)
+                        parent.isLoaded = true
+                        TMPJSqliteManager.shared.saveContext()
+                        block?(children,nil)
+                    }
+                }
+            }
         }
-        if update{
+        if update || !parent.isLoaded{
             request()
             return
         }
-        if let pobj = parent {
-            if let objects = pobj.children?.array as? [TMPJAreaObject],objects.count>0{
-                block?(objects,nil)
-                return
-            }
-            request()
-            return
-        }
-        let predicate = NSPredicate(format: "pid=0")
-        TMPJSqliteService.shared.query(list: TMPJAreaObject.self, predicate: predicate) { (objects) in
-            if objects.count > 0{
-                block?(objects,nil)
-                return
-            }
-            request()
-        }
+        block?(parent.children,nil)
     }
 
 }

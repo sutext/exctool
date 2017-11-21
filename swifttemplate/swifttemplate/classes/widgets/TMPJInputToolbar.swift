@@ -11,7 +11,7 @@ import Airmey
 ///just implement bar position appearence
 ///user must subclass this and implement his apperence
 
-class TMPJInputToolbar:UIView{
+class TMPJInputToolbar:AMToolBar{
     
     ///subclass must node that
     ///the textView didn't been add to subviews
@@ -20,25 +20,20 @@ class TMPJInputToolbar:UIView{
     
     let textView:TMPJTextView
     let keybord:AMKeyboardController
-    let standardHeight:CGFloat = 50
-    fileprivate var bottomConstraint:NSLayoutConstraint!
-    fileprivate var heightConstraint:NSLayoutConstraint!
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     init(_ textView:TMPJTextView?){
         let textv = textView ?? TMPJTextView()
         self.keybord = AMKeyboardController(textv)
-        self.keybord.register(AMEmojKeybord.self, for: .emoj)
+        self.keybord.register(AMEmojKeyboard.self, for: .emoj)
         self.textView = textv
-        super.init(frame: .zero)
-        self.backgroundColor = .white
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightConstraint = self.heightAnchor.equal(to: 50)
-        self.layer.shadowOpacity = 0.15
-        self.layer.shadowColor = UIColor(0x000000,alpha:0.3).cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: -1)
-        self.addObserve()
+        super.init(style:.normal)
+        NotificationCenter.default.addObserver(self, selector: #selector(TMPJInputToolbar.keyboarWillShow(sender:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TMPJInputToolbar.keyboarWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
+        if textView == nil {
+            NotificationCenter.default.addObserver(self, selector: #selector(TMPJInputToolbar.textDidChange(sender:)), name: .UITextViewTextDidChange, object: self.textView)
+        }
     }
     func dismissKeyboard(){
         self.keybord.dismissKeyboard()
@@ -52,35 +47,25 @@ class TMPJInputToolbar:UIView{
 }
 extension TMPJInputToolbar
 {
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        if let _ = self.superview{
-            self.adhere(left: nil)
-            self.adhere(right: nil)
-            self.bottomConstraint = self.adhere(bottom: nil)
+    @objc func textDidChange(sender:Notification?) {
+        let size = self.textView.sizeThatFits(CGSize(width: self.textView.frame.width, height: 100000))
+        switch (size.height)
+        {
+        case ...35:
+            self.setup(height: TMPJInputToolbar.contentHeight)
+        case 35...82:
+            self.setup(height: size.height+20)
+        case 82...:
+            self.setup(height: 102)
+        default:
+            break;
         }
-    }
-    fileprivate func addObserve() {
-        NotificationCenter.default.addObserver(self, selector: #selector(TMPJInputToolbar.keyboarWillShow(sender:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(TMPJInputToolbar.keyboarWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
     }
     @objc func keyboarWillShow(sender:Notification?) {
         let height = (sender?.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size.height
-        self.setup(bottom: -height)
+        self.setup(bottom: -height + .footerHeight)
     }
     @objc func keyboarWillHide(sender:Notification?) {
         self.setup(bottom: 0)
-    }
-    func setup(bottom:CGFloat){
-        self.bottomConstraint.constant = bottom
-        UIView.animate(withDuration: 0.25) {
-            self.superview?.layoutIfNeeded();
-        }
-    }
-    func setup(height:CGFloat){
-        self.heightConstraint.constant = height
-        UIView.animate(withDuration: 0.25) {
-            self.superview?.layoutIfNeeded();
-        }
     }
 }

@@ -101,3 +101,13 @@ extension TMPJAuth{
         }
     }
 }
+class TMPJAreaRequest:TMPJRequest<TMPJNetworkObject> ,AMDataRequest{
+    init(list pid:String){
+        super.init(.other(.areaList),method: .get)
+        self.set(param: pid, forKey: "pid")
+    }
+    init(info id:String){
+        super.init(.other(.area),method: .get)
+        self.set(param: id, forKey: "id")
+    }
+}

@@ -11,11 +11,7 @@ import Airmey
 let popup = TMPJPopupService()
 
 final class TMPJPopupService {
-    enum RemindType {
-        case succeed(String)
-        case failure(String)
-        case error(Error)
-    }
+    
     
     fileprivate init(){}
     private var wating:(UIViewController & AMControllerWaitable)?
@@ -90,23 +86,43 @@ final class TMPJPopupService {
         remind.assistor.dismissBlock = dismissed
         UIApplication.shared.lastPresentedController?.present(remind, animated: true, completion: nil)
     }
-    func action(title:String?=nil, items:[AMNameConvertible],dismissIndex:((AMNameConvertible?,Int?)->Void)?){
+    func action<ActionItem:AMNameConvertible>(_ items:[ActionItem],style:ActionStyle = .plain,dismissIndex:((ActionItem,Int)->Void)?){
         guard self.current == nil else {
             return
         }
         guard items.count > 0 else {
             return
         }
-        let action = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
-        for item in items.enumerated() {
-            action.addAction(UIAlertAction(title: item.element.name, style: .default, handler: { (action) in
-                dismissIndex?(item.element,item.offset)
-            }))
+        var vc:UIViewController?
+        switch style {
+        case .system:
+            let action = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            for item in items.enumerated() {
+                action.addAction(UIAlertAction(title: item.element.name, style: .default, handler: { (action) in
+                    dismissIndex?(item.element,item.offset)
+                }))
+            }
+            action.addAction(UIAlertAction(title: "取消", style: .cancel))
+            vc = action
+        case .plain:
+            let plain = TMPJActionController(items)
+            plain.finishBlock = {sender,item,index in
+                dismissIndex?(item,index)
+            }
+            vc = plain
         }
-        action.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
-            dismissIndex?(nil,nil)
-        }))
-        UIApplication.shared.lastPresentedController?.present(action, animated: true, completion: nil)
+        UIApplication.shared.lastPresentedController?.present(vc!, animated: true, completion: nil)
+    }
+
+}
+extension TMPJPopupService{
+    enum RemindType {
+        case succeed(String)
+        case failure(String)
+        case error(Error)
+    }
+    enum ActionStyle {
+        case system
+        case plain
     }
 }
-

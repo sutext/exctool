@@ -9,54 +9,53 @@
 import Airmey
 import OpenPlatform
 
-final class TMPJShareController: TMPJBaseViewController{
+final class TMPJShareController: UIViewController{
+    private let effectView = AMEffectView()
     private let titleLabel = TMPJLabel()
-    private let cancelButton = TMPJButton.cover(title: "取消", size: CGSize(width:.screenWidth,height:40), titleColor: .mainText, titleFont: .size14, imageColor: UIColor(0xf5f5f5))
+    private let cancelBar = TMPJCancelBar()
     private let scorllView  = TMPJScrollView()
     private let stackView = TMPJStackView.defualt
-    private var adapter = AMPresentFrameAssistor(193)
+    private var adapter = AMPresentFrameAssistor(153 + .tabbarHeight)
     var dismissBlock:((Channel)->Void)?
     var channels = Channel.all
-    override init() {
-        super.init()
+    init() {
+        super.init(nibName: nil, bundle: nil)
         self.transitioningDelegate = self.adapter
         self.modalPresentationStyle = .custom
     }
+    required init?(coder aDecoder: NSCoder) {
+        return nil
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(self.effectView)
         self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.scorllView)
-        self.view.addSubview(self.cancelButton)
+        self.view.addSubview(self.cancelBar)
         self.scorllView.addSubview(self.stackView)
-        self.scorllView.delaysContentTouches = false;
+        self.scorllView.delaysContentTouches = false
         for channle in self.channels
         {
             self.addButton(for: channle)
         }
-        self.view.backgroundColor = .white
         self.stackView.spacing = (CGFloat.screenWidth - 240)/3
         self.titleLabel.font = .size14
         self.titleLabel.textColor = .subText
         self.titleLabel.text = "分享:"
         
-        self.titleLabel.topAnchor.equal(to: self.view.topAnchor,offset:15)
-        self.scorllView.topAnchor.equal(to: self.titleLabel.bottomAnchor,offset:15)
-        self.scorllView.bottomAnchor.equal(to: self.cancelButton.topAnchor)
-        self.cancelButton.bottomAnchor.equal(to: self.view.bottomAnchor);
+        self.effectView.adhere(insets: nil)
+        self.titleLabel.adhere(top: 15)
+        self.scorllView.adhere(top: 45)
+        self.scorllView.bottomAnchor.equal(to: self.cancelBar.topAnchor)
+        self.titleLabel.adhere(left: 20)
+        self.scorllView.adhere(left: nil)
+        self.scorllView.adhere(right: nil)
+        self.stackView.adhere(insets: (0,20,0,20))
         
-        self.titleLabel.leftAnchor.equal(to: self.view.leftAnchor,offset:20)
-        self.scorllView.leftAnchor.equal(to: self.view.leftAnchor)
-        self.scorllView.rightAnchor.equal(to: self.view.rightAnchor)
-        self.cancelButton.leftAnchor.equal(to: self.view.leftAnchor)
-        
-        self.stackView.leftAnchor.equal(to: self.scorllView.leftAnchor,offset:20)
-        self.stackView.rightAnchor.equal(to: self.scorllView.rightAnchor,offset:-20)
-        self.stackView.topAnchor.equal(to: self.scorllView.topAnchor)
-        self.stackView.bottomAnchor.equal(to: self.scorllView.bottomAnchor);
-        
-        self.cancelButton.clickedAction = {[weak self] sender in
-            self?.dismiss(animated: true, completion: nil)
-        }
+        self.cancelBar.control.addTarget(self, action: #selector(TMPJShareController.cancelAction), for: .touchUpInside)
+    }
+    @objc private func cancelAction(){
+        self.dismiss(animated: true, completion: nil)
     }
     private func addButton(for channel:Channel){
         let button = TMPJButton.bottom(imageName: channel.rawValue, title: channel.name, imageSize: CGSize(width:50,height:50))
@@ -70,7 +69,6 @@ final class TMPJShareController: TMPJBaseViewController{
             self.dismissBlock?(channel)
         }
     }
-    
 }
 extension TMPJShareController{
     enum Channel : String{
@@ -99,7 +97,6 @@ extension TMPJShareController{
                 return nil
             }
         }
-        
     }
 }
 extension TMPJShareController.Channel:AMNameConvertible{

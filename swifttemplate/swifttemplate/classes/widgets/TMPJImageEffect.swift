@@ -1,5 +1,5 @@
 //
-//  TMPJEffectView.swift
+//  TMPJImageEffect.swift
 //  swifttemplate
 //
 //  Created by supertext on 2017/11/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TMPJEffectView: UIView {
+class TMPJImageEffect: UIView {
     let imageView = TMPJImageView()
     private var effect:UIVisualEffectView?
     private var effectLayer:CAGradientLayer?

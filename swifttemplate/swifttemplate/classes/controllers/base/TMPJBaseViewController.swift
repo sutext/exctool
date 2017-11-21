@@ -15,6 +15,7 @@ class TMPJBaseViewController: UIViewController {
         super.init(nibName: nil, bundle: nil);
         self.hidesBottomBarWhenPushed = true
         self.automaticallyAdjustsScrollViewInsets = false
+        self.extendedLayoutIncludesOpaqueBars = false
     }
     convenience required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

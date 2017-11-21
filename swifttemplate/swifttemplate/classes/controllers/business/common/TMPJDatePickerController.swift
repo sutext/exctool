@@ -29,13 +29,10 @@ final class TMPJDatePickerController: TMPJPickerController {
         self.datePicker.datePickerMode = .date
         self.contentView.addSubview(self.datePicker)
         self.datePicker.adhere(insets: nil)
-        self.completeButton.clickedAction = {[weak self] sender in
-            guard let wself = self else {
-                return
-            }
-            wself.dismiss(animated: true, completion: {
-                wself.finishBlock?(wself.datePicker.date)
-            })
+    }
+    override func finishAction(sender: UIButton) {
+        self.dismiss(animated: true) {
+            self.finishBlock?(self.date)
         }
     }
 }

@@ -5,6 +5,7 @@
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="initial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isLoaded" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pid" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,7 +45,7 @@
         <relationship name="token" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TMPJTokenObject" inverseName="user" inverseEntity="TMPJTokenObject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TMPJAreaObject" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="TMPJAreaObject" positionX="-63" positionY="-18" width="128" height="240"/>
         <element name="TMPJAssetObject" positionX="-18" positionY="162" width="128" height="90"/>
         <element name="TMPJTokenObject" positionX="-45" positionY="90" width="128" height="30"/>
         <element name="TMPJUserObject" positionX="-36" positionY="99" width="128" height="30"/>
