@@ -21,7 +21,7 @@ final class TMPJPopupService {
         case let err as TMPJAlertable:
             self.alert(title:err.title,message: err.message)
         default:
-            self.alert(message: "网络错误")
+            self.alert(message: "网络连接失败")
         }
     }
     func alert(title:String?="提示",message:String?,ensure:String = "确定",cancel:String?=nil,dismissIndex:((Int)->Void)?=nil){
@@ -79,7 +79,7 @@ final class TMPJPopupService {
         case .error(let err as TMPJAlertable):
             message = err.message
         default:
-            message = "未知错误"
+            message = "网络连接失败"
         }
         let remind = AMRemindController(message)
         self.current = remind
