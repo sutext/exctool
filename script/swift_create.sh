@@ -8,11 +8,13 @@ cd $TMP_PATH
 
 SRC_NAMESPACE="TMPJ"
 SRC_DAY="15/3/11"
+SRC_YEAR="2015年"
 
 PROJECT_PATH="$1/$2"
 PROJECT_NAME=$2
 NAMESPACE=$3
 CURRENTDAY=`date +%Y/%-m/%-d`
+CURRENTYEAR=`date +%Y年`
 
 createFile()
 {
@@ -56,6 +58,7 @@ renameFile()
         	sed -i '' "s/${SRC_NAME}/${PROJECT_NAME}/g" $file
           sed -i '' "s/${SRC_NAMESPACE}/${NAMESPACE}/g" $file
           sed -i '' "s:${SRC_DAY}:${CURRENTDAY}:g" $file
+	  sed -i '' "s:${SRC_YEAR}:${CURRENTYEAR}:g" $file
           mv $file ${file/${SRC_NAMESPACE}/$NAMESPACE}
        fi
 	   done               
