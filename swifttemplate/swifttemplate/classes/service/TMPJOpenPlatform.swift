@@ -2,7 +2,7 @@
 //  TMPJOpenPlatform.swift
 //  swifttemplate
 //
-//  Created by supertext on 16/2/22.
+//  Created by supertext on 15/3/11.
 //  Copyright © 2016年 icegent. All rights reserved.
 //
 

@@ -12,7 +12,7 @@ SRC_DAY="15/3/11"
 PROJECT_PATH="$1/$2"
 PROJECT_NAME=$2
 NAMESPACE=$3
-CURRENTDAY=`date +%y/%-m/%-d`
+CURRENTDAY=`date +%Y/%-m/%-d`
 
 createFile()
 {
