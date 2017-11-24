@@ -8,7 +8,7 @@
 
 import Airmey
 
-class CKAreaPickerController: TMPJPickerController {
+class TMPJCityPickerController: TMPJPickerController {
     private let pickerView = UIPickerView()
     private var provinceObjects:NSOrderedSet?
     private var currentProvince:TMPJAreaObject?
@@ -78,7 +78,7 @@ class CKAreaPickerController: TMPJPickerController {
         }
     }
 }
-extension CKAreaPickerController:UIPickerViewDataSource,UIPickerViewDelegate{
+extension TMPJCityPickerController:UIPickerViewDataSource,UIPickerViewDelegate{
     func createLabel(text:String?) -> UILabel {
         let label = UILabel()
         label.font = .size17

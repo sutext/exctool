@@ -27,7 +27,7 @@ final class TMPJSqliteManager: NSObject {
     
     private override init() {
         self.privateContext = NSManagedObjectContext(concurrencyType:.privateQueueConcurrencyType);
-        let modelURL = Bundle(for: TMPJSqliteManager.self).url(forResource: "CoreKaraok", withExtension: "momd")
+        let modelURL = Bundle(for: TMPJSqliteManager.self).url(forResource: "swifttemplate", withExtension: "momd")
         self.model = NSManagedObjectModel(contentsOf: modelURL!)!
         self.pscoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.model)
         super.init()
