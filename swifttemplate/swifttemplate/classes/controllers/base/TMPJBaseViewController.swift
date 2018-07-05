@@ -8,8 +8,8 @@
 
 import Airmey
 class TMPJBaseViewController: UIViewController {
-    fileprivate var overlyView:TMPJView?
-    fileprivate var waitingActivity:UIActivityIndicatorView?
+    private weak var remindLabel:TMPJImageLabel?
+    private weak var activity:UIActivityIndicatorView?
     init()
     {
         super.init(nibName: nil, bundle: nil);
@@ -28,6 +28,8 @@ class TMPJBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        self.navigationItem.backBarButtonItem = UIBarButtonItem()
+        self.navigationItem.backBarButtonItem?.title = "返回"
         self.setLeftButtons()
     }
     func reloadData() {
@@ -35,7 +37,11 @@ class TMPJBaseViewController: UIViewController {
     }
     @objc func leftItemAction(_ sender:AnyObject?)
     {
-        _ = self.navigationController?.popViewController(animated: true);
+        self.navigationController?.popViewController(animated: true);
+    }
+    @objc func leftAvatarAction(_ sender:AnyObject?)
+    {
+        layout?.showLeftController(animated: true)
     }
     @objc func rightItemAction(_ sender:AnyObject?){
         
@@ -44,11 +50,24 @@ class TMPJBaseViewController: UIViewController {
         
     }
     func setLeftButtons()  {
-        self.setWhiteReturn()
+        
     }
     func setupBarStyle(){
         self.setNavbar(style: .default)
     }
+    var bottomInset:CGFloat{
+        return .footerHeight
+    }
+    var topbarInset:CGFloat{
+        return .navbarHeight
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle
+    {
+        return .lightContent;
+    }
+}
+///utils
+extension TMPJBaseViewController{
     //util function
     final func setNavbar(color:UIColor)
     {
@@ -72,53 +91,61 @@ class TMPJBaseViewController: UIViewController {
     {
         self.view.endEditing(true);
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle
-    {
-        return .lightContent;
-    }
 }
 extension TMPJBaseViewController{
-    typealias ImageName = (normal:String,press:String?)
-    final func setBlackReturn()  {
-        self.setLeftBar(name:("icon_return_black",nil))
+    typealias Image = (normal:UIImage,press:UIImage?)
+    final func setLeftAvatar(){
+        let avatar = TMPJAvatarView(size: 38)
+        avatar.user = global.user
+        avatar.clickedAction = {[weak self]sender,user in
+            self?.leftAvatarAction(nil)
+        }
+        self.setLeftbar(item: UIBarButtonItem(customView: avatar), fixed: 0)
     }
     final func setWhiteReturn()  {
-        self.setLeftBar(name:("icon_return_white",nil))
+        let item = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_return_white"), style: .plain, target: self, action: #selector(TMPJBaseViewController.leftItemAction(_:)))
+        self.navigationItem.leftBarButtonItem = item
     }
-    final func setLeftBar(name:ImageName) {
+    final func setLeftBar(_ image:Image) {
         let item  = AMButtonItem()
-        item.image = UIImage(named: name.normal)
+        item.image = image.normal
+        item.imageSize = CGSize(width:40,height:40)
         let button = TMPJButton(.cover)
+        let wspaceing = (40-image.normal.size.width)/2
+        let hspaceing = (40-image.normal.size.height)/2
+        button.imageEdgeInsets = UIEdgeInsets(top:hspaceing , left: wspaceing, bottom: hspaceing, right: wspaceing)
         button.apply(item: item, for: .normal)
-        if let press = name.press{
-            button.setImage(UIImage(named: press), for: .highlighted)
+        if let press = image.press{
+            button.setImage(press, for: .highlighted)
         }
-        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 15)
         button.sizeToFit()
         button.addTarget(self, action: #selector(TMPJBaseViewController.leftItemAction(_:)), for: .touchUpInside)
         self.setLeftbar(item: button, fixed: 0);
     }
-    final func setRightbar(_ first:ImageName,secend:ImageName? = nil) {
+    final func setRightbar(_ first:Image,secend:Image? = nil) {
         let item  = AMButtonItem()
-        item.image = UIImage(named: first.normal)
-        item.imageSize = CGSize(width:20,height:20)
+        item.image = first.normal
+        item.imageSize = CGSize(width:40,height:40)
         let button = TMPJButton(.cover)
+        let wspaceing = (40-first.normal.size.width)/2
+        let hspaceing = (40-first.normal.size.height)/2
+        button.imageEdgeInsets = UIEdgeInsets(top:hspaceing , left: wspaceing, bottom: hspaceing, right: wspaceing)
         button.apply(item: item, for: .normal)
         if let press = first.press {
-            button.setImage(UIImage(named: press), for: .highlighted)
+            button.setImage(press, for: .highlighted)
         }
         button.sizeToFit()
         button.addTarget(self, action: #selector(TMPJBaseViewController.rightItemAction(_:)), for: .touchUpInside)
         
-        var items:[UIBarButtonItemConvertibal] = [button]
+        var items:[AMBarButtonItemConvertible] = [button]
         if let secend = secend {
             let item  = AMButtonItem()
-            item.image = UIImage(named: secend.normal)
-            item.imageSize = CGSize(width:20,height:20)
+            item.image = secend.normal
+            item.imageSize = CGSize(width:40,height:40)
             let button = TMPJButton(.cover)
             button.apply(item: item, for: .normal)
-            if let press = first.press {
-                button.setImage(UIImage(named: press), for: .highlighted)
+            if let press = secend.press {
+                button.setImage(press, for: .highlighted)
             }
             button.sizeToFit()
             button.addTarget(self, action: #selector(TMPJBaseViewController.rightSecendAction(_:)), for: .touchUpInside)
@@ -155,61 +182,55 @@ extension TMPJBaseViewController{
 }
 
 extension TMPJBaseViewController{
-    final func showAlertMessage(_ message:String,clickedAction:((UIView)->Void)?)
-    {
-        self.showAlertMessage(message, inRect: self.view.bounds, clickedAction: clickedAction)
+    final func remindOffline(_ offline:(()->Void)?){
+        self.remind(#imageLiteral(resourceName: "remind_offline_gray"),text: "网络连接失败\n请确认网络连接后，点击此处重试",block:offline)
     }
-    final func showAlertMessage(_ message:String,inRect:CGRect,clickedAction:((UIView)->Void)?)
-    {
-        if message.lengthOfBytes(using: String.Encoding.utf8)>0
-        {
-            self.removeAlert();
-            let overlay = TMPJView(frame: inRect);
-            overlay.backgroundColor=UIColor.white;
-            let label = UILabel(frame: CGRect(x:10,y: inRect.size.height/2-25,width: inRect.size.width-20,height: 50));
-            label.font = .size16;
-            label.textAlignment = .center;
-            label.numberOfLines = 2;
-            label.textColor = UIColor(0x677386);
-            label.text = message;
-            overlay.addSubview(label);
-            if let action = clickedAction
-            {
-                overlay.singleAction=action;
-            }
-            self.overlyView = overlay;
-            self.view.addSubview(overlay);
-        }
-    }
-    final func removeAlert()
-    {
-        if (self.overlyView != nil)
-        {
-            self.overlyView?.removeFromSuperview();
-            self.overlyView=nil;
-        }
-    }
-    final func showWaitingActivity(){
-        guard self.waitingActivity == nil else {
+    final func remind(_ image:UIImage? = nil,text:String,block:(()->Void)? = nil){
+        guard self.remindLabel == nil else {
             return
         }
-        self.waitingActivity = self.createActivity()
-        self.view.addSubview(self.waitingActivity!)
-        self.waitingActivity?.startAnimating()
+        let label = TMPJImageLabel(.top,image:image,text: text)
+        label.font = .size16
+        label.textColor = UIColor(0x666666)
+        label.spaceing = 20
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        self.view.addSubview(label)
+        label.align(centerY: nil)
+        label.align(centerX: nil)
+        label.singleAction = {sender in
+            block?()
+        }
+        self.remindLabel = label
+    }
+    final func hideRemind()
+    {
+        guard let label = self.remindLabel else {
+            return
+        }
+        label.removeFromSuperview()
+        self.remindLabel = nil
+    }
+    final func showWaiting(_ style:UIActivityIndicatorViewStyle = .gray){
+        guard self.activity == nil else {
+            return
+        }
+        let activity = UIActivityIndicatorView(activityIndicatorStyle:UIActivityIndicatorViewStyle.whiteLarge)
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(activity)
+        activity.align(centerX: nil)
+        activity.align(centerY: nil)
+        activity.startAnimating()
+        self.activity = activity
     }
     final func hideWaiting()
     {
-        guard let activity = self.waitingActivity else {
+        guard let activity = self.activity else {
             return
         }
         activity.stopAnimating()
         activity.removeFromSuperview()
-        self.waitingActivity = nil
-    }
-    private func createActivity()->UIActivityIndicatorView{
-        let activity = UIActivityIndicatorView.init(activityIndicatorStyle:UIActivityIndicatorViewStyle.gray);
-        activity.center = CGPoint(x:self.view.width/2,y:self.view.height/2);
-        return activity;
+        self.activity = nil
     }
 }
 

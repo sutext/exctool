@@ -12,40 +12,46 @@ import Airmey
 extension UINavigationBar
 {
     enum BarStyle {
-        case white
         case theme
         case clear
         static let `default`:BarStyle = .theme
     }
     func setBarColor(_ color:UIColor) {
-        self.setBackgroundImage(UIImage(color: color, size: CGSize(width: 1, height: 1)), for: .default);
+        let image = UIImage.single(color: color, size: CGSize(width: 1, height: 1))
+        self.setBackgroundImage(image, for: .default);
     }
     func setShadowColor(_ color:UIColor) {
-        self.shadowImage = UIImage(color: color, size: CGSize(width: 1, height: 1));
+        self.shadowImage = UIImage.single(color: color, size: CGSize(width: 1, height: 1));
     }
     func setTitleColor(_ color:UIColor) {
         self.titleTextAttributes=[.foregroundColor:color];
     }
     func setBarStyle(_ style:BarStyle) {
         switch style {
-        case .white:
-            self.setShadowColor(.separator)
-            self.setBarColor(.navbar)
-            self.setTitleColor(.mainText)
         case .theme:
             self.setShadowColor(.theme)
             self.setBarColor(.theme)
             self.setTitleColor(.white)
+            self.tintColor = .white
         case .clear:
             self.setShadowColor(.clear)
             self.setBarColor(.clear)
             self.setTitleColor(.white)
+            self.tintColor = .white
         }
     }
 }
 extension TimeInterval
 {
-    var minuteString:String{
+    var hhmmss:String{
+        let inttime = Int(self)
+        let sec = inttime%60
+        var min = inttime/60
+        let hour = min/60
+        min = min%60
+        return String(format: "%02d:%02d:%02d", hour,min,sec)
+    }
+    var mmss:String{
         let inttime = Int(self)
         let min = inttime/60
         let sec = inttime%60
@@ -194,8 +200,6 @@ extension UIApplication{
         return next
     }
     func jumptoLogin(){
-    }
-    func jumptoMain()  {
     }
 }
 

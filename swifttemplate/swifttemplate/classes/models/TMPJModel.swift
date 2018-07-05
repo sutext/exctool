@@ -6,7 +6,9 @@
 //  Copyright © 2015年 icegent. All rights reserved.
 //
 
-import JSON
+import Airmey
+
+import Airmey
 
 protocol TMPJDynamicObject {
     func int(forKey key:String)-> Int?
@@ -24,6 +26,7 @@ protocol TMPJDynamicObject {
     func intValue(forKey key:String) ->Int
     func boolValue(forKey key:String) ->Bool
     func int64Value(forKey key:String) -> Int64
+    func floatValue(forKey key:String) -> Float
     func stringValue(forKey key: String) -> String
     
     var isNull:Bool{get}
@@ -33,20 +36,20 @@ protocol TMPJModel {
     var isNull:Bool{get}
 }
 
-extension JSON:TMPJDynamicObject
+extension AMJson:TMPJDynamicObject
 {
     func bool(forKey key: String) -> Bool? {
         let node = self[key]
-        if let bool = node.bool{
-            return bool
+        switch node {
+        case .bool(let value):
+            return value
+        case .number(let value):
+            return value.boolValue
+        case .string(let value):
+            return Bool(value)
+        default:
+            return nil
         }
-        if let number = node.number{
-            return number.boolValue
-        }
-        if let bool = Bool(node.stringValue){
-            return bool
-        }
-        return nil
     }
     func stringValue() -> String {
         return self.stringValue
@@ -69,84 +72,54 @@ extension JSON:TMPJDynamicObject
         return self[key].array
     }
     func intValue(forKey key: String) -> Int {
-        return self[key].intValue
+        return self[key].numberValue.intValue
     }
     func int64Value(forKey key: String) -> Int64 {
-        return self[key].int64Value
+        return self[key].numberValue.int64Value
+    }
+    func floatValue(forKey key: String) -> Float {
+        return self[key].numberValue.floatValue
     }
     func boolValue(forKey key: String) -> Bool {
         
         return self[key].boolValue
     }
     func int(forKey key: String) -> Int? {
-        if let intval =  self[key].int{
-            return intval
-        }
-        if let intval = Int(self[key].stringValue)
-        {
-            return intval
-        }
-        return nil;
+        return self[key].number?.intValue
     }
     func int64(forKey key: String) -> Int64? {
-        
-        if let intval =  self[key].int64{
-            return intval
-        }
-        if let intval = Int64(self[key].stringValue)
-        {
-            return intval
-        }
-        return nil
+        return self[key].number?.int64Value
     }
     func string(forKey key: String) -> String? {
-        if let str = self[key].string {
-            return str;
-        }
-        if let num = self[key].number{
-            return num.stringValue
-        }
-        return nil
+        return self[key].string
     }
     func double(forKey key: String) -> Double? {
-        if let dval =  self[key].double{
-            return dval
-        }
-        if let dval = Double(self[key].stringValue)
-        {
-            return dval
-        }
-        return nil
+        return self[key].number?.doubleValue
     }
     func float(forKey key: String) -> Float? {
-        if let floatval =  self[key].float{
-            return floatval
-        }
-        if let floatval = Float(self[key].stringValue)
-        {
-            return floatval
-        }
-        return nil
-        
+        return self[key].number?.floatValue
     }
     var isNull: Bool{
-        return self.type == .null
+        if case .null = self {
+            return true
+        }
+        return false
     }
 }
 public class TMPJNetworkObject:NSObject,TMPJDynamicObject,NSCoding{
-    fileprivate let json:JSON
+    fileprivate let json:AMJson
     public required init(_ jsonObject:Any? = nil) {
         guard let object = jsonObject else {
-            self.json = JSON(NSNull())
+            self.json = .null
             return
         }
         switch object {
         case let string as String:
-            self.json = JSON(parseJSON: string)
-        case let json as JSON:
-            self.json = json
+            self.json = AMJson.parse(string)
+        case let data as Data:
+            self.json = AMJson.parse(data)
         default:
-            self.json = JSON(object)
+            self.json = AMJson(object)
         }
     }
     var isNull: Bool{
@@ -173,7 +146,9 @@ public class TMPJNetworkObject:NSObject,TMPJDynamicObject,NSCoding{
     func int64(forKey key: String) -> Int64? {
         return self.json.int64(forKey:key)
     }
-    
+    func floatValue(forKey key: String) -> Float {
+        return self.json.floatValue(forKey:key)
+    }
     func int64Value(forKey key: String) -> Int64 {
         return self.json.int64Value(forKey:key)
     }
@@ -199,7 +174,7 @@ public class TMPJNetworkObject:NSObject,TMPJDynamicObject,NSCoding{
     {
         if let ary = ary
         {
-            return ary.flatMap({ (obj) -> T? in
+            return ary.compactMap({ (obj) -> T? in
                 let t = T(obj)
                 return t.isNull ? nil : t
             })
@@ -208,14 +183,13 @@ public class TMPJNetworkObject:NSObject,TMPJDynamicObject,NSCoding{
     }
     public required init?(coder aDecoder: NSCoder) {
         guard let data = aDecoder.decodeObject(forKey: "json") as? Data else{
-            self.json = JSON(NSNull())
+            self.json = .null
             return
         }
-        self.json = JSON(data)
+        self.json = AMJson.parse(data)
     }
     public func encode(with aCoder: NSCoder) {
-        
-        if let data = try? self.json.rawData(){
+        if let data = json.rawData{
             aCoder.encode(data, forKey: "json")
         }
     }
@@ -227,6 +201,6 @@ extension TMPJNetworkObject
         return self.json.description
     }
     override public var debugDescription: String{
-        return self.json.description
+        return self.json.debugDescription
     }
 }

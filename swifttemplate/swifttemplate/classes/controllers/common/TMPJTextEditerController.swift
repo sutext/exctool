@@ -57,7 +57,7 @@ extension TMPJTextEditerController:UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if (textField.text!.length >= self.limitTextLenth && string.length>0)
         {
-            popup.alert(message: self.outlenthMessage)
+            pop.alert(message: self.outlenthMessage)
             return false;
         }
         return true;

@@ -12,12 +12,12 @@ class TMPJLabel: AMLabel {
     override init(frame: CGRect) {
         super.init(frame: frame);
     }
-    init() {
-        super.init(frame: CGRect.zero)
+    convenience init() {
+        self.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
-    convenience required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     func defaultShadow() {
         self.layer.shadowColor = UIColor.lightGray.cgColor

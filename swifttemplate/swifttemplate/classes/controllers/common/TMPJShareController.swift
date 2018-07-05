@@ -5,9 +5,8 @@
 //  Created by supertext on 15/3/11.
 //  Copyright © 2015年 icegent. All rights reserved.
 //
-
-import Airmey
 import OpenPlatform
+import Airmey
 
 final class TMPJShareController: UIViewController{
     private let effectView = AMEffectView()
@@ -99,7 +98,7 @@ extension TMPJShareController{
         }
     }
 }
-extension TMPJShareController.Channel:AMNameConvertible{
+extension TMPJShareController.Channel{
     var name: String{
         switch self {
         case .dynamic:

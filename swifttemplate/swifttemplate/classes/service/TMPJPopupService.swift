@@ -8,13 +8,13 @@
 
 import Airmey
 
-let popup = TMPJPopupService()
+let pop = TMPJPopupService()
 
 final class TMPJPopupService {
     
     
     fileprivate init(){}
-    private var wating:(UIViewController & AMControllerWaitable)?
+    private weak var wating:(UIViewController & AMControllerWaitable)?
     private weak var current:UIViewController?
     func alert(error:Error){
         switch error {
@@ -51,19 +51,16 @@ final class TMPJPopupService {
         controller.transitioningDelegate = controller.assistor
         controller.modalPresentationStyle = .custom
         controller.assistor.appearedBlock = appeared
-        controller.assistor.dismissBlock = canceled
         self.wating = controller
         self.current = controller
         UIApplication.shared.lastPresentedController?.present(controller, animated: true, completion: nil)
     }
-    func hideWaiting(dismissed:(()->Void)?=nil) {
-        guard self.wating != nil else {
+    func dismiss(finished:(()->Void)?=nil) {
+        guard let waiting = self.wating else {
             return
         }
-        self.wating!.dismiss(animated: true, completion: {
-            self.wating = nil
-            self.current = nil
-            dismissed?()
+        waiting.dismiss(animated: true, completion: {
+            finished?()
         })
     }
     func remind(_ type:RemindType,dismissed:(()->Void)?=nil) {
@@ -86,7 +83,7 @@ final class TMPJPopupService {
         remind.assistor.dismissBlock = dismissed
         UIApplication.shared.lastPresentedController?.present(remind, animated: true, completion: nil)
     }
-    func action<ActionItem:AMNameConvertible>(_ items:[ActionItem],style:ActionStyle = .plain,dismissIndex:((ActionItem,Int)->Void)?){
+    func action<ActionItem:AMTextConvertible>(_ items:[ActionItem],style:ActionStyle = .plain,dismissIndex:((ActionItem,Int)->Void)?){
         guard self.current == nil else {
             return
         }
@@ -98,7 +95,7 @@ final class TMPJPopupService {
         case .system:
             let action = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             for item in items.enumerated() {
-                action.addAction(UIAlertAction(title: item.element.name, style: .default, handler: { (action) in
+                action.addAction(UIAlertAction(title: item.element.text, style: .default, handler: { (action) in
                     dismissIndex?(item.element,item.offset)
                 }))
             }

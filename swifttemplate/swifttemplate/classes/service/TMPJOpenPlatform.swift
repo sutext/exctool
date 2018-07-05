@@ -53,20 +53,26 @@ extension OPOpenAuthType
 {
     struct Info {
         var imageName:String
-        var pressName:String
+        var pressName:String?
         var displayName:String
         var platform:TMPJAuth.ThirdPlatform
+        init(imageName:String="",pressName:String?=nil,displayName:String="",platform:TMPJAuth.ThirdPlatform = .qq) {
+            self.imageName = imageName
+            self.pressName = pressName
+            self.displayName = displayName
+            self.platform = platform
+        }
     }
     var info:Info
     {
         switch self
         {
         case .QQ:
-            return Info(imageName: "login_platform_qq", pressName: "login_platform_qq", displayName: "QQ", platform: .qq);
+            return Info(imageName: "login_platform_qq", displayName: "QQ", platform: .qq);
         case .wechat:
-            return Info(imageName: "login_platform_wechat", pressName: "login_platform_wechat", displayName: "微信", platform: .wechat);
+            return Info(imageName: "login_platform_wechat", displayName: "微信", platform: .wechat);
         case .weibo:
-            return Info(imageName: "login_platform_weibo", pressName: "login_platform_weibo", displayName: "微博", platform: .weibo);
+            return Info(imageName: "login_platform_weibo", displayName: "微博", platform: .weibo);
         }
     }
 }
@@ -75,12 +81,10 @@ final class TMPJOpenPlatform: OPOpenPlatform {
     private override init()
     {
         super.init()
-        self.setDebugEnable(true)
-        self.configTencent(OPPlatformConfig(appid: "1106097003", appkey: "Z9YAvevgtnD6baII", schema: ""))
-        self.configWechat(OPPlatformConfig(appid: "wxbec8708bc602a8d0", appkey: "9e1bf56e0dbb905e7fd35eda9b8fca47", schema: ""))
-        let weibo = OPPlatformConfig(appid: "2588804445", appkey: "8d9c1674b6a6c6a0f6a8f6adcc97abec", schema: "wb2588804445")
-        weibo.redirectURI = "http://www.icegent.com"
-        self.configWeibo(weibo)
+        self.setDebugEnable(global.isDebug)
+        self.configAlipay("2017111309901611", schema: "playmate")
+        self.configTencent("1106450111", appkey: "9KxsJHnzl1ppqST8")
+        self.configWechat("wxe497443d905724b1", appkey: "bb173c71b7502f9d9229d80affffc0d6")
     }
 }
 

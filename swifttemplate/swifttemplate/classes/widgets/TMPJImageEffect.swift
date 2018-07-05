@@ -66,8 +66,10 @@ class TMPJImageEffect: UIView {
         }
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "bounds"{
-            self.effectLayer?.frame = self.imageView.bounds
+        DispatchQueue.main.async {
+            if keyPath == "bounds"{
+                self.effectLayer?.frame = self.imageView.bounds
+            }
         }
     }
     convenience required init?(coder aDecoder: NSCoder) {

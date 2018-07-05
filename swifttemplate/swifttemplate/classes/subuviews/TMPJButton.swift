@@ -18,6 +18,25 @@ class TMPJButton: AMButton {
     }
 }
 extension TMPJButton{
+    func setImage(url: String?, style:TMPJImageView.Style = .none,scale:CGFloat = 3,for state:UIControlState = .normal, completion: ((UIImage?, Error?, TMPJButton) -> Void)? = nil) {
+        if let URLString = url
+        {
+            if URLString.hasPrefix("http") {
+                self.setImage(with: URLString, placeholder: nil,for:state, finish: { (img, error) in
+                    completion?(img,error,self);
+                })
+            }
+            else
+            {
+                let url = TMPJImageView.imageURL(for: URLString, with: style)
+                self.setImage(with: url,scale:scale, placeholder: nil,for:state, finish: { (img, error) in
+                    completion?(img,error,self)
+                })
+            }
+        }
+    }
+}
+extension TMPJButton{
     class func cover(title:String,
                      size:CGSize,
                      titleColor:UIColor? = .mainText,
@@ -106,7 +125,7 @@ extension TMPJButton{
             item.titleColor = .theme
             item.imageColor = .white
             button.setTitleColor(.white, for: .highlighted)
-            button.setImage(UIImage(color:.theme,size:size), for: .highlighted)
+            button.setImage(.single(color:.theme,size:size), for: .highlighted)
             button.setTitleColor(.white, for: .selected)
             button.setImage(.gradual(from: UIColor(0xd33a31), to: UIColor(0x9f3029), size: size), for: .selected)
             button.adjustsImageWhenHighlighted = false

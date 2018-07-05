@@ -18,9 +18,27 @@ extension TMPJAlertable where Self:Error
         return "提示"
     }
 }
+enum TMPJServiceCode :String{
+    case ok             = "OK"
+    case invalidToken   = "INVALID_TOKEN"
+    case repeatLogin    = "DUPLICATE_LOGIN"
+    case other
+    case unknown        = "UNKNOWN_ERROR"
+    init(_ value:String?=nil){
+        guard let value = value else {
+            self = .unknown
+            return
+        }
+        guard let code = TMPJServiceCode(rawValue: value) else {
+            self = .other
+            return
+        }
+        self = code
+    }
+}
 enum TMPJError {
     case network(code:Int,info:String)
-    case service(code:Int,info:String)
+    case service(code:TMPJServiceCode,info:String)
     case analyze(info:String)
     case device(info:String)
     case logic(info:String)

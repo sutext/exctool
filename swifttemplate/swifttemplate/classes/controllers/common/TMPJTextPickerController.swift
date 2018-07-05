@@ -8,7 +8,7 @@
 
 import Airmey
 
-class TMPJTextPickerController<ActionItem:AMNameConvertible>:
+class TMPJTextPickerController<ActionItem:AMTextConvertible&Equatable>:
     TMPJPickerController,
     UIPickerViewDelegate,
     UIPickerViewDataSource
@@ -20,7 +20,7 @@ class TMPJTextPickerController<ActionItem:AMNameConvertible>:
     init(_ items:[ActionItem],current:ActionItem?) {
         if let curr = current {
             if let idx = items.index(where: { (item) -> Bool in
-                return item.name == curr.name
+                return item == curr
             }){
                 self.currentIndex = idx
             }else{
@@ -65,9 +65,9 @@ class TMPJTextPickerController<ActionItem:AMNameConvertible>:
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let item = self.items[row]
         guard let label = view as? UILabel else {
-            return self.createLabel(text: item.name)
+            return self.createLabel(text: item.text)
         }
-        label.text = item.name
+        label.text = item.text
         return label
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

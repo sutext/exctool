@@ -24,7 +24,7 @@ class TMPJImagePickerController: UIImagePickerController{
     }
     func showIn(_ controller:TMPJBaseViewController)
     {
-        popup.action(["拍照","相册"]) { (_, idx) in
+        pop.action(["拍照","相册"]) { (_, idx) in
             switch idx{
             case 0:
                 if UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -34,7 +34,7 @@ class TMPJImagePickerController: UIImagePickerController{
                 }
                 else
                 {
-                    popup.alert(message: "请用户在[系统设置-隐私-相机]里面允许劲乐台访您的相机")
+                    pop.alert(message: "请用户在[系统设置-隐私-相机]里面允许劲乐台访您的相机")
                 }
             case 1:
                 if UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
@@ -44,7 +44,7 @@ class TMPJImagePickerController: UIImagePickerController{
                 }
                 else
                 {
-                    popup.alert(message: "请用户在[系统设置-隐私-相机]里面允许劲乐台访您的相册")
+                    pop.alert(message: "请用户在[系统设置-隐私-相机]里面允许劲乐台访您的相册")
                 }
             default :
                 break

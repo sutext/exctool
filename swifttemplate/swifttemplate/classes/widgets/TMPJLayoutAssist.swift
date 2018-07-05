@@ -19,25 +19,9 @@ class TMPJLayoutAssist: UIView{
     }
     convenience init(w:CGFloat,h:CGFloat) {
         self.init();
-        self.constraint(width: w, height: h)
-    }
-    func constraint(width:CGFloat,height:CGFloat){
-        if let wc = self.wconst {
-            wc.constant = width;
-        }
-        else
-        {
-            self.wconst = self.widthAnchor.equal(to: width)
-        }
-        if let hc = self.hconst {
-            hc.constant = height;
-        }
-        else
-        {
-            self.hconst = self.heightAnchor.equal(to: height)
-        }
+        self.clamp(width: w, height: h)
     }
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 }

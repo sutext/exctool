@@ -9,6 +9,7 @@
 import Airmey
 
 class TMPJLeftSideController: TMPJBaseViewController {
+    static let width:CGFloat = .screenWidth - 100
     override func viewDidLoad() {
         super.viewDidLoad();
         self.view.backgroundColor = UIColor.red;

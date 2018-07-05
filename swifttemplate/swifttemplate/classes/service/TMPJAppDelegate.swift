@@ -15,7 +15,7 @@ open class TMPJAppDelegate: UIResponder,UIApplicationDelegate{
     open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame:UIScreen.main.bounds);
         self.window?.backgroundColor=UIColor.white;
-        self.window?.rootViewController=TMPJLayoutViewController.shared;
+        self.window?.rootViewController=layout;
         self.window?.makeKeyAndVisible();
         // Override point for customization after application launch.
         return true

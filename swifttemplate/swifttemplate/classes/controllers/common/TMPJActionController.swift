@@ -7,7 +7,7 @@
 //
 
 import Airmey
-class TMPJActionController<ActionItem:AMNameConvertible>:UIViewController,
+class TMPJActionController<ActionItem:AMTextConvertible>:UIViewController,
     UITableViewDataSource,
 UITableViewDelegate{
     var finishBlock:((TMPJActionController,ActionItem,Int)->Void)?
@@ -87,7 +87,7 @@ UITableViewDelegate{
             cell?.separatorInset = UIEdgeInsets.zero
             cell?.backgroundColor = .clear
         }
-        cell!.textLabel?.text = self.items[indexPath.row].name;
+        cell!.textLabel?.text = self.items[indexPath.row].text;
         return cell!;
     }
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

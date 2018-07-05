@@ -32,12 +32,6 @@ class TMPJCollectionViewController: TMPJBaseViewController{
         self.collectionView.adhere(insets: nil)
         self.collectionView.contentInset = UIEdgeInsets(top: self.topbarInset, left: 0, bottom: self.bottomInset, right: 0)
     }
-    var bottomInset:CGFloat{
-        return 0
-    }
-    var topbarInset:CGFloat{
-        return .navbarHeight
-    }
     func loadMore()  {
         
     }
@@ -66,3 +60,4 @@ extension TMPJCollectionViewController:AMCollectionViewDelegate
         }
     }
 }
+

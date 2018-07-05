@@ -15,9 +15,29 @@ final class TMPJGlobalService {
     var token:String?{
         return self.tokenObject.token
     }
-    lazy var asset:TMPJAssetObject = {
-        return TMPJSqliteManager.shared.obtainAsset(for: self.account)
-    }()
+    var isLogin:Bool{
+        if self.token == nil {
+            return false
+        }
+        if self.tokenObject.user == nil {
+            return false
+        }
+        if self.user.account == nil{
+            return false
+        }
+        return true
+    }
+    var asset:TMPJAssetObject {
+        guard let user = self.tokenObject.user else {
+            fatalError("未登录")
+        }
+        if let asset = user.asset {
+            return asset
+        }
+        let asset = TMPJSqliteManager.shared.obtainAsset(for: self.account)
+        user.asset = asset;
+        return asset
+    }
     var user :TMPJUserObject {
         guard let user = self.tokenObject.user else {
             fatalError("未登录")
@@ -35,6 +55,11 @@ final class TMPJGlobalService {
         navbar.setBarStyle(.default)
         let switchBar = UISwitch.appearance()
         switchBar.onTintColor = .theme
+        
+        if #available(iOS 10.0, *) {
+            let item = UITabBarItem.appearance()
+            item.badgeColor = .theme
+        }
     }
 }
 extension TMPJGlobalService{

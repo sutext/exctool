@@ -47,7 +47,7 @@ class TMPJTextLabel:UITextView{
         super.init(frame: frame, textContainer: textContainer)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.font = .size13
-        self.textColor = UIColor(0x333333)
+        self.textColor = .mainText
         self.isEditable = false
         self.isScrollEnabled = false
         self.showsVerticalScrollIndicator = false

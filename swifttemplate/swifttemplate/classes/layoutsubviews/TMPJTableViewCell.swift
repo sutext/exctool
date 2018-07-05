@@ -10,42 +10,190 @@ import Airmey
 
 class TMPJCellModel {
     var title:String?
-    var value:String?
     var icon:String?
     var target:UIViewController.Type?
     var isEnabled:Bool
-    fileprivate var swich:UISwitch?
-    private var switchAction:((_ sender:TMPJCellModel,_ swi:UISwitch)->Void)?
-    init (title:String?=nil,value:String? = nil,icon:String? = nil,target:TMPJBaseViewController.Type? = nil,isEnabled:Bool = false)
+    fileprivate var valueView:UIView?
+    var changeAction:((TMPJCellModel)->Void)?
+    init (_ title:String?=nil,value:Value = .none,icon:String? = nil,target:TMPJBaseViewController.Type? = nil,isEnabled:Bool = false)
     {
         self.title = title
-        self.value = value
         self.icon = icon
         self.target = target
         self.isEnabled = isEnabled
+        self.value = value
+        self.setup(value: value)
     }
-    func usingSwitch(_ inival:Bool? = nil , action:((_ sender:TMPJCellModel,_ swi:UISwitch)->Void)? = nil)
+    init (_ title:String?=nil,text:AMTextConvertible?,icon:String? = nil,target:TMPJBaseViewController.Type? = nil,isEnabled:Bool = false)
     {
-        if let val = inival{
-            self.value = val ? "1" : "0"
+        self.title = title
+        self.icon = icon
+        self.target = target
+        self.isEnabled = isEnabled
+        self.value = .text(text)
+        self.setup(value: self.value)
+    }
+    var value:Value{
+        didSet{
+            self.setup(value: value)
         }
-        self.swich = UISwitch();
-        self.swich?.isOn = self.value == "1"
-        self.switchAction = action;
-        self.swich?.addTarget(self, action: #selector(TMPJCellModel.valueChanged(_:)), for: .valueChanged);
     }
-    @objc private func valueChanged(_ swi:UISwitch)
+    var ison:Bool{
+        get{
+            if case .switch(let bool) = self.value{
+                return bool
+            }
+            return false
+        }
+        set{
+            self.value = .switch(newValue)
+        }
+    }
+    var isLoading:Bool{
+        get{
+            if case .loading(let bool) = self.value{
+                return bool
+            }
+            return false
+        }
+        set{
+            self.value = .loading(newValue)
+        }
+    }
+    var text:String?{
+        get{
+            if case .text(let val) = self.value{
+                return val?.text
+            }
+            return nil
+        }
+        set{
+            self.value = .text(newValue)
+        }
+    }
+    var badge:Int{
+        get{
+            if case .badge(let int) = self.value{
+                return int
+            }
+            return 0
+        }
+        set{
+            self.value = .badge(newValue)
+        }
+    }
+    enum Value {
+        case none
+        case text(AMTextConvertible?)
+        case badge(Int)
+        case loading(Bool)
+        case `switch`(Bool)
+    }
+}
+
+extension TMPJCellModel{
+    private func setup(value:Value){
+        switch value {
+        case .none:
+            self.valueView = nil
+            return
+        case .loading(let isLoading):
+            guard let view = self.valueView else{
+                self.setupLoading(isLoading)
+                return
+            }
+            switch view {
+            case let activity as UIActivityIndicatorView:
+                if isLoading{
+                    activity.startAnimating()
+                }else{
+                    activity.stopAnimating()
+                }
+            default:
+                self.setupLoading(isLoading)
+            }
+        case .switch(let ison):
+            guard let view = self.valueView else{
+                self.setupSwitch(ison: ison)
+                return
+            }
+            switch view{
+            case let sw as UISwitch:
+                sw.isOn = ison
+            default:
+                self.setupSwitch(ison: ison)
+                break
+            }
+            
+        case .badge(let badge):
+            guard let view = self.valueView else{
+                self.setupBadge(badge: badge)
+                return
+            }
+            switch view{
+            case let label as AMBadgeLabel:
+                label.badge = badge
+            default:
+                self.setupBadge(badge: badge)
+                break
+            }
+        case .text(let text):
+            guard let view = self.valueView else{
+                self.setupLabel(text:text?.text)
+                return
+            }
+            switch view{
+            case let label as TMPJLabel:
+                label.text = text?.text
+            default:
+                self.setupLabel(text: text?.text)
+                break
+            }
+            view.sizeToFit()
+        }
+    }
+    @objc private func valueChanged(_ sender:UISwitch)
     {
-        self.value = (swi.isOn ? "1" : "0")
-        self.switchAction?(self,swi)
+        self.value = .switch(sender.isOn)
+        self.changeAction?(self)
+    }
+    private func setupSwitch(ison:Bool){
+        let sw = UISwitch()
+        sw.isOn = ison
+        sw.translatesAutoresizingMaskIntoConstraints = false
+        sw.addTarget(self, action: #selector(TMPJCellModel.valueChanged(_:)), for: .valueChanged);
+        self.valueView = sw
+    }
+    private func setupLabel(text:String?){
+        let label = TMPJLabel()
+        label.font = .size14
+        label.textColor = .subText
+        label.text = text
+        self.valueView = label
+    }
+    private func setupBadge(badge:Int){
+        let label = AMBadgeLabel(badge: badge,color:.theme)
+        self.valueView = label
+    }
+    private func setupLoading(_ isLoading:Bool){
+        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        if isLoading {
+            view.startAnimating()
+        }
+        self.valueView = view
+    }
+}
+extension TMPJCellModel.Value:ExpressibleByStringLiteral{
+    init(stringLiteral value: String) {
+        self = .text(value)
     }
 }
 class TMPJTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
-        self.backgroundColor = .white;
+        self.backgroundColor = .white
     }
-    
     convenience required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -53,8 +201,6 @@ class TMPJTableViewCell: UITableViewCell {
 class TMPJCustomTableViewCell: TMPJTableViewCell {
     lazy var iconView:TMPJImageView = {
         var icon = TMPJImageView();
-        icon.contentMode = .scaleAspectFill
-        icon.clipsToBounds = true;
         self.contentView.addSubview(icon);
         return icon;
     }()
@@ -68,7 +214,7 @@ class TMPJCustomTableViewCell: TMPJTableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         self.selectionStyle = .none
-        self.separatorInset = .zero;
+        self.separatorInset = .zero
         self.setupUI()
     }
     @objc dynamic func setupUI(){
@@ -76,6 +222,32 @@ class TMPJCustomTableViewCell: TMPJTableViewCell {
     }
 }
 class TMPJValuedTableViewCell: TMPJTableViewCell {
+    var valueView:UIView?{
+        didSet{
+            guard let newone = valueView else {
+                if oldValue?.superview == self.contentView{
+                    oldValue?.removeFromSuperview()
+                }
+                return
+            }
+            guard newone != oldValue else {
+                return
+            }
+            if oldValue?.superview == self.contentView{
+                oldValue?.removeFromSuperview()
+            }
+            self.contentView.addSubview(newone)
+            newone.align(centerY: nil)
+            var right:CGFloat? = nil
+            if case .none = self.accessoryType {
+                right = 15
+            }
+            newone.adhere(right: right)
+            if let label = self.textLabel {
+                newone.leftAnchor.greater(than: label.rightAnchor,offset: 40)
+            }
+        }
+    }
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier);
         self.textLabel?.font = .size14
@@ -89,14 +261,12 @@ class TMPJValuedTableViewCell: TMPJTableViewCell {
             self.textLabel?.text = nil
         }
         
-        if let swi = model.swich
-        {
-            swi.isOn = (model.value == "1")
-            self.accessoryView = swi
-            self.detailTextLabel?.text = nil
+        if model.isEnabled{
+            self.selectionStyle = .default
+            self.accessoryType = .disclosureIndicator
         }else{
-            self.accessoryView = nil
-            self.detailTextLabel?.text = model.value
+            self.selectionStyle = .none
+            self.accessoryType = .none
         }
         
         if let image = model.icon
@@ -106,54 +276,7 @@ class TMPJValuedTableViewCell: TMPJTableViewCell {
         {
             self.imageView?.image = nil
         }
-        
-        if model.isEnabled{
-            self.selectionStyle = .default
-            self.accessoryType = .disclosureIndicator
-        }else{
-            self.selectionStyle = .none
-            self.accessoryType = .none
-        }
-    }
-}
-extension TMPJValuedTableViewCell:TMPJTableViewReuseableCell{}
-class TMPJTableViewHeaderCell: TMPJValuedTableViewCell {
-    let markView = TMPJLayoutAssist(w: 3, h: 17)
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier);
-        self.selectionStyle = .none
-        self.accessoryType = .disclosureIndicator
-        self.markView.backgroundColor = .theme
-        self.contentView.addSubview(self.markView)
-        self.contentView.backgroundColor = .white
-        self.markView.leftAnchor.equal(to: self.contentView.leftAnchor)
-        self.markView.centerYAnchor.equal(to: self.contentView.centerYAnchor)
-    }
-}
-class TMPJTableViewHeaderView: UITableViewHeaderFooterView {
-    let markView = TMPJLayoutAssist(w: 3, h: 17)
-    let titleLabel = TMPJLabel()
-    let rightArrow = TMPJImageView(w:7,h:12)
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
-        self.contentView.addSubview(self.markView)
-        self.contentView.addSubview(self.titleLabel)
-        self.contentView.addSubview(self.rightArrow)
-        self.contentView.backgroundColor = .white
-        self.titleLabel.font = .size14
-        self.titleLabel.textColor = .mainText
-        self.markView.leftAnchor.equal(to: self.contentView.leftAnchor)
-        self.titleLabel.leftAnchor.equal(to: self.markView.rightAnchor,offset:12)
-        self.rightArrow.rightAnchor.equal(to: self.contentView.rightAnchor,offset:-15)
-        self.markView.centerYAnchor.equal(to: self.contentView.centerYAnchor)
-        self.titleLabel.centerYAnchor.equal(to: self.contentView.centerYAnchor)
-        self.rightArrow.centerYAnchor.equal(to: self.contentView.centerYAnchor)
-        self.markView.backgroundColor = .theme
-        self.rightArrow.image = UIImage(named:"icon_right_arrow_gray")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.valueView = model.valueView
     }
 }
 

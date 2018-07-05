@@ -7,11 +7,28 @@
 //
 
 import UIKit
-
-enum TMPJRequestPath {
-    case auth(Auth)
-    case third(Third)
-    case other(Other)
+struct TMPJRequestPath {
+    let rawValue:String
+    let simplekey:String
+    private init(_ value:String,key:String = "simplekey"){
+        self.rawValue = value
+        self.simplekey = key
+    }
+}
+extension TMPJRequestPath {
+    static func auth(_ path:Auth)->TMPJRequestPath{
+        switch path {
+        default:
+            return TMPJRequestPath(path.rawValue)
+        }
+        
+    }
+    static func third(_ path:Third)->TMPJRequestPath{
+        return TMPJRequestPath(path.rawValue)
+    }
+    static func other(_ path:Other)->TMPJRequestPath{
+        return TMPJRequestPath(path.rawValue)
+    }
 }
 extension TMPJRequestPath{
     enum Auth:String {
@@ -31,21 +48,5 @@ extension TMPJRequestPath{
     enum Other:String{
         case areaList       = "address/list"
         case area           = "address/detail"
-    }
-}
-extension TMPJRequestPath:RawRepresentable{
-    
-    init?(rawValue: String) {
-        return nil
-    }
-    var rawValue: String{
-        switch self {
-        case .auth(let type):
-            return type.rawValue
-        case .third(let type):
-            return type.rawValue
-        case .other(let type):
-            return type.rawValue
-        }
     }
 }

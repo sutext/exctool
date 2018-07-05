@@ -19,17 +19,16 @@ struct TMPJTableViewCommonReuseid:RawRepresentable{
 protocol TMPJTableViewReuseableCell where Self:TMPJTableViewCell{
     associatedtype ReuseIdentifier where Self.ReuseIdentifier:RawRepresentable,Self.ReuseIdentifier.RawValue == String
     static var reuseids:[ReuseIdentifier]{get}
-    var reuseid:ReuseIdentifier?{get}
 }
 extension TMPJTableViewReuseableCell{
     static var reuseids:[TMPJTableViewCommonReuseid]{
         return [.common(self)]
     }
-    var reuseid:TMPJTableViewCommonReuseid?{
+    var reuseid:ReuseIdentifier?{
         guard let str = self.reuseIdentifier else {
             return nil
         }
-        return TMPJTableViewCommonReuseid(rawValue:str)
+        return ReuseIdentifier(rawValue:str)
     }
 }
 class TMPJTableView: AMTableView {
@@ -61,7 +60,7 @@ class TMPJTableView: AMTableView {
         return self.dequeueReusableCell(withIdentifier: identifier.rawValue, for: indexPath) as! Cell
     }
     func dequeueReusableCell<Cell:TMPJTableViewReuseableCell>(_ type:Cell.Type,for indexPath:IndexPath)->Cell where Cell.ReuseIdentifier == TMPJTableViewCommonReuseid{
-        return self.dequeueReusableCell(withIdentifier: Cell.ReuseIdentifier.common(type).rawValue, for: indexPath) as! Cell
+        return self.dequeueReusableCell(type, with: .common(type), for: indexPath)
     }
 }
 

@@ -14,7 +14,7 @@ class TMPJTextField: UITextField {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.editingRect(forBounds: bounds);
@@ -30,7 +30,7 @@ class TMPJTextField: UITextField {
     }
     
 }
-class TMPJLoginTextField : UITextField {
+class CPLoginTextField : UITextField {
     init(){
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false;
@@ -51,7 +51,7 @@ class TMPJLoginTextField : UITextField {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.leftViewRect(forBounds: bounds);
@@ -77,41 +77,11 @@ class TMPJLoginTextField : UITextField {
     }
 }
 
-class TMPJRegistTextField : TMPJLoginTextField{
+class CPRegistTextField : CPLoginTextField{
     var textLabel:TMPJLabel?
-    var sended : Bool = false
-    {
-        didSet {
-            if self.sended
-            {
-                self.textLabel?.isUserInteractionEnabled = false;
-                var count = 60;
-                func refsres()
-                {
-                    if !self.sended {return}
-                    self.textLabel?.text = "已发送(\(count))";
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
-                        count -= 1;
-                        if (count > 0)
-                        {
-                            refsres();
-                        }
-                        else
-                        {
-                            self.sended = false;
-                            
-                        }
-                        
-                    })
-                }
-                refsres();
-            }
-            else
-            {
-                self.textLabel?.isUserInteractionEnabled = true;
-                self.textLabel?.text = "获取验证码";
-            }
-        }
+    let timer = AMTimer()
+    deinit {
+        self.timer.stop()
     }
     convenience init (sendAction: ((AMLabel) -> Void)? = nil)
     {
@@ -123,15 +93,16 @@ class TMPJRegistTextField : TMPJLoginTextField{
         label.textColor = .theme;
         label.font = .size12
         label.textAlignment = .center;
-        label.textInsets = UIEdgeInsets(top: 4, left: 5, bottom: 4, right: 5)
+        label.textInsets = UIEdgeInsets(top: 4, left: 10, bottom: 4, right: 10)
         label.layer.borderColor = UIColor.theme.cgColor;
         label.layer.borderWidth = 1;
         label.clipsToBounds = true;
         label.sizeToFit();
-        label.layer.cornerRadius = label.frame.height/2;
+        label.layer.cornerRadius = 3;
         label.tapAction = sendAction
         self.rightView = label;
         self.textLabel = label;
+        self.timer.delegate = self
     }
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.rightViewRect(forBounds: bounds);
@@ -141,6 +112,17 @@ class TMPJRegistTextField : TMPJLoginTextField{
             rect.size.width = self.rightView!.frame.width;
         }
         return rect;
+    }
+}
+extension CPRegistTextField:AMTimerDelegate{
+    func timer(_ timer: AMTimer, repeated times: Int) {
+        guard times <= 60 else {
+            self.textLabel?.isUserInteractionEnabled = true;
+            self.textLabel?.text = "获取验证码"
+            timer.stop()
+            return
+        }
+        self.textLabel?.text = "已发送(\(60-times))"
     }
 }
 

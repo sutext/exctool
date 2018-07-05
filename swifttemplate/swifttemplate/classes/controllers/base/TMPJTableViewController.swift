@@ -9,6 +9,7 @@ import Airmey
 
 class TMPJTableViewController: TMPJBaseViewController{
     let tableView : TMPJTableView
+    private(set) var tableInsets:AMConstraintInsets!
     override convenience init() {
         self.init(style:.plain);
     }
@@ -21,16 +22,10 @@ class TMPJTableViewController: TMPJBaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad();
         self.view.addSubview(self.tableView)
-        self.tableView.tableFooterView = UIView()
-        self.tableView.adhere(insets: nil)
+        self.tableInsets = self.tableView.adhere(insets: nil)
         self.tableView.contentInset = UIEdgeInsets(top: self.topbarInset, left: 0, bottom: self.bottomInset, right: 0)
     }
-    var bottomInset:CGFloat{
-        return 0
-    }
-    var topbarInset:CGFloat{
-        return .navbarHeight
-    }
+    
     func loadMore() {
         
     }

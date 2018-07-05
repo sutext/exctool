@@ -22,9 +22,9 @@ extension TMPJUserObject{
         case girl = "FAMALE"
     }
 }
-extension TMPJUserObject.Gender:AMNameConvertible,AMImageConvertible
+extension TMPJUserObject.Gender:AMTextConvertible
 {
-    var name:String {
+    var text:String? {
         get {
             switch self {
             case .boy:
