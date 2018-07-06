@@ -16,9 +16,6 @@
 		330D54F21FC3D83E00AE5828 /* TMPJTextPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D54E91FC3D83E00AE5828 /* TMPJTextPickerController.swift */; };
 		330D54F31FC3D83E00AE5828 /* TMPJPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D54EA1FC3D83E00AE5828 /* TMPJPickerController.swift */; };
 		330D54F41FC3D83E00AE5828 /* TMPJTextEditerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D54EB1FC3D83E00AE5828 /* TMPJTextEditerController.swift */; };
-		3350C4031FB4634C004C83D4 /* Airmey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3350C4001FB4634B004C83D4 /* Airmey.framework */; };
-		3350C4041FB4634C004C83D4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3350C4011FB4634C004C83D4 /* Alamofire.framework */; };
-		3350C4051FB4634C004C83D4 /* OpenPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3350C4021FB4634C004C83D4 /* OpenPlatform.framework */; };
 		335EEC651FD8F58A006E975E /* TMPJValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335EEC641FD8F58A006E975E /* TMPJValueLabel.swift */; };
 		33BCEBC21FE7A2EF00A64D18 /* TMPJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCEBC11FE7A2EF00A64D18 /* TMPJNavigationController.swift */; };
 		33EC6EDA1FB3700000AB74F2 /* swifttemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 33EC6ED81FB3700000AB74F2 /* swifttemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,9 +76,6 @@
 		330D54E91FC3D83E00AE5828 /* TMPJTextPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextPickerController.swift; sourceTree = "<group>"; };
 		330D54EA1FC3D83E00AE5828 /* TMPJPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJPickerController.swift; sourceTree = "<group>"; };
 		330D54EB1FC3D83E00AE5828 /* TMPJTextEditerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextEditerController.swift; sourceTree = "<group>"; };
-		3350C4001FB4634B004C83D4 /* Airmey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Airmey.framework; path = ../shared/Airmey.framework; sourceTree = "<group>"; };
-		3350C4011FB4634C004C83D4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../shared/Alamofire.framework; sourceTree = "<group>"; };
-		3350C4021FB4634C004C83D4 /* OpenPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenPlatform.framework; path = ../shared/OpenPlatform.framework; sourceTree = "<group>"; };
 		335EEC641FD8F58A006E975E /* TMPJValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPJValueLabel.swift; sourceTree = "<group>"; };
 		33BCEBC11FE7A2EF00A64D18 /* TMPJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPJNavigationController.swift; sourceTree = "<group>"; };
 		33EC6ED61FB3700000AB74F2 /* swifttemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swifttemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,9 +133,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3350C4031FB4634C004C83D4 /* Airmey.framework in Frameworks */,
-				3350C4041FB4634C004C83D4 /* Alamofire.framework in Frameworks */,
-				3350C4051FB4634C004C83D4 /* OpenPlatform.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,9 +174,6 @@
 		33D5A95D1E66832C00C4A692 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3350C4001FB4634B004C83D4 /* Airmey.framework */,
-				3350C4011FB4634C004C83D4 /* Alamofire.framework */,
-				3350C4021FB4634C004C83D4 /* OpenPlatform.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -537,7 +525,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "~/Library/Frameworks/${PLATFORM_NAME}";
+				FRAMEWORK_SEARCH_PATHS = "${USER_LIBRARY_DIR}/Frameworks/${PLATFORM_NAME}";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -597,7 +585,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "~/Library/Frameworks/${PLATFORM_NAME}";
+				FRAMEWORK_SEARCH_PATHS = "${USER_LIBRARY_DIR}/Frameworks/${PLATFORM_NAME}";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -636,6 +624,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Manual;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -676,6 +665,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Manual;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
