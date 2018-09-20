@@ -30,7 +30,7 @@ class TMPJTableViewController: TMPJBaseViewController{
         
     }
 }
-extension TMPJTableViewController:UITableViewDelegate,UITableViewDataSource
+extension TMPJTableViewController:AMTableViewDelegate,UITableViewDataSource
 {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
@@ -47,10 +47,7 @@ extension TMPJTableViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true);
     }
-}
-extension TMPJTableViewController:AMTableViewDelegate
-{
-    func tableView(_ tableView: AMTableView, willBeginRefreshWithStyle style: AMRefreshStyle, refreshControl: AMRefreshProtocol) {
+    func tableView(_ tableView: AMTableView, willRefreshUsing control: AMRefreshControl, with style: AMRefreshStyle) {
         switch style {
         case .top:
             self.reloadData()

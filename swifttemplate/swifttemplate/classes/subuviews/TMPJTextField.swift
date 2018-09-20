@@ -30,7 +30,7 @@ class TMPJTextField: UITextField {
     }
     
 }
-class CPLoginTextField : UITextField {
+class TMPJLoginTextField : UITextField {
     init(){
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false;
@@ -77,7 +77,7 @@ class CPLoginTextField : UITextField {
     }
 }
 
-class CPRegistTextField : CPLoginTextField{
+class TMPJRegistTextField : TMPJLoginTextField{
     var textLabel:TMPJLabel?
     let timer = AMTimer()
     deinit {
@@ -114,7 +114,7 @@ class CPRegistTextField : CPLoginTextField{
         return rect;
     }
 }
-extension CPRegistTextField:AMTimerDelegate{
+extension TMPJRegistTextField:AMTimerDelegate{
     func timer(_ timer: AMTimer, repeated times: Int) {
         guard times <= 60 else {
             self.textLabel?.isUserInteractionEnabled = true;

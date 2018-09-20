@@ -14,17 +14,17 @@ final class TMPJPopupService {
     
     
     fileprivate init(){}
-    private weak var wating:(UIViewController & AMControllerWaitable)?
+    private weak var wating:UIViewController?
     private weak var current:UIViewController?
     func alert(error:Error){
         switch error {
         case let err as TMPJAlertable:
-            self.alert(title:err.title,message: err.message)
+            self.alert(title:err.title,err.message)
         default:
-            self.alert(message: "网络连接失败")
+            self.alert("网络连接失败")
         }
     }
-    func alert(title:String?="提示",message:String?,ensure:String = "确定",cancel:String?=nil,dismissIndex:((Int)->Void)?=nil){
+    func alert(title:String?="提示",_ message:String?,ensure:String = "确定",cancel:String?=nil,dismissIndex:((Int)->Void)?=nil){
         guard self.current == nil else {
             return
         }
@@ -39,12 +39,10 @@ final class TMPJPopupService {
             }))
         }
         
-        UIApplication.shared.lastPresentedController?.present(alert, animated: true, completion: nil)
+        UIApplication.shared.present(alert, animated: true, completion: nil)
     }
     func waiting(message:String,appeared:(()->Void)?=nil,canceled:(()->Void)? = nil) {
-        self.waiting(AMWaitingController(message), appeared: appeared, canceled: canceled)
-    }
-    func waiting<Controller:AMControllerWaitable>(_ controller:Controller,appeared:(()->Void)?=nil,canceled:(()->Void)? = nil){
+        let controller = AMWaitingController(message)
         guard self.current == nil else {
             return
         }
@@ -53,7 +51,8 @@ final class TMPJPopupService {
         controller.assistor.appearedBlock = appeared
         self.wating = controller
         self.current = controller
-        UIApplication.shared.lastPresentedController?.present(controller, animated: true, completion: nil)
+        UIApplication.shared.present(controller, animated: true, completion: nil)
+
     }
     func dismiss(finished:(()->Void)?=nil) {
         guard let waiting = self.wating else {
@@ -81,7 +80,7 @@ final class TMPJPopupService {
         let remind = AMRemindController(message)
         self.current = remind
         remind.assistor.dismissBlock = dismissed
-        UIApplication.shared.lastPresentedController?.present(remind, animated: true, completion: nil)
+        UIApplication.shared.present(remind, animated: true, completion: nil)
     }
     func action<ActionItem:AMTextConvertible>(_ items:[ActionItem],style:ActionStyle = .plain,dismissIndex:((ActionItem,Int)->Void)?){
         guard self.current == nil else {
@@ -108,7 +107,7 @@ final class TMPJPopupService {
             }
             vc = plain
         }
-        UIApplication.shared.lastPresentedController?.present(vc!, animated: true, completion: nil)
+        UIApplication.shared.present(vc!, animated: true, completion: nil)
     }
 
 }

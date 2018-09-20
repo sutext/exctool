@@ -51,16 +51,16 @@ class TMPJCommonUtils: NSObject {
     {
         guard name != nil && name!.trimmingCharacters(in: .whitespacesAndNewlines).length>0 else
         {
-            pop.alert(message: "昵称不能为空")
+            pop.alert("昵称不能为空")
             return nil;
         }
         guard name!.length<8 else
         {
-            pop.alert(message: "昵称不能太长")
+            pop.alert("昵称不能太长")
             return nil;
         }
         guard name!.isNickName else {
-            pop.alert(message: "昵称不能含有特殊字符")
+            pop.alert("昵称不能含有特殊字符")
             return nil
         }
         return name!;
@@ -69,7 +69,7 @@ class TMPJCommonUtils: NSObject {
     {
         guard (phone != nil)&&(phone!.isPhone) else
         {
-            pop.alert(message: "请输入正确手机号")
+            pop.alert("请输入正确手机号")
             return nil;
         }
         return phone!;
@@ -78,7 +78,7 @@ class TMPJCommonUtils: NSObject {
     {
         guard (passwd != nil)&&(passwd!.isPasswd) else
         {
-            pop.alert(message: "密码必须是6-16位的字母或数字的组合")
+            pop.alert("密码必须是6-16位的字母或数字的组合")
             return nil;
         }
         return passwd!;
@@ -87,7 +87,7 @@ class TMPJCommonUtils: NSObject {
     {
         guard (code != nil)&&(code!.length > 0) else
         {
-            pop.alert(message: "验证码格式错误")
+            pop.alert("验证码格式错误")
             return nil;
         }
         return code!;

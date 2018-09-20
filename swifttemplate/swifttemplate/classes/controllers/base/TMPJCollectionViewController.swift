@@ -37,7 +37,7 @@ class TMPJCollectionViewController: TMPJBaseViewController{
     }
 }
 
-extension TMPJCollectionViewController:UICollectionViewDelegate,UICollectionViewDataSource
+extension TMPJCollectionViewController:AMCollectionViewDelegate,UICollectionViewDataSource
 {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 0
@@ -48,10 +48,7 @@ extension TMPJCollectionViewController:UICollectionViewDelegate,UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return TMPJCollectionViewCell()
     }
-}
-extension TMPJCollectionViewController:AMCollectionViewDelegate
-{
-    func collectionView(_ tableView: AMCollectionView, willBeginRefreshWithStyle style: AMRefreshStyle, refreshControl: AMRefreshProtocol) {
+    func collectionView(_ collectionView: AMCollectionView, willRefreshUsing control: AMRefreshControl, with style: AMRefreshStyle) {
         switch style {
         case .top:
             self.reloadData()

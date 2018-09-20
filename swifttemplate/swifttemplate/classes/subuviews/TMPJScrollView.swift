@@ -10,9 +10,10 @@ import UIKit
 class TMPJScrollView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.delaysContentTouches = false
     }
-    init() {
-        super.init(frame: .zero)
+    convenience init() {
+        self.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 11.0, *) {
             self.contentInsetAdjustmentBehavior = .never
@@ -21,5 +22,7 @@ class TMPJScrollView: UIScrollView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+    override func touchesShouldCancel(in view: UIView) -> Bool {
+        return true
+    }
 }

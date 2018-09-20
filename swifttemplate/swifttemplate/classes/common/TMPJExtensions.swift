@@ -192,14 +192,27 @@ extension DispatchQueue
     }
 }
 extension UIApplication{
-    var lastPresentedController:UIViewController?{
+    private var lastPresentedController:UIViewController?{
         var next:UIViewController? = self.keyWindow?.rootViewController
         while next?.presentedViewController != nil {
             next = next?.presentedViewController
         }
         return next
     }
-    func jumptoLogin(){
+    var appid:String{
+        return "1318071927"
     }
+    var storeURL:String{
+        return "https://itunes.apple.com/cn/app/id\(appid)?mt=8"
+    }
+    func present(_ viewController:UIViewController,animated:Bool,completion:(()->Void)?){
+        self.lastPresentedController?.present(viewController, animated: animated, completion: completion)
+    }
+    func jumptoAppstore(){
+        if let url = URL(string: self.storeURL){
+            self.openURL(url)
+        }
+    }
+    func jumptoLogin(){
+    }    
 }
-

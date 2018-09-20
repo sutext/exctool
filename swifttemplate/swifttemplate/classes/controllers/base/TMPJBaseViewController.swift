@@ -94,12 +94,24 @@ extension TMPJBaseViewController{
 }
 extension TMPJBaseViewController{
     typealias Image = (normal:UIImage,press:UIImage?)
+    private func button(for image:Image)->TMPJButton{
+        let item  = AMButtonItem()
+        item.image = image.normal
+        item.imageSize = CGSize(width:34,height:34)
+        let button = TMPJButton(.cover)
+        let wspaceing = (34-image.normal.size.width)/2
+        let hspaceing = (34-image.normal.size.height)/2
+        button.imageEdgeInsets = UIEdgeInsets(top:hspaceing , left: wspaceing, bottom: hspaceing, right: wspaceing)
+        button.apply(item: item, for: .normal)
+        if let press = image.press{
+            button.setImage(press, for: .highlighted)
+        }
+        button.sizeToFit()
+        return button
+    }
     final func setLeftAvatar(){
         let avatar = TMPJAvatarView(size: 38)
         avatar.user = global.user
-        avatar.clickedAction = {[weak self]sender,user in
-            self?.leftAvatarAction(nil)
-        }
         self.setLeftbar(item: UIBarButtonItem(customView: avatar), fixed: 0)
     }
     final func setWhiteReturn()  {
@@ -107,52 +119,17 @@ extension TMPJBaseViewController{
         self.navigationItem.leftBarButtonItem = item
     }
     final func setLeftBar(_ image:Image) {
-        let item  = AMButtonItem()
-        item.image = image.normal
-        item.imageSize = CGSize(width:40,height:40)
-        let button = TMPJButton(.cover)
-        let wspaceing = (40-image.normal.size.width)/2
-        let hspaceing = (40-image.normal.size.height)/2
-        button.imageEdgeInsets = UIEdgeInsets(top:hspaceing , left: wspaceing, bottom: hspaceing, right: wspaceing)
-        button.apply(item: item, for: .normal)
-        if let press = image.press{
-            button.setImage(press, for: .highlighted)
-        }
-        button.sizeToFit()
+        let button = self.button(for: image)
         button.addTarget(self, action: #selector(TMPJBaseViewController.leftItemAction(_:)), for: .touchUpInside)
         self.setLeftbar(item: button, fixed: 0);
     }
     final func setRightbar(_ first:Image,secend:Image? = nil) {
-        let item  = AMButtonItem()
-        item.image = first.normal
-        item.imageSize = CGSize(width:40,height:40)
-        let button = TMPJButton(.cover)
-        let wspaceing = (40-first.normal.size.width)/2
-        let hspaceing = (40-first.normal.size.height)/2
-        button.imageEdgeInsets = UIEdgeInsets(top:hspaceing , left: wspaceing, bottom: hspaceing, right: wspaceing)
-        button.apply(item: item, for: .normal)
-        if let press = first.press {
-            button.setImage(press, for: .highlighted)
-        }
-        button.sizeToFit()
+        let button = self.button(for: first)
         button.addTarget(self, action: #selector(TMPJBaseViewController.rightItemAction(_:)), for: .touchUpInside)
-        
         var items:[AMBarButtonItemConvertible] = [button]
         if let secend = secend {
-            let item  = AMButtonItem()
-            item.image = secend.normal
-            item.imageSize = CGSize(width:40,height:40)
-            let button = TMPJButton(.cover)
-            button.apply(item: item, for: .normal)
-            if let press = secend.press {
-                button.setImage(press, for: .highlighted)
-            }
-            button.sizeToFit()
+            let button = self.button(for: secend)
             button.addTarget(self, action: #selector(TMPJBaseViewController.rightSecendAction(_:)), for: .touchUpInside)
-            
-            let fixed = UIBarButtonItem.init(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-            fixed.width = 15;
-            items.append(fixed)
             items.append(button)
         }
         self.setRightBar(items: items)

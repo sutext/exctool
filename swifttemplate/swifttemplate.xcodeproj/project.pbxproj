@@ -17,6 +17,7 @@
 		330D54F31FC3D83E00AE5828 /* TMPJPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D54EA1FC3D83E00AE5828 /* TMPJPickerController.swift */; };
 		330D54F41FC3D83E00AE5828 /* TMPJTextEditerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D54EB1FC3D83E00AE5828 /* TMPJTextEditerController.swift */; };
 		335EEC651FD8F58A006E975E /* TMPJValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335EEC641FD8F58A006E975E /* TMPJValueLabel.swift */; };
+		3371D54920F77A1D00FD5086 /* TMPJScanCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371D54820F77A1D00FD5086 /* TMPJScanCodeController.swift */; };
 		33BCEBC21FE7A2EF00A64D18 /* TMPJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCEBC11FE7A2EF00A64D18 /* TMPJNavigationController.swift */; };
 		33EC6EDA1FB3700000AB74F2 /* swifttemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 33EC6ED81FB3700000AB74F2 /* swifttemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33EC6F271FB3706100AB74F2 /* TMPJCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6EE51FB3706100AB74F2 /* TMPJCommonUtils.swift */; };
@@ -77,6 +78,7 @@
 		330D54EA1FC3D83E00AE5828 /* TMPJPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJPickerController.swift; sourceTree = "<group>"; };
 		330D54EB1FC3D83E00AE5828 /* TMPJTextEditerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJTextEditerController.swift; sourceTree = "<group>"; };
 		335EEC641FD8F58A006E975E /* TMPJValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPJValueLabel.swift; sourceTree = "<group>"; };
+		3371D54820F77A1D00FD5086 /* TMPJScanCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPJScanCodeController.swift; sourceTree = "<group>"; };
 		33BCEBC11FE7A2EF00A64D18 /* TMPJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPJNavigationController.swift; sourceTree = "<group>"; };
 		33EC6ED61FB3700000AB74F2 /* swifttemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swifttemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33EC6ED81FB3700000AB74F2 /* swifttemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swifttemplate.h; sourceTree = "<group>"; };
@@ -126,6 +128,12 @@
 		33EC6F261FB3706100AB74F2 /* TMPJLayoutAssist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPJLayoutAssist.swift; sourceTree = "<group>"; };
 		33FD52E520EE206700D3ECD2 /* TMPJAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPJAvatarView.swift; sourceTree = "<group>"; };
 		33FD52E820EE28EF00D3ECD2 /* TMPJUserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPJUserInfoController.swift; sourceTree = "<group>"; };
+		33FD53C720EF78F300D3ECD2 /* Airmey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Airmey.framework; sourceTree = "<group>"; };
+		33FD53C820EF78F300D3ECD2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		33FD53C920EF78F300D3ECD2 /* OpenPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenPlatform.framework; sourceTree = "<group>"; };
+		33FD53CB20EF78F300D3ECD2 /* Airmey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Airmey.framework; sourceTree = "<group>"; };
+		33FD53CC20EF78F300D3ECD2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		33FD53CD20EF78F300D3ECD2 /* OpenPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenPlatform.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,7 @@
 				330D54E91FC3D83E00AE5828 /* TMPJTextPickerController.swift */,
 				330D54EA1FC3D83E00AE5828 /* TMPJPickerController.swift */,
 				330D54EB1FC3D83E00AE5828 /* TMPJTextEditerController.swift */,
+				3371D54820F77A1D00FD5086 /* TMPJScanCodeController.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -159,7 +168,7 @@
 			children = (
 				33EC6ED71FB3700000AB74F2 /* swifttemplate */,
 				336D2FE81C4E487C00EA7CFF /* Products */,
-				33D5A95D1E66832C00C4A692 /* Frameworks */,
+				33FD53C520EF78F300D3ECD2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,13 +178,6 @@
 				33EC6ED61FB3700000AB74F2 /* swifttemplate.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		33D5A95D1E66832C00C4A692 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		33EC6ED71FB3700000AB74F2 /* swifttemplate */ = {
@@ -348,6 +350,36 @@
 			path = mine;
 			sourceTree = "<group>";
 		};
+		33FD53C520EF78F300D3ECD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33FD53C620EF78F300D3ECD2 /* iphoneos */,
+				33FD53CA20EF78F300D3ECD2 /* iphonesimulator */,
+			);
+			name = Frameworks;
+			path = ../../../Library/Frameworks;
+			sourceTree = "<group>";
+		};
+		33FD53C620EF78F300D3ECD2 /* iphoneos */ = {
+			isa = PBXGroup;
+			children = (
+				33FD53C720EF78F300D3ECD2 /* Airmey.framework */,
+				33FD53C820EF78F300D3ECD2 /* Alamofire.framework */,
+				33FD53C920EF78F300D3ECD2 /* OpenPlatform.framework */,
+			);
+			path = iphoneos;
+			sourceTree = "<group>";
+		};
+		33FD53CA20EF78F300D3ECD2 /* iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				33FD53CB20EF78F300D3ECD2 /* Airmey.framework */,
+				33FD53CC20EF78F300D3ECD2 /* Alamofire.framework */,
+				33FD53CD20EF78F300D3ECD2 /* OpenPlatform.framework */,
+			);
+			path = iphonesimulator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -386,6 +418,7 @@
 		336D2FDE1C4E487C00EA7CFF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TMPJ;
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = icegent;
@@ -459,6 +492,7 @@
 				330D54EF1FC3D83E00AE5828 /* TMPJShareController.swift in Sources */,
 				33EC6F281FB3706100AB74F2 /* TMPJConstants.swift in Sources */,
 				33EC6F2E1FB3706100AB74F2 /* TMPJTableViewController.swift in Sources */,
+				3371D54920F77A1D00FD5086 /* TMPJScanCodeController.swift in Sources */,
 				330D54F31FC3D83E00AE5828 /* TMPJPickerController.swift in Sources */,
 				33EC6F571FB3706100AB74F2 /* TMPJImageEffect.swift in Sources */,
 				33EC6F541FB3706100AB74F2 /* TMPJTextField.swift in Sources */,
